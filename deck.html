@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="ru" class="no-js">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Защита проекта — Скуф и сыновья</title>
+<meta name="description" content="Презентация-защита учебного проекта ООО «Скуф и сыновья»: концепция, команда, полный пакет документов, экономика и история интернета в мемах." />
+<meta name="theme-color" content="#16120E" />
+<meta property="og:title" content="Защита проекта «Скуф и сыновья»" />
+<meta property="og:image" content="https://q7n3t.github.io/skuf-i-synovya/assets/og.jpg" />
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+<link rel="preload" href="assets/fonts/unbounded-cyrillic-900-normal.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="stylesheet" href="css/main.css?v=202611151120" />
+<link rel="stylesheet" href="css/deck.css?v=202611151120" />
+<script>document.documentElement.classList.replace("no-js", "js")</script>
+<script defer src="vendor/gsap/gsap.min.js"></script>
+<script type="module" src="js/deck.js?v=202611151120"></script>
+</head>
+<body class="deck-body">
+
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <symbol id="i-mug" viewBox="0 0 24 24"><path d="M5 8h10v10a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3V8Z"/><path d="M15 10h2a2.5 2.5 0 0 1 0 5h-2"/><path d="M5 8c0-2 1.4-3.5 3-3.5.6-1.4 3.4-1.6 4.3 0C14 4.6 15 6 15 8"/><path d="M9 12v5M12 12v5"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-left" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></symbol>
+  <symbol id="i-full" viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6V3Z"/><path d="M14 3v4h4M9 12h6M9 16h6"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 4v12M6 11l6 6 6-6M5 20h14"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M4 11 12 4l8 7v9H4v-9Z"/><path d="M10 20v-6h4v6"/></symbol>
+</svg>
+
+<header class="deck-bar">
+  <a class="logo" href="./" aria-label="Скуф и сыновья — на сайт">
+    <svg class="logo__mark" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-mug"/></svg>
+    <span class="logo__word">Скуф <em>и сыновья</em></span>
+  </a>
+  <p class="deck-bar__file mono" aria-hidden="true">Защита_проекта.ppt</p>
+  <div class="deck-bar__tools">
+    <button class="icon-btn" type="button" id="deckFull" aria-label="Во весь экран (F)"><svg aria-hidden="true"><use href="#i-full"/></svg></button>
+  </div>
+</header>
+
+<main class="deck" id="deck" aria-roledescription="презентация" aria-label="Защита проекта «Скуф и сыновья»">
+  <div class="deck__stage" id="stage">
+
+    <!-- 01 Титул -->
+    <section class="slide slide--title" aria-roledescription="слайд" aria-label="1 из 20: Титул">
+      <p class="s-eyebrow" data-in>C:\Защита\01_титул.ppt</p>
+      <h1 class="s-hero" data-in><span>Скуф</span><span>и сыновья</span></h1>
+      <p class="s-lead" data-in>Защита проекта: ООО, барбершоп и пивной бар для мужчин 35+ по духу и 18+ по паспорту</p>
+      <div class="s-icq" data-in>
+        <p class="mono s-icq__meta">Батя (20:07):</p>
+        <p class="s-icq__msg">Вернём тебе 2007-й</p>
+      </div>
+      <ul class="s-team-line mono" data-in>
+        <li>Вадим Греков</li><li>Илья Дольников</li><li>Мишаня Гончаренко</li><li>Серега Виллиан</li><li>Евгений Белобров</li>
+      </ul>
+    </section>
+
+    <!-- 02 Проблема -->
+    <section class="slide" aria-roledescription="слайд" aria-label="2 из 20: Проблема">
+      <p class="s-eyebrow" data-in>C:\Защита\02_проблема.ppt</p>
+      <h2 class="s-h" data-in>Бате некуда пойти</h2>
+      <div class="s-cards s-cards--3">
+        <article class="s-card" data-in><p class="s-num">01</p><h3>Барбершопы для 20-летних</h3><p>Фейды, тату-мастера и музыка, под которую бате неуютно. Попросишь «как раньше» — не поймут.</p></article>
+        <article class="s-card" data-in><p class="s-num">02</p><h3>Бары слишком громкие</h3><p>Хочется пиво и поговорить, а вокруг техно и коктейли за 900 ₽ с непонятными названиями.</p></article>
+        <article class="s-card" data-in><p class="s-num">03</p><h3>Ностальгия без места</h3><p>Поколение, заставшее ICQ, Nokia 3310 и «Руки Вверх», не имеет своей точки сбора.</p></article>
+      </div>
+    </section>
+
+    <!-- 03 Решение -->
+    <section class="slide" aria-roledescription="слайд" aria-label="3 из 20: Решение">
+      <p class="s-eyebrow" data-in>C:\Защита\03_решение.ppt</p>
+      <h2 class="s-h" data-in>Барбершоп + пивной бар<br /><em>в одном помещении</em></h2>
+      <div class="s-split">
+        <ul class="s-facts" data-in>
+          <li><b>140 м²</b><span>зал на 4 кресла и бар на 30 мест</span></li>
+          <li><b>24/7</b><span>круглосуточно, без выходных</span></li>
+          <li><b>м. «Улица 1905 года»</b><span>ул. 1905 года, д. 7, 3 минуты пешком</span></li>
+          <li><b>2007</b><span>интерьер, плейлист и сервис как в 2007-м</span></li>
+        </ul>
+        <div class="s-quote" data-in>
+          <p>«Пока мастер делает тебе полубокс, бармен уже открыл кегу.»</p>
+          <p class="mono">— главный принцип заведения</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 Аудитория -->
+    <section class="slide" aria-roledescription="слайд" aria-label="4 из 20: Аудитория и УТП">
+      <p class="s-eyebrow" data-in>C:\Защита\04_аудитория.ppt</p>
+      <h2 class="s-h" data-in>Кто наш батя</h2>
+      <div class="s-split">
+        <div class="s-card s-card--persona" data-in>
+          <p class="s-num">Портрет</p>
+          <ul class="s-list">
+            <li>мужчина 35–50 лет, работает, есть семья</li>
+            <li>стрижётся раз в 3–4 недели</li>
+            <li>2–3 раза в месяц ходит «на пиво с мужиками»</li>
+            <li>помнит Аську, «Бригаду» и флешку на шее</li>
+          </ul>
+        </div>
+        <div class="s-card" data-in>
+          <p class="s-num">Почему к нам</p>
+          <ul class="s-list">
+            <li>стрижка и кружка за один визит</li>
+            <li>комбо «Батя и сын»: приводит сына</li>
+            <li>карта «Пузо Карт»: скидка до 20 %</li>
+            <li>караоке нулевых по пятницам</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 Команда -->
+    <section class="slide" aria-roledescription="слайд" aria-label="5 из 20: Команда">
+      <p class="s-eyebrow" data-in>C:\Защита\05_команда.ppt</p>
+      <h2 class="s-h" data-in>Наши бати</h2>
+      <ul class="s-team">
+        <li data-in><img src="assets/team/grekov.webp?v=6" width="264" height="303" alt="" /><b>Вадим Греков</b><span>Генеральный директор, единственный учредитель (100 %)</span></li>
+        <li data-in><img src="assets/team/dolnikov.webp?v=6" width="264" height="303" alt="" /><b>Илья Дольников</b><span>Управляющий, охрана труда</span></li>
+        <li data-in><img src="assets/team/goncharenko.webp?v=6" width="264" height="303" alt="" /><b>Мишаня Гончаренко</b><span>Главный бухгалтер, УСН и отчётность</span></li>
+        <li data-in><img src="assets/team/klemeshev.webp?v=6" width="264" height="303" alt="" /><b>Серега Виллиан</b><span>Старший бармен, ЕГАИС и поставки</span></li>
+        <li data-in><img src="assets/team/belobrov.webp?v=6" width="264" height="303" alt="" /><b>Евгений Белобров</b><span>Главный редактор, сайт и соцсети</span></li>
+      </ul>
+    </section>
+
+    <!-- 06 Юрлицо -->
+    <section class="slide" aria-roledescription="слайд" aria-label="6 из 20: Юридическое лицо">
+      <p class="s-eyebrow" data-in>C:\Защита\06_юрлицо.ppt</p>
+      <h2 class="s-h" data-in>ООО «Скуф и сыновья»</h2>
+      <dl class="s-dl" data-in>
+        <div><dt>Форма</dt><dd>Общество с ограниченной ответственностью</dd></div>
+        <div><dt>Учредитель</dt><dd>Греков Вадим, 100 % доли</dd></div>
+        <div><dt>Уставный капитал</dt><dd class="mono">10 000 ₽</dd></div>
+        <div><dt>Налоги</dt><dd>УСН «доходы минус расходы», 15 %; НДС 5 % при доходе свыше 20 млн ₽ в год</dd></div>
+        <div><dt>ОКВЭД</dt><dd class="mono">96.02 · 56.30 · 56.10 · 47.25 · 47.75 · 73.11</dd></div>
+        <div><dt>Адрес</dt><dd>123100, г. Москва, ул. 1905 года, д. 7, пом. 1</dd></div>
+        <div><dt>Регистрация</dt><dd>МИ ФНС № 46 по г. Москве · реквизиты условные, учебный проект</dd></div>
+      </dl>
+    </section>
+
+    <!-- 07 Пакет документов -->
+    <section class="slide" aria-roledescription="слайд" aria-label="7 из 20: Пакет документов">
+      <p class="s-eyebrow" data-in>C:\Защита\07_документы\</p>
+      <div class="s-head-row" data-in>
+        <h2 class="s-h">Полный пакет: 19 документов</h2>
+        <a class="btn btn--amber" href="documents/skuf-i-synovya-dokumenty.zip" download><svg aria-hidden="true"><use href="#i-down"/></svg>Скачать всё .zip</a>
+      </div>
+      <ol class="s-docs" id="docList" data-in></ol>
+    </section>
+
+    <!-- 08 Ключевые документы -->
+    <section class="slide" aria-roledescription="слайд" aria-label="8 из 20: Ключевые документы">
+      <p class="s-eyebrow" data-in>C:\Защита\08_ключевые.ppt</p>
+      <h2 class="s-h" data-in>Что внутри главного</h2>
+      <div class="s-papers">
+        <article class="s-paper" data-in><p class="s-paper__t">Устав</p><p>10 разделов: цели, уставный капитал 10 000 ₽, органы управления, переход доли, распределение прибыли.</p><a href="documents/14-ustav.docx" download>14-ustav.docx</a></article>
+        <article class="s-paper" data-in><p class="s-paper__t">Решение № 1</p><p>Учреждение ООО, утверждение Устава, адрес, назначение генерального директора на 5 лет.</p><a href="documents/07-reshenie-uchreditelya.docx" download>07-reshenie.docx</a></article>
+        <article class="s-paper" data-in><p class="s-paper__t">Р11001</p><p>Заявление о регистрации по листам: сведения об ООО, учредитель, директор, коды ОКВЭД.</p><a href="documents/01-forma-r11001.docx" download>01-forma-r11001.docx</a></article>
+        <article class="s-paper" data-in><p class="s-paper__t">ПВТР</p><p>Круглосуточный режим, смены по 12 часов, ночные часы +20 % по ст. 154 ТК РФ, продажа только 18+.</p><a href="documents/06-pvtr.docx" download>06-pvtr.docx</a></article>
+        <article class="s-paper" data-in><p class="s-paper__t">Политика ПДн</p><p>152-ФЗ: какие данные собираем, цели, сроки, права гостя и форма согласия.</p><a href="documents/18-politika-pdn-i-soglasie.docx" download>18-politika-pdn.docx</a></article>
+      </div>
+    </section>
+
+    <!-- 09 Персонал -->
+    <section class="slide" aria-roledescription="слайд" aria-label="9 из 20: Штатное расписание">
+      <p class="s-eyebrow" data-in>C:\Защита\09_штат.ppt</p>
+      <h2 class="s-h" data-in>13 человек, ФОТ 735 000 ₽</h2>
+      <div class="s-table-wrap" data-in>
+        <table class="s-table">
+          <thead><tr><th>Подразделение</th><th>Должность</th><th>Ед.</th><th>Оклад, ₽</th><th>Итого, ₽</th></tr></thead>
+          <tbody>
+            <tr><td>Администрация</td><td>Генеральный директор</td><td>1</td><td>90 000</td><td>90 000</td></tr>
+            <tr><td>Администрация</td><td>Главный бухгалтер</td><td>1</td><td>75 000</td><td>75 000</td></tr>
+            <tr><td>Администрация</td><td>Управляющий</td><td>1</td><td>65 000</td><td>65 000</td></tr>
+            <tr><td>Администрация</td><td>Главный редактор</td><td>1</td><td>70 000</td><td>70 000</td></tr>
+            <tr><td>Барбершоп</td><td>Барбер</td><td>3</td><td>50 000</td><td>150 000</td></tr>
+            <tr><td>Барбершоп</td><td>Администратор</td><td>1</td><td>45 000</td><td>45 000</td></tr>
+            <tr><td>Пивной бар</td><td>Старший бармен</td><td>1</td><td>65 000</td><td>65 000</td></tr>
+            <tr><td>Пивной бар</td><td>Бармен</td><td>3</td><td>45 000</td><td>135 000</td></tr>
+            <tr><td>Хозслужба</td><td>Уборщик</td><td>1</td><td>40 000</td><td>40 000</td></tr>
+          </tbody>
+          <tfoot><tr><td colspan="2">Итого</td><td>13</td><td></td><td>735 000</td></tr></tfoot>
+        </table>
+      </div>
+    </section>
+
+    <!-- 10 Продукт -->
+    <section class="slide" aria-roledescription="слайд" aria-label="10 из 20: Продукт">
+      <p class="s-eyebrow" data-in>C:\Защита\10_продукт.ppt</p>
+      <h2 class="s-h" data-in>Что продаём</h2>
+      <div class="s-split">
+        <ul class="s-price" data-in>
+          <li><span>Стрижка «Полубокс 2007»</span><b>1 500 ₽</b></li>
+          <li><span>Борода «Лесник на пенсии»</span><b>1 200 ₽</b></li>
+          <li><span>Светлое разливное, 0,5 л</span><b>290 ₽</b></li>
+          <li><span>Гренки «Хрустим как в общаге», 150 г</span><b>290 ₽</b></li>
+          <li><span>Комбо «Батя»: стрижка + борода + пиво</span><b>2 400 ₽</b></li>
+          <li><span>Комбо «Батя и сын»</span><b>2 600 ₽</b></li>
+        </ul>
+        <div class="s-gold" data-in>
+          <p class="s-num">Карта «Пузо Карт»</p>
+          <ol class="s-levels">
+            <li><b>Бронза</b><span>от 0 кружек · −5 %</span></li>
+            <li><b>Голда</b><span>от 5 · −10 %, 6-я кружка в подарок</span></li>
+            <li><b>Платинум</b><span>от 10 · −15 %, именная кружка</span></li>
+            <li><b>Легенда</b><span>от 15 · −20 %, место у телевизора</span></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11 Экономика -->
+    <section class="slide" aria-roledescription="слайд" aria-label="11 из 20: Экономика">
+      <p class="s-eyebrow" data-in>C:\Защита\11_экономика.xls</p>
+      <h2 class="s-h" data-in>Экономика месяца</h2>
+      <div class="s-split s-split--wide">
+        <div class="s-bars" data-in role="img" aria-label="Выручка 2,61 млн, расходы 2,10 млн, налоги 0,18 млн, чистая прибыль 0,33 млн рублей в месяц">
+          <div class="s-bar" style="--v:100"><b>2,61 млн</b><i></i><span>Выручка</span></div>
+          <div class="s-bar s-bar--cost" style="--v:80.5"><b>2,10 млн</b><i></i><span>Расходы</span></div>
+          <div class="s-bar s-bar--tax" style="--v:7"><b>0,18 млн</b><i></i><span>Налоги</span></div>
+          <div class="s-bar s-bar--profit" style="--v:12.6"><b>0,33 млн</b><i></i><span>Чистыми</span></div>
+        </div>
+        <dl class="s-dl s-dl--tight" data-in>
+          <div><dt>Барбершоп</dt><dd>25 клиентов в день × 1 400 ₽ = 1,05 млн</dd></div>
+          <div><dt>Бар</dt><dd>80 гостей в день × 650 ₽ = 1,56 млн</dd></div>
+          <div><dt>Расходы</dt><dd>ФОТ с взносами 0,96 · аренда 0,28 · закупка 0,55 · прочее 0,31</dd></div>
+          <div><dt>Налоги</dt><dd>НДС 5 % ≈ 0,12 · УСН 15 % ≈ 0,06</dd></div>
+          <div><dt>Запуск</dt><dd>4,0 млн ₽: ремонт, оборудование, депозит аренды</dd></div>
+          <div><dt>Окупаемость</dt><dd><b class="s-accent">≈ 12 месяцев</b></dd></div>
+        </dl>
+      </div>
+      <p class="s-foot mono" data-in>Оценка для учебного проекта: цифры условные, посчитаны по прайсу и штатному расписанию.</p>
+    </section>
+
+    <!-- 12 Показатели -->
+    <section class="slide" aria-roledescription="слайд" aria-label="12 из 20: Показатели">
+      <div class="s-stats__head">
+        <div>
+          <p class="s-eyebrow" data-in>C:\Защита\12_показатели.xls</p>
+          <h2 class="s-h" data-in>Показатели первого года</h2>
+        </div>
+        <div class="stat-seg" id="statSeg" role="group" aria-label="Период" data-in>
+          <span class="stat-seg__pill" aria-hidden="true"></span>
+          <button type="button" data-r="0" aria-pressed="false">Месяц</button>
+          <button type="button" data-r="1" aria-pressed="false">Квартал</button>
+          <button type="button" data-r="2" aria-pressed="false">Год</button>
+        </div>
+      </div>
+      <div class="s-stats" id="statGrid" aria-live="polite">
+        <article class="stat" data-in data-key="rev">
+          <div class="stat__top"><div><p class="stat__lab mono">Выручка</p><p class="stat__big" data-big>—</p></div><span class="stat__delta" data-delta>—</span></div>
+          <div class="stat__cw"><svg class="stat__chart" aria-hidden="true"><defs><linearGradient id="gAmber" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f2a93b" stop-opacity=".34"/><stop offset="1" stop-color="#f2a93b" stop-opacity="0"/></linearGradient></defs><path class="stat__fill" fill="url(#gAmber)"/><path class="stat__line"/></svg><span class="stat__dot"></span></div>
+          <p class="stat__note mono" data-note></p>
+        </article>
+        <article class="stat" data-in data-key="guests">
+          <div class="stat__top"><div><p class="stat__lab mono">Гостей</p><p class="stat__big" data-big>—</p></div><span class="stat__delta" data-delta>—</span></div>
+          <div class="stat__cw"><svg class="stat__chart" aria-hidden="true"><path class="stat__fill" fill="url(#gAmber)"/><path class="stat__line"/></svg><span class="stat__dot"></span></div>
+          <p class="stat__note mono" data-note></p>
+        </article>
+        <article class="stat" data-in data-key="check">
+          <div class="stat__top"><div><p class="stat__lab mono">Средний чек</p><p class="stat__big" data-big>—</p></div><span class="stat__delta" data-delta>—</span></div>
+          <div class="stat__cw"><svg class="stat__chart" aria-hidden="true"><path class="stat__fill" fill="url(#gAmber)"/><path class="stat__line"/></svg><span class="stat__dot"></span></div>
+          <p class="stat__note mono" data-note></p>
+        </article>
+        <article class="stat stat--green" data-in data-key="profit">
+          <div class="stat__top"><div><p class="stat__lab mono">Чистая прибыль</p><p class="stat__big" data-big>—</p></div><span class="stat__delta" data-delta>—</span></div>
+          <div class="stat__cw"><svg class="stat__chart" aria-hidden="true"><defs><linearGradient id="gGreen" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4cd964" stop-opacity=".3"/><stop offset="1" stop-color="#4cd964" stop-opacity="0"/></linearGradient></defs><path class="stat__fill" fill="url(#gGreen)"/><path class="stat__line"/></svg><span class="stat__dot"></span></div>
+          <p class="stat__note mono" data-note></p>
+        </article>
+      </div>
+      <p class="s-foot mono" data-in>Прогноз для учебного проекта: месяц — из слайда «Экономика», квартал и год — с ростом загрузки. Запуск 4,0 млн ₽ окупается за ≈ 12 месяцев.</p>
+    </section>
+
+    <!-- 13 Маркетинг -->
+    <section class="slide" aria-roledescription="слайд" aria-label="13 из 20: Маркетинг">
+      <p class="s-eyebrow" data-in>C:\Защита\13_маркетинг.ppt</p>
+      <h2 class="s-h" data-in>Как батя о нас узнает</h2>
+      <div class="s-cards s-cards--4">
+        <article class="s-card" data-in><p class="s-num">Сайт</p><p>Лендинг с записью, прайсом и пасхалками, которые хочется показать друзьям.</p></article>
+        <article class="s-card" data-in><p class="s-num">«Пузо Карт»</p><p>Бесплатная карта, уровень растёт с визитами — повод вернуться.</p></article>
+        <article class="s-card" data-in><p class="s-num">Соцсети</p><p>Статусы в духе 2007-го, ролики с караоке и «цитата дня от бати».</p></article>
+        <article class="s-card" data-in><p class="s-num">Сарафан</p><p>Комбо «Батя и сын» и «Мальчишник 35+» приводят компанию.</p></article>
+      </div>
+    </section>
+
+    <!-- 14 Сайт -->
+    <section class="slide" aria-roledescription="слайд" aria-label="14 из 20: Сайт">
+      <p class="s-eyebrow" data-in>C:\Защита\14_сайт.htm</p>
+      <h2 class="s-h" data-in>Сайт: нулевые, сделанные<br /><em>как их не делали в нулевых</em></h2>
+      <div class="s-split">
+        <ul class="s-list s-list--big" data-in>
+          <li>запись в окне «Запись к бате.exe» с согласием по 152-ФЗ</li>
+          <li>прайс с фильтром, пузометр и карта с 3D-наклоном</li>
+          <li>пиксельные портреты команды</li>
+          <li>15 пасхалок: от Konami-кода до «Змейки»</li>
+          <li>адаптив от 320 px до 4K, работает без JavaScript</li>
+        </ul>
+        <div class="s-scores" data-in>
+          <div><b>91</b><span>Скорость</span></div>
+          <div><b>100</b><span>Доступность</span></div>
+          <div><b>100</b><span>Практики</span></div>
+          <div><b>100</b><span>SEO</span></div>
+          <p class="mono">Lighthouse, мобильный</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 15 История интернета в мемах -->
+    <section class="slide" aria-roledescription="слайд" aria-label="15 из 20: История интернета в мемах">
+      <p class="s-eyebrow" data-in>C:\Защита\15_мемы.gif</p>
+      <h2 class="s-h" data-in>История интернета в мемах</h2>
+      <ol class="s-timeline" data-in>
+        <li><canvas data-sprite="baby" width="16" height="16" aria-hidden="true"></canvas><b>1996</b><span>Танцующий младенец — первый вирусный 3D-ролик</span></li>
+        <li><canvas data-sprite="base" width="16" height="16" aria-hidden="true"></canvas><b>2001</b><span>All your base are belong to us</span></li>
+        <li><canvas data-sprite="bash" width="16" height="16" aria-hidden="true"></canvas><b>2004</b><span>Башорг: цитатник рунета</span></li>
+        <li><canvas data-sprite="medved" width="16" height="16" aria-hidden="true"></canvas><b>2006</b><span>«Превед, медвед» и язык падонков</span></li>
+        <li><canvas data-sprite="rick" width="16" height="16" aria-hidden="true"></canvas><b>2007</b><span>Рикролл: ссылка, которая всех обманула</span></li>
+        <li><canvas data-sprite="lolcat" width="16" height="16" aria-hidden="true"></canvas><b>2007</b><span>LOLcats: I can has cheezburger?</span></li>
+        <li><canvas data-sprite="trololo" width="16" height="16" aria-hidden="true"></canvas><b>2010</b><span>Трололо: Эдуард Хиль покоряет мир</span></li>
+        <li><canvas data-sprite="rainbowcat" width="16" height="16" aria-hidden="true"></canvas><b>2011</b><span>Кот с радугой летит по интернету</span></li>
+      </ol>
+      <p class="s-foot mono" data-in>Иконки — свои пиксельные оммажи, нарисованы для проекта.</p>
+    </section>
+
+    <!-- 16 Пасхалки -->
+    <section class="slide" aria-roledescription="слайд" aria-label="16 из 20: Пасхалки">
+      <p class="s-eyebrow" data-in>C:\Защита\16_пасхалки.txt</p>
+      <h2 class="s-h" data-in>На сайте спрятано 8 пасхалок</h2>
+      <div class="s-cards s-cards--4">
+        <article class="s-card" data-in><p class="s-num">↑↑↓↓←→←→BA</p><p>Сайт на 15 секунд превращается в Geocities.</p></article>
+        <article class="s-card" data-in><p class="s-num">«превед»</p><p>Набери на клавиатуре — из угла выглянет батя.</p></article>
+        <article class="s-card" data-in><p class="s-num">10 × логотип</p><p>«Змейка» на экране в духе Nokia, ест кружки.</p></article>
+        <article class="s-card" data-in><p class="s-num">15 кружек</p><p>Карта «Пузо Легенда» и «Батя, ты в порядке?!»</p></article>
+      </div>
+      <p class="s-foot mono" data-in>Остальные — найдите сами. Счётчик находок в футере сайта.</p>
+    </section>
+
+    <!-- 17 Риски -->
+    <section class="slide" aria-roledescription="слайд" aria-label="17 из 20: Риски и закон">
+      <p class="s-eyebrow" data-in>C:\Защита\17_риски.ppt</p>
+      <h2 class="s-h" data-in>Риски и закон</h2>
+      <dl class="s-dl" data-in>
+        <div><dt>Алкоголь</dt><dd>Продажа только 18+, проверка документов, ЕГАИС в день вскрытия кеги</dd></div>
+        <div><dt>Реклама</dt><dd>Предупреждение о вреде алкоголя на сайте, без призывов к употреблению</dd></div>
+        <div><dt>Данные</dt><dd>Согласие на обработку ПДн в форме записи, политика по 152-ФЗ</dd></div>
+        <div><dt>Охрана труда</dt><dd>Инструкция по ОТ, опасная бритва только трезвому мастеру и трезвому клиенту</dd></div>
+        <div><dt>Налоги</dt><dd>Контроль порога 20 млн ₽ для НДС, проверка контрагентов по ст. 54.1 НК РФ</dd></div>
+      </dl>
+    </section>
+
+    <!-- 18 Дорожная карта -->
+    <section class="slide" aria-roledescription="слайд" aria-label="18 из 20: Дорожная карта">
+      <p class="s-eyebrow" data-in>C:\Защита\18_план.ppt</p>
+      <h2 class="s-h" data-in>План запуска</h2>
+      <ol class="s-road" data-in>
+        <li><b>Месяц 1</b><span>Регистрация ООО, УСН, счёт, договор аренды</span></li>
+        <li><b>Месяцы 2–3</b><span>Ремонт, оборудование, ЕГАИС, найм 13 человек</span></li>
+        <li><b>Месяц 4</b><span>Открытие, караоке нулевых, запуск «Пузо Карт»</span></li>
+        <li><b>Месяц 12</b><span>Окупаемость, второй зал на 6 кресел</span></li>
+      </ol>
+    </section>
+
+    <!-- 19 Спасибо -->
+    <section class="slide slide--end" aria-roledescription="слайд" aria-label="19 из 20: Спасибо">
+      <p class="s-eyebrow" data-in>C:\Защита\19_спасибо.ppt</p>
+      <h2 class="s-hero s-hero--end" data-in><span>Спасибо,</span><span>бати!</span></h2>
+      <p class="s-lead" data-in>Вопросы? А пока вы думаете — для комиссии у нас есть кое-что особенное.</p>
+      <button class="btn btn--amber s-secret" type="button" id="secretBtn" data-in>Секретная скидка 90% для комиссии <svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+    </section>
+
+    <!-- 20 Рикролл -->
+    <section class="slide slide--rick" data-state="cta" aria-roledescription="слайд" aria-label="20 из 20: Секретная скидка">
+      <!-- 1. Сначала только огромная кнопка и стрелки на неё -->
+      <div class="s-rick__cta" id="rickCta">
+        <p class="s-rick__kicker mono">Только для комиссии · только сегодня · только у бати</p>
+        <svg class="s-rick__arrow" style="--x:170px; --y:390px; --a:0deg; --d:0s" viewBox="0 0 220 120" aria-hidden="true"><path d="M0 38h130V0l90 60-90 60V82H0z"/></svg>
+        <svg class="s-rick__arrow" style="--x:1210px; --y:390px; --a:180deg; --d:0.15s" viewBox="0 0 220 120" aria-hidden="true"><path d="M0 38h130V0l90 60-90 60V82H0z"/></svg>
+        <svg class="s-rick__arrow" style="--x:380px; --y:150px; --a:32deg; --d:0.3s" viewBox="0 0 220 120" aria-hidden="true"><path d="M0 38h130V0l90 60-90 60V82H0z"/></svg>
+        <svg class="s-rick__arrow" style="--x:1000px; --y:150px; --a:148deg; --d:0.45s" viewBox="0 0 220 120" aria-hidden="true"><path d="M0 38h130V0l90 60-90 60V82H0z"/></svg>
+        <svg class="s-rick__arrow" style="--x:380px; --y:630px; --a:-32deg; --d:0.6s" viewBox="0 0 220 120" aria-hidden="true"><path d="M0 38h130V0l90 60-90 60V82H0z"/></svg>
+        <svg class="s-rick__arrow" style="--x:1000px; --y:630px; --a:-148deg; --d:0.75s" viewBox="0 0 220 120" aria-hidden="true"><path d="M0 38h130V0l90 60-90 60V82H0z"/></svg>
+        <button class="s-rick__get" type="button" id="rickGet">Получить<br />скидку <b>90%</b></button>
+        <p class="s-rick__fine mono">* нажимая кнопку, вы соглашаетесь с тем, что сейчас произойдёт</p>
+      </div>
+      <!-- 2. Нажали — внезапно плеер; 3. через 3 с надпись «Тебя зарикроллили», она пульсирует в такт -->
+      <p class="s-rick__cap mono">Rick Astley — Never Gonna Give You Up, 1987</p>
+      <div class="s-rick__frame" id="rickFrame"></div>
+      <div class="s-rick__big" id="rickBig" aria-hidden="true"><span>Тебя</span><span>зарикроллили</span></div>
+      <p class="s-rick__title" id="rickTitle" aria-live="polite">Тебя зарикроллили</p>
+    </section>
+
+  </div>
+</main>
+
+<nav class="deck-nav" aria-label="Навигация по слайдам">
+  <button class="icon-btn" type="button" id="deckPrev" aria-label="Предыдущий слайд"><svg aria-hidden="true"><use href="#i-left"/></svg></button>
+  <div class="deck-progress" aria-hidden="true"><i id="deckBar"></i></div>
+  <span class="deck-count mono" id="deckCount" aria-live="polite">01 / 19</span>
+  <button class="icon-btn" type="button" id="deckNext" aria-label="Следующий слайд"><svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+</nav>
+
+<div class="deck-rotate" id="deckRotate" hidden>
+  <p>Поверни телефон — презентация широкоформатная</p>
+  <button class="btn btn--ghost btn--sm" type="button" id="rotateClose">Смотреть так</button>
+</div>
+
+</body>
+</html>

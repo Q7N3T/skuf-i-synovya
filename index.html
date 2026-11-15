@@ -1,0 +1,809 @@
+<!doctype html>
+<html lang="ru" class="no-js">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Скуф и сыновья — барбершоп и пивной бар. Вернём тебе 2007-й</title>
+<meta name="description" content="Барбершоп с пивным баром для мужчин 35+ по духу и 18+ по паспорту. Стрижка «Полубокс 2007», разливное, карта «Пузо Карт». Учебный проект." />
+<meta name="theme-color" content="#16120E" />
+<link rel="canonical" href="https://q7n3t.github.io/skuf-i-synovya/" />
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+
+<!-- Open Graph: превью в Telegram и соцсетях -->
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="ru_RU" />
+<meta property="og:site_name" content="Скуф и сыновья" />
+<meta property="og:title" content="Скуф и сыновья — вернём тебе 2007-й" />
+<meta property="og:description" content="Барбершоп + пивной бар для мужчин 35+. Полубокс, разливное и карта «Пузо Карт»." />
+<meta property="og:url" content="https://q7n3t.github.io/skuf-i-synovya/" />
+<meta property="og:image" content="https://q7n3t.github.io/skuf-i-synovya/assets/og.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<link rel="preload" href="assets/fonts/unbounded-cyrillic-900-normal.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="assets/fonts/onest-cyrillic-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="stylesheet" href="css/main.css?v=202611151120" />
+<script>
+  // Класс js — до первой отрисовки, чтобы стартовые состояния анимаций не мигали.
+  (function (root) {
+    root.classList.replace("no-js", "js")
+    if (matchMedia("(prefers-reduced-motion: no-preference)").matches) root.classList.add("motion")
+    try { if (!sessionStorage.getItem("skuf-booted")) root.classList.add("is-booting") } catch (e) {}
+    try { if (localStorage.getItem("skuf-nostalgia") === "0") root.classList.add("no-nostalgia") } catch (e) {}
+    // Страховка: если скрипты не загрузились, контент всё равно показывается.
+    setTimeout(function () { if (!root.dataset.ready) root.classList.remove("motion", "is-booting") }, 4000)
+  })(document.documentElement)
+</script>
+<script type="module" src="vendor/ui-sdk/web.js"></script>
+<script defer src="vendor/gsap/gsap.min.js"></script>
+<script defer src="vendor/gsap/ScrollTrigger.min.js"></script>
+<script defer src="vendor/lenis/lenis.min.js"></script>
+<script type="module" src="js/main.js?v=202611151120"></script>
+</head>
+<body>
+
+<!-- Иконки: один стиль, обводка 1.75, скруглённые концы -->
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <symbol id="i-scissors" viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.6 7.6 20 18M8.6 16.4 20 6"/></symbol>
+  <symbol id="i-mug" viewBox="0 0 24 24"><path d="M5 8h10v10a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3V8Z"/><path d="M15 10h2a2.5 2.5 0 0 1 0 5h-2"/><path d="M5 8c0-2 1.4-3.5 3-3.5.6-1.4 3.4-1.6 4.3 0C14 4.6 15 6 15 8"/><path d="M9 12v5M12 12v5"/></symbol>
+  <symbol id="i-combo" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M10 6h4M10 18.5h4"/><rect x="9" y="8.5" width="6" height="5" rx="1"/></symbol>
+  <symbol id="i-sound" viewBox="0 0 24 24"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4v-5Z"/><path d="M16 9a4.2 4.2 0 0 1 0 6M18.5 6.5a8 8 0 0 1 0 11"/></symbol>
+  <symbol id="i-mute" viewBox="0 0 24 24"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4v-5Z"/><path d="m16 9.5 5 5M21 9.5l-5 5"/></symbol>
+  <symbol id="i-pause" viewBox="0 0 24 24"><path d="M8.5 5v14M15.5 5v14"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4.5v15l12-7.5-12-7.5Z"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-flip" viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 13.7-5.7L20 8.5M20 4v4.5h-4.5M20 12a8 8 0 0 1-13.7 5.7L4 15.5M4 20v-4.5h4.5"/></symbol>
+  <symbol id="i-flower" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2.6"/><path d="M12 3.5c1.8 0 2.6 2.4 1.7 5.9M20.5 12c0 1.8-2.4 2.6-5.9 1.7M12 20.5c-1.8 0-2.6-2.4-1.7-5.9M3.5 12c0-1.8 2.4-2.6 5.9-1.7"/></symbol>
+</svg>
+
+<a class="skip-link" href="#main">К содержимому</a>
+
+<!-- Прелоадер: загрузка «Скуф XP», только при первом визите в сессии -->
+<div class="boot" id="boot" aria-hidden="true">
+  <div class="boot__inner">
+    <svg class="boot__logo" viewBox="0 0 48 48" aria-hidden="true"><use href="#i-mug"/></svg>
+    <p class="boot__word">Скуф <span>и сыновья</span> <sup>XP</sup></p>
+    <div class="boot__bar"><span></span><span></span><span></span></div>
+    <p class="boot__log mono" id="bootLog">Дозвон до 2007-го… 56 кбит/с</p>
+    <p class="boot__skip mono">Клик — пропустить</p>
+  </div>
+</div>
+
+<header class="header" id="header">
+  <div class="container header__row">
+    <a class="logo" href="#top" aria-label="Скуф и сыновья — наверх">
+      <svg class="logo__mark" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-mug"/></svg>
+      <span class="logo__word">Скуф <em>и сыновья</em></span>
+    </a>
+    <nav class="nav" aria-label="Разделы сайта">
+      <ul class="nav__list">
+        <li><a href="#prices">Прайс</a></li>
+        <li><a href="#gold">Пузо Карт</a></li>
+        <li><a href="#team">Бати</a></li>
+        <li><a href="#faq">Вопросы</a></li>
+        <li><a href="#contacts">Где мы</a></li>
+      </ul>
+    </nav>
+    <div class="header__actions">
+      <button class="presence mono" type="button" id="presence" aria-label="Статус: в сети"><i class="dot" aria-hidden="true"></i>в сети</button>
+      <ui-dialog-trigger for="booking"><button class="btn btn--amber btn--sm" type="button" data-magnetic>Записаться</button></ui-dialog-trigger>
+      <ui-dialog-trigger for="menu"><button class="icon-btn burger" type="button" aria-label="Открыть меню"><svg aria-hidden="true"><use href="#i-menu"/></svg></button></ui-dialog-trigger>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="top" aria-labelledby="hero-title">
+    <canvas class="hero__foam" id="foam" aria-hidden="true"></canvas>
+    <div class="hero__ghost" aria-hidden="true" data-depth="0.25">2007</div>
+    <div class="container grid hero__grid">
+      <p class="eyebrow hero__eyebrow" data-reveal>Барбершоп + пивной бар · 35+ по духу, 18+ по паспорту</p>
+
+      <h1 class="hero__title" id="hero-title" aria-label="Скуф и сыновья">
+        <span class="hero__line hero__line--1" data-split>Скуф</span>
+        <span class="hero__line hero__line--2" data-split>и сыновья</span>
+      </h1>
+
+      <div class="hero__copy" data-reveal>
+        <p class="lead">Стрижём как раньше, наливаем как раньше, в колонках «Руки Вверх» и «Звери». Пока мастер делает тебе полубокс, бармен уже открыл кегу.</p>
+        <div class="hero__cta">
+          <ui-dialog-trigger for="booking"><button class="btn btn--amber" type="button" data-magnetic>Записаться к бате <svg aria-hidden="true"><use href="#i-arrow"/></svg></button></ui-dialog-trigger>
+          <a class="btn btn--ghost" href="#gold" data-magnetic>Карта «Пузо Карт»</a>
+        </div>
+      </div>
+
+      <!-- Окно ICQ: подзаголовок печатается как сообщение -->
+      <aside class="icq" aria-label="Сообщение от Бати">
+        <div class="icq__bar">
+          <svg class="icq__flower" aria-hidden="true"><use href="#i-flower"/></svg>
+          <span class="mono">Батя · UIN 2007-2007</span>
+          <span class="icq__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+        </div>
+        <div class="icq__body">
+          <p class="icq__meta mono">Батя (20:07):</p>
+          <p class="icq__msg" id="icqMsg" data-text="Сынок, заходи. Полубокс и светлое уже ждут">Сынок, заходи. Полубокс и светлое уже ждут</p>
+          <p class="icq__typing mono" id="icqTyping" aria-hidden="true">Батя печатает…</p>
+        </div>
+        <div class="icq__foot">
+          <span class="mono">Ты посетитель №</span>
+          <span class="odometer mono" id="odometer" data-value="2007431" aria-label="2 007 431">2007431</span>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ============ MARQUEE ============ -->
+  <div class="marquee" id="marquee">
+    <div class="marquee__track" aria-hidden="true">
+      <div class="marquee__group">
+        <span>Вернём тебе 2007-й</span><i></i>
+        <span>Бороду подравняем, пиво нальём, про ипотеку не спросим</span><i></i>
+        <span>По пятницам караоке нулевых</span><i></i>
+        <span>Вай-фай без пароля, как в те времена</span><i></i>
+        <span>Зарядка для Nokia у бармена</span><i></i>
+        <span>Пузо — не порок, а уровень карты</span><i></i>
+      </div>
+    </div>
+    <p class="sr-only">Вернём тебе 2007-й. Бороду подравняем, пиво нальём, про ипотеку не спросим. По пятницам караоке нулевых.</p>
+    <ui-toggle id="marqueeToggle" class="marquee__toggle">
+      <button class="icon-btn icon-btn--sm" type="button" aria-label="Пауза бегущей строки">
+        <svg class="is-on" aria-hidden="true"><use href="#i-pause"/></svg>
+        <svg class="is-off" aria-hidden="true"><use href="#i-play"/></svg>
+      </button>
+    </ui-toggle>
+  </div>
+
+  <!-- ============ ИНСТРУКЦИЯ ДЛЯ БАТИ: слова перекатываются по буквам ============ -->
+  <section class="roll" aria-labelledby="roll-title">
+    <div class="container">
+      <h2 class="roll__title eyebrow" id="roll-title">Инструкция для бати</h2>
+      <nav class="roll__list" id="roll" aria-label="Что у нас делают">
+        <a class="roll__link" href="#prices" data-filter="barber" aria-label="Стригись — барбершоп">
+          <span class="roll__n mono" aria-hidden="true">01</span>
+          <span class="roll__word" aria-hidden="true">Стригись</span>
+          <span class="roll__hint mono" aria-hidden="true">полубокс · борода · опасная бритва</span>
+        </a>
+        <a class="roll__link" href="#prices" data-filter="bar" aria-label="Пей — пивной бар">
+          <span class="roll__n mono" aria-hidden="true">02</span>
+          <span class="roll__word" aria-hidden="true">Пей</span>
+          <span class="roll__hint mono" aria-hidden="true">светлое · тёмное · гренки</span>
+        </a>
+        <a class="roll__link" href="#guestbook" aria-label="Общайся — гостевая книга">
+          <span class="roll__n mono" aria-hidden="true">03</span>
+          <span class="roll__word" aria-hidden="true">Общайся</span>
+          <span class="roll__hint mono" aria-hidden="true">гостевая · караоке · бати</span>
+        </a>
+        <a class="roll__link" href="#gold" aria-label="Кайфуй — карта «Пузо Карт»">
+          <span class="roll__n mono" aria-hidden="true">04</span>
+          <span class="roll__word" aria-hidden="true">Кайфуй</span>
+          <span class="roll__hint mono" aria-hidden="true">«Пузо Карт» · клипы · скидки</span>
+        </a>
+      </nav>
+    </div>
+  </section>
+
+  <!-- ============ ПРАЙС ============ -->
+  <section class="section" id="prices" aria-labelledby="prices-title">
+    <div class="container grid">
+      <header class="section__head">
+        <p class="eyebrow" data-reveal>C:\СКУФ\01_ПРАЙС.TXT</p>
+        <h2 class="h2" id="prices-title" data-reveal>Что по ценам</h2>
+      </header>
+      <p class="section__lead lead" data-reveal>Цены в рублях. Чай мастеру не обязателен, кружка мастеру приветствуется.</p>
+
+      <div class="prices__filter" data-reveal>
+        <ui-segmented-control id="priceFilter" class="segmented" aria-label="Категория прайса" default-value="all">
+          <ui-segmented-control-indicator></ui-segmented-control-indicator>
+          <ui-segmented-control-item value="all">Всё</ui-segmented-control-item>
+          <ui-segmented-control-item value="barber">Барбершоп</ui-segmented-control-item>
+          <ui-segmented-control-item value="bar">Бар</ui-segmented-control-item>
+          <ui-segmented-control-item value="combo">Комбо</ui-segmented-control-item>
+        </ui-segmented-control>
+        <p class="prices__count mono" id="priceCount" aria-live="polite">15 позиций</p>
+      </div>
+
+      <ul class="prices__grid" id="priceGrid">
+        <li class="item" data-cat="barber">
+          <span class="item__badge" data-badge>Хит</span>
+          <p class="item__cat mono"><svg aria-hidden="true"><use href="#i-scissors"/></svg>Барбершоп</p>
+          <h3 class="item__title">Стрижка «Полубокс 2007»</h3>
+          <p class="item__desc">Как на выпускном, только увереннее.</p>
+          <p class="item__foot"><span class="mono">50 мин</span><span class="price">1 500 ₽</span></p>
+        </li>
+        <li class="item" data-cat="barber">
+          <p class="item__cat mono"><svg aria-hidden="true"><use href="#i-scissors"/></svg>Барбершоп</p>
+          <h3 class="item__title">Борода «Лесник на пенсии»</h3>
+          <p class="item__desc">Моделирование, контур, горячее полотенце.</p>
+          <p class="item__foot"><span class="mono">40 мин</span><span class="price">1 200 ₽</span></p>
+        </li>
+        <li class="item" data-cat="barber">
+          <p class="item__cat mono"><svg aria-hidden="true"><use href="#i-scissors"/></svg>Барбершоп</p>
+          <h3 class="item__title">Бритьё опасной бритвой</h3>
+          <p class="item__desc">Только до пива. После пива мастер бреет только себя.</p>
+          <p class="item__foot"><span class="mono">45 мин</span><span class="price">1 400 ₽</span></p>
+        </li>
+        <li class="item" data-cat="barber">
+          <p class="item__cat mono"><svg aria-hidden="true"><use href="#i-scissors"/></svg>Барбершоп</p>
+          <h3 class="item__title">Камуфляж седины</h3>
+          <p class="item__desc">Минус пять лет, плюс одна уверенность.</p>
+          <p class="item__foot"><span class="mono">30 мин</span><span class="price">1 100 ₽</span></p>
+        </li>
+        <li class="item" data-cat="barber">
+          <p class="item__cat mono"><svg aria-hidden="true"><use href="#i-scissors"/></svg>Барбершоп</p>
+          <h3 class="item__title">Стрижка «Сын пришёл с отцом»</h3>
+          <p class="item__desc">Единственная детская услуга: сыну до 14 лет, строго когда батя рядом.</p>
+          <p class="item__foot"><span class="mono">30 мин</span><span class="price">900 ₽</span></p>
+        </li>
+        <li class="item" data-cat="barber">
+          <span class="item__badge item__badge--green" data-badge>Мем</span>
+          <p class="item__cat mono"><svg aria-hidden="true"><use href="#i-scissors"/></svg>Барбершоп</p>
+          <h3 class="item__title">Укладка «Флешка на шее»</h3>
+          <p class="item__desc">Чёлка набок, как на аватарке в «Одноклассниках».</p>
+          <p class="item__foot"><span class="mono">20 мин</span><span class="price">700 ₽</span></p>
+        </li>
+
+        <li class="item" data-cat="bar">
+          <p class="item__cat mono"><svg aria-hidden="true"><use href="#i-mug"/></svg>Бар · 18+</p>
+          <h3 class="item__title">Светлое разливное</h3>
+          <p class="item__desc">Лагер от местной пивоварни. Холодное, как бывшая.</p>
+          <p class="item__foot"><span class="mono">0,5 л</span><span class="price">290 ₽</span></p>
+        </li>
+        <li class="item" data-cat="bar">
+          <p class="item__cat mono"><svg aria-hidden="true"><use href="#i-mug"/></svg>Бар · 18+</p>
+          <h3 class="item__title">Тёмное «Пятничное»</h3>
+          <p class="item__desc">Стаут с нотками кофе и усталости от недели.</p>
+          <p class="item__foot"><span class="mono">0,5 л</span><span class="price">350 ₽</span></p>
+        </li>
+        <li class="item" data-cat="bar">
+          <span class="item__badge item__badge--green" data-badge>0%</span>
+          <p class="item__cat mono"><svg aria-hidden="true"><use href="#i-mug"/></svg>Бар</p>
+          <h3 class="item__title">Безалкогольное</h3>
+          <p class="item__desc">Для тех, кто за рулём своей «десятки».</p>
+          <p class="item__foot"><span class="mono">0,5 л</span><span class="price">250 ₽</span></p>
+        </li>
+        <li class="item item--ad" data-cat="ad" data-ad data-egg>
+          <p class="item__cat mono">Реклама</p>
+          <h3 class="item__title">Отправь <b>ПУЗО</b> на <b>2007</b></h3>
+          <p class="item__desc">и получи полифонический рингтон «Батя зовёт». Стоимость SMS 0 ₽, потому что SMS никуда не уходит.</p>
+          <p class="item__foot"><span class="mono">16 тонов</span><button class="ad__play" type="button" id="ringtone">Послушать</button></p>
+        </li>
+        <li class="item" data-cat="bar" data-lol="I can has гренки?">
+          <p class="item__cat mono"><svg aria-hidden="true"><use href="#i-mug"/></svg>Бар · закуски</p>
+          <h3 class="item__title">Гренки «Хрустим как в общаге»</h3>
+          <p class="item__desc">Ржаные, с чесноком и сыром.</p>
+          <p class="item__foot"><span class="mono">150 г</span><span class="price">290 ₽</span></p>
+        </li>
+        <li class="item" data-cat="bar">
+          <p class="item__cat mono"><svg aria-hidden="true"><use href="#i-mug"/></svg>Бар · закуски</p>
+          <h3 class="item__title">Тарелка «Рыбный день»</h3>
+          <p class="item__desc">Вобла, кальмар, сыр-косичка.</p>
+          <p class="item__foot"><span class="mono">300 г</span><span class="price">590 ₽</span></p>
+        </li>
+        <li class="item" data-cat="bar">
+          <p class="item__cat mono"><svg aria-hidden="true"><use href="#i-mug"/></svg>Бар · закуски</p>
+          <h3 class="item__title">Пельмени «Мамины»</h3>
+          <p class="item__desc">Со сметаной. Лепит не мама, но похоже.</p>
+          <p class="item__foot"><span class="mono">250 г · 14 шт.</span><span class="price">420 ₽</span></p>
+        </li>
+
+        <li class="item" data-cat="combo">
+          <span class="item__badge" data-badge>−20%</span>
+          <p class="item__cat mono"><svg aria-hidden="true"><use href="#i-combo"/></svg>Комбо</p>
+          <h3 class="item__title">«Батя»</h3>
+          <p class="item__desc">Полубокс + борода + светлое 0,5 л. Выходишь другим человеком.</p>
+          <p class="item__foot"><span class="mono">90 мин</span><span class="price">2 400 ₽</span></p>
+        </li>
+        <li class="item" data-cat="combo">
+          <p class="item__cat mono"><svg aria-hidden="true"><use href="#i-combo"/></svg>Комбо</p>
+          <h3 class="item__title">«Батя и сын»</h3>
+          <p class="item__desc">Полубокс бате + «Сын пришёл с отцом» + светлое 0,5 л бате + лимонад 0,33 л сыну.</p>
+          <p class="item__foot"><span class="mono">80 мин</span><span class="price">2 600 ₽</span></p>
+        </li>
+        <li class="item" data-cat="combo">
+          <p class="item__cat mono"><svg aria-hidden="true"><use href="#i-combo"/></svg>Комбо · до 5 человек</p>
+          <h3 class="item__title">«Мальчишник 35+»</h3>
+          <p class="item__desc">Стрижки, пивной сет на компанию и караоке нулевых на час.</p>
+          <p class="item__foot"><span class="mono">3 часа</span><span class="price">12 900 ₽</span></p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ ПУЗО GOLD ============ -->
+  <section class="section section--gold" id="gold" aria-labelledby="gold-title">
+    <div class="container grid">
+      <header class="section__head">
+        <p class="eyebrow" data-reveal>C:\СКУФ\02_ПУЗО_КАРТ.EXE</p>
+        <h2 class="h2" id="gold-title" data-reveal>Карта «Пузо Карт»</h2>
+      </header>
+      <p class="section__lead lead" data-reveal>Карта бесплатная, уровень растёт вместе с визитами. Покрути пузометр и узнай, какой ты батя.</p>
+
+      <div class="gold__card" data-reveal>
+        <div class="pcard-stage" id="pcardStage">
+          <div class="pcard" id="pcard" data-level="gold">
+            <!-- Бронза, Голда, Платинум: клип на всю карту (грузится только когда посетитель докрутит до уровня) -->
+            <div class="pcard__clip" aria-hidden="true">
+              <video class="pcard__video" id="platVideo" playsinline preload="none"></video>
+            </div>
+            <div class="pcard__glare" aria-hidden="true"></div>
+            <!-- клип стартует без звука, когда карта появляется на экране; один тап — со звуком -->
+            <button class="pcard__unmute" id="clipUnmute" type="button" hidden>
+              <svg aria-hidden="true"><use href="#i-sound"/></svg><span data-label>Включить звук</span>
+            </button>
+            <!-- перемотка клипа: тянется мышью/пальцем, стрелки — ±5 с -->
+            <div class="pcard__seek" id="platSeek" role="slider" tabindex="0" aria-label="Перемотка клипа"
+                 aria-valuemin="0" aria-valuemax="200" aria-valuenow="0" aria-valuetext="0:00 из 3:20" hidden>
+              <span class="pcard__seek-track"><span class="pcard__seek-fill"></span><span class="pcard__seek-thumb"></span></span>
+            </div>
+            <div class="pcard__top">
+              <p class="pcard__brand">Пузо <span id="cardLvl">Голда</span></p>
+              <svg class="pcard__icon" aria-hidden="true"><use href="#i-mug"/></svg>
+              <button class="pcard__mute" id="platMute" type="button" aria-pressed="false" aria-label="Выключить звук клипа" hidden>
+                <svg class="is-sound" aria-hidden="true"><use href="#i-sound"/></svg>
+                <svg class="is-mute" aria-hidden="true"><use href="#i-mute"/></svg>
+                <svg class="is-replay" aria-hidden="true"><use href="#i-play"/></svg>
+              </button>
+            </div>
+            <div class="pcard__chip" aria-hidden="true"></div>
+            <p class="pcard__num mono" id="cardNum" title="2007 0420 1337 0035">2007 0420 1337 0035</p>
+            <div class="pcard__bottom">
+              <p class="mono">Владелец<br /><b>БАТЯ</b></p>
+              <p class="mono">Скидка<br /><b id="cardDisc">−10%</b></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="puzo" data-reveal>
+        <div class="puzo__head">
+          <label class="puzo__label" id="puzoLabel">Пузометр · кружек в месяц</label>
+          <output class="puzo__value" id="mugs" for="puzometr">8</output>
+        </div>
+        <ui-slider id="puzometr" class="slider" default-value="8" min="0" max="30" step="0.1">
+          <ui-slider-control>
+            <ui-slider-track>
+              <ui-slider-indicator></ui-slider-indicator>
+              <ui-slider-thumb aria-labelledby="puzoLabel"></ui-slider-thumb>
+            </ui-slider-track>
+          </ui-slider-control>
+        </ui-slider>
+        <ol class="puzo__scale mono" aria-hidden="true">
+          <li style="--at:0">0</li><li style="--at:5">5</li><li style="--at:10">10</li><li style="--at:15">15</li><li style="--at:20">20</li><li class="puzo__max" style="--at:30">300</li>
+        </ol>
+        <ul class="levels" id="levels">
+          <li data-min="0"><span class="levels__name">Бронза</span><span class="levels__perk">−5% на стрижки<span class="levels__track mono">♪ Артур Пирожков — «Чика»</span></span><span class="levels__from mono">от 0</span></li>
+          <li data-min="5"><span class="levels__name">Голда</span><span class="levels__perk">−10% и каждая 6-я кружка в подарок<span class="levels__track mono">♪ Little Big — «Skibidi»</span></span><span class="levels__from mono">от 5</span></li>
+          <li data-min="10"><span class="levels__name">Платинум</span><span class="levels__perk">−15% и именная кружка на полке<span class="levels__track mono">♪ Артур Пирожков — «Я звезда»</span></span><span class="levels__from mono">от 10</span></li>
+          <li data-min="15"><span class="levels__name">Легенда</span><span class="levels__perk">−20%, фото на «Стене бать» и место у телевизора<span class="levels__track mono">♪ «Dad, are you okay?»</span></span><span class="levels__from mono">от 15</span></li>
+          <li data-min="300" class="levels__max"><span class="levels__name">Еб###тый!</span><span class="levels__perk">−50%, собственный кран и вечный полубокс<span class="levels__track mono">♪ Артур Пирожков — «Как Челентано»</span></span><span class="levels__from mono">300</span></li>
+        </ul>
+        <div class="puzo__actions">
+          <button class="btn btn--amber" type="button" id="cardCta" data-magnetic>Оформить карту <span id="cardCtaLvl">Голда</span> <svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+          <a class="secret mono" id="secret" data-egg href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener noreferrer">Секретная скидка 90% →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ КОМАНДА ============ -->
+  <section class="section" id="team" aria-labelledby="team-title">
+    <div class="container grid">
+      <header class="section__head">
+        <p class="eyebrow" data-reveal>C:\СКУФ\03_БАТИ.HTM</p>
+        <h2 class="h2" id="team-title" data-reveal>Наши бати</h2>
+      </header>
+      <div class="section__lead">
+        <p class="lead" data-reveal>Топ-5 бать. Нажми на карточку, чтобы прочитать статус образца 2007 года.</p>
+        <p class="myspace mono" data-reveal data-egg>Батя — твой первый друг. В его Топ-5 все пятеро.</p>
+        <ui-toggle id="soundToggle" class="sound-toggle" data-reveal>
+          <button class="chip" type="button">
+            <svg class="is-on" aria-hidden="true"><use href="#i-sound"/></svg>
+            <svg class="is-off" aria-hidden="true"><use href="#i-mute"/></svg>
+            <span>Звук «о-оу»</span>
+          </button>
+        </ui-toggle>
+      </div>
+
+      <ul class="team" id="teamList">
+        <li class="member" data-reveal>
+          <button class="member__card" type="button" aria-pressed="false" aria-label="Вадим Греков, генеральный директор. Показать статус">
+            <span class="member__face">
+              <img class="member__ava" src="assets/team/grekov.webp?v=6" width="264" height="303" alt="" loading="lazy" decoding="async" />
+              <span class="member__name">Вадим Греков</span>
+              <span class="member__role">Генеральный директор, учредитель</span>
+              <span class="member__online mono"><i class="dot" aria-hidden="true"></i>онлайн</span>
+            </span>
+            <span class="member__back">
+              <span class="member__status">«Кто не с нами, тот без скидки» (с)</span>
+              <span class="member__bio">Подписывает бумаги, выбирает музыку, держит бар в тонусе.</span>
+              <span class="member__flip mono"><svg aria-hidden="true"><use href="#i-flip"/></svg>назад</span>
+            </span>
+          </button>
+        </li>
+        <li class="member" data-reveal>
+          <button class="member__card" type="button" aria-pressed="false" aria-label="Илья Дольников, управляющий. Показать статус">
+            <span class="member__face">
+              <img class="member__ava" src="assets/team/dolnikov.webp?v=6" width="264" height="303" alt="" loading="lazy" decoding="async" />
+              <span class="member__name">Илья Дольников</span>
+              <span class="member__role">Управляющий</span>
+              <span class="member__online mono"><i class="dot" aria-hidden="true"></i>на обходе</span>
+            </span>
+            <span class="member__back">
+              <span class="member__status">«Ностальгия — не диагноз, а концепция»</span>
+              <span class="member__bio">Держит зал, график мастеров и атмосферу: чтобы всё было как в 2007-м.</span>
+              <span class="member__flip mono"><svg aria-hidden="true"><use href="#i-flip"/></svg>назад</span>
+            </span>
+          </button>
+        </li>
+        <li class="member" data-reveal>
+          <button class="member__card" type="button" aria-pressed="false" aria-label="Мишаня Гончаренко, главный бухгалтер. Показать статус">
+            <span class="member__face">
+              <img class="member__ava" src="assets/team/goncharenko.webp?v=6" width="264" height="303" alt="" loading="lazy" decoding="async" />
+              <span class="member__name">Мишаня Гончаренко</span>
+              <span class="member__role">Главный бухгалтер</span>
+              <span class="member__online mono"><i class="dot" aria-hidden="true"></i>считает</span>
+            </span>
+            <span class="member__back">
+              <span class="member__status">«Дебет с кредитом сошёлся, иду за пивом»</span>
+              <span class="member__bio">УСН, касса, зарплаты. Знает, сколько пены в рублях.</span>
+              <span class="member__flip mono"><svg aria-hidden="true"><use href="#i-flip"/></svg>назад</span>
+            </span>
+          </button>
+        </li>
+        <li class="member" data-reveal>
+          <button class="member__card" type="button" aria-pressed="false" aria-label="Серега Виллиан, старший бармен. Показать статус">
+            <span class="member__face">
+              <img class="member__ava" src="assets/team/klemeshev.webp?v=6" width="264" height="303" alt="" loading="lazy" decoding="async" />
+              <span class="member__name">Серега Виллиан</span>
+              <span class="member__role">Старший бармен</span>
+              <span class="member__online mono"><i class="dot" aria-hidden="true"></i>у крана</span>
+            </span>
+            <span class="member__back">
+              <span class="member__status">«Я обожаю свою работу!»</span>
+              <span class="member__bio">Кеги, поставщики, ЕГАИС. Наливает только 18+. Решает, когда «круглосуточно» заканчивается.</span>
+              <span class="member__flip mono"><svg aria-hidden="true"><use href="#i-flip"/></svg>назад</span>
+            </span>
+          </button>
+        </li>
+        <li class="member" data-reveal>
+          <button class="member__card" type="button" aria-pressed="false" aria-label="Евгений Белобров, главный редактор. Показать статус">
+            <span class="member__face">
+              <img class="member__ava" src="assets/team/belobrov.webp?v=6" width="264" height="303" alt="" loading="lazy" decoding="async" />
+              <span class="member__name">Евгений Белобров</span>
+              <span class="member__role">Главный редактор, филолог</span>
+              <span class="member__online mono"><i class="dot" aria-hidden="true"></i>пишет статус</span>
+            </span>
+            <span class="member__back">
+              <span class="member__status">«Поставь класс, если тоже помнишь Nokia 3310»</span>
+              <span class="member__bio">Пишет тексты, меню и статусы. Следит, чтобы «батя» склонялся правильно.</span>
+              <span class="member__flip mono"><svg aria-hidden="true"><use href="#i-flip"/></svg>назад</span>
+            </span>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="section" id="faq" aria-labelledby="faq-title">
+    <div class="container grid">
+      <header class="section__head section__head--sticky">
+        <p class="eyebrow" data-reveal>C:\СКУФ\04_ВОПРОСЫ.TXT</p>
+        <h2 class="h2" id="faq-title" data-reveal>Батя спрашивает</h2>
+      </header>
+      <ui-accordion class="faq" data-reveal>
+        <ui-accordion-item value="age">
+          <ui-accordion-header><h3><ui-accordion-trigger><button type="button" aria-expanded="false">Мне 34. Пустите?<svg aria-hidden="true"><use href="#i-plus"/></svg></button></ui-accordion-trigger></h3></ui-accordion-header>
+          <ui-accordion-panel><div class="faq__a">Пустим. 35+ у нас по духу, а 18+ по паспорту: в бар наливаем только совершеннолетним и документ спросим, даже если у тебя седая борода.</div></ui-accordion-panel>
+        </ui-accordion-item>
+        <ui-accordion-item value="wife">
+          <ui-accordion-header><h3><ui-accordion-trigger><button type="button" aria-expanded="false">Можно прийти с женой?<svg aria-hidden="true"><use href="#i-plus"/></svg></button></ui-accordion-trigger></h3></ui-accordion-header>
+          <ui-accordion-panel><div class="faq__a">Можно. Для неё есть диван, вай-фай и сидр. Для тебя есть алиби: «я в барбершопе».</div></ui-accordion-panel>
+        </ui-accordion-item>
+        <ui-accordion-item value="kids">
+          <ui-accordion-header><h3><ui-accordion-trigger><button type="button" aria-expanded="false">А сына стричь можно?<svg aria-hidden="true"><use href="#i-plus"/></svg></button></ui-accordion-trigger></h3></ui-accordion-header>
+          <ui-accordion-panel><div class="faq__a">Можно, но только услугой «Сын пришёл с отцом»: до 14 лет и вместе с батей. В бар детям нельзя, им лимонад в зоне барбершопа.</div></ui-accordion-panel>
+        </ui-accordion-item>
+        <ui-accordion-item value="beer">
+          <ui-accordion-header><h3><ui-accordion-trigger><button type="button" aria-expanded="false">Сначала стрижка или пиво?<svg aria-hidden="true"><use href="#i-plus"/></svg></button></ui-accordion-trigger></h3></ui-accordion-header>
+          <ui-accordion-panel><div class="faq__a">Сначала стрижка. Опасную бритву мастер берёт только трезвым и только к трезвому клиенту: так требует наша инструкция по охране труда.</div></ui-accordion-panel>
+        </ui-accordion-item>
+        <ui-accordion-item value="music">
+          <ui-accordion-header><h3><ui-accordion-trigger><button type="button" aria-expanded="false">Какая музыка?<svg aria-hidden="true"><use href="#i-plus"/></svg></button></ui-accordion-trigger></h3></ui-accordion-header>
+          <ui-accordion-panel><div class="faq__a">Плейлист «Маршрутка 2007»: всё, что играло из телефона на задних сиденьях. По пятницам караоке.</div></ui-accordion-panel>
+        </ui-accordion-item>
+      </ui-accordion>
+    </div>
+  </section>
+
+  <!-- ============ ГОСТЕВАЯ КНИГА ============ -->
+  <section class="section" id="guestbook" aria-labelledby="gb-title" data-egg>
+    <div class="container grid">
+      <header class="section__head">
+        <p class="eyebrow" data-reveal>C:\СКУФ\05_ГОСТЕВАЯ.HTM</p>
+        <h2 class="h2" id="gb-title" data-reveal>Гостевая книга</h2>
+      </header>
+      <p class="section__lead lead" data-reveal>Оставь запись, как на народ.ру. Учебный проект: твои записи хранятся только в твоём браузере.</p>
+      <ol class="gb" id="gbList" data-reveal>
+        <li class="gb__item">
+          <img class="gb__ava" src="assets/gb/1.png" width="48" height="48" alt="" loading="lazy" decoding="async" />
+          <div class="gb__body">
+            <p class="gb__head"><b>xXx_Батя_2007_xXx</b> <span class="mono">12.03.2007 23:41</span></p>
+            <p class="gb__msg">Превед, батя! Подстригли как на выпускном, токо лучше :)</p>
+            <p class="gb__via mono">отправлено с Nokia N73</p>
+          </div>
+        </li>
+        <li class="gb__item">
+          <img class="gb__ava" src="assets/gb/2.png" width="48" height="48" alt="" loading="lazy" decoding="async" />
+          <div class="gb__body">
+            <p class="gb__head"><b>Деда_Мороз_86</b> <span class="mono">02.06.2007 18:15</span></p>
+            <p class="gb__msg">Аффтар жжот! Пиво холодное, мастер тёплый ^_^</p>
+            <p class="gb__via mono">отправлено с Sony Ericsson K750i</p>
+          </div>
+        </li>
+        <li class="gb__item">
+          <img class="gb__ava" src="assets/gb/3.png" width="48" height="48" alt="" loading="lazy" decoding="async" />
+          <div class="gb__body">
+            <p class="gb__head"><b>Lena_Cat</b> <span class="mono">17.08.2007 21:03</span></p>
+            <p class="gb__msg">Муж вернулся помолодевшим на 15 лет. Теперь ищет свою флешку О_о</p>
+            <p class="gb__via mono">отправлено с Motorola RAZR V3</p>
+          </div>
+        </li>
+        <li class="gb__item">
+          <img class="gb__ava" src="assets/gb/4.png" width="48" height="48" alt="" loading="lazy" decoding="async" />
+          <div class="gb__body">
+            <p class="gb__head"><b>ПЕЛЬМЕНЬ_ЛЮБИТ</b> <span class="mono">30.09.2007 14:22</span></p>
+            <p class="gb__msg">Йа креведко. Взял комбо «Батя», вышел батей. Оценка 5+</p>
+            <p class="gb__via mono">отправлено с Siemens C65</p>
+          </div>
+        </li>
+        <li class="gb__item">
+          <img class="gb__ava" src="assets/gb/5.png" width="48" height="48" alt="" loading="lazy" decoding="async" />
+          <div class="gb__body">
+            <p class="gb__head"><b>Sanya_Bassist</b> <span class="mono">11.10.2007 02:07</span></p>
+            <p class="gb__msg">Плейлист 10 из 10, на «Зверях» прослезился. Ктулху фхтагн!</p>
+            <p class="gb__via mono">отправлено с Nokia 6600</p>
+          </div>
+        </li>
+        <li class="gb__item">
+          <img class="gb__ava" src="assets/gb/6.png" width="48" height="48" alt="" loading="lazy" decoding="async" />
+          <div class="gb__body">
+            <p class="gb__head"><b>Gena_SPB</b> <span class="mono">05.11.2007 19:58</span></p>
+            <p class="gb__msg">I can has гренки? Can. Дали. Спасибо :)</p>
+            <p class="gb__via mono">отправлено с Samsung SGH-D500</p>
+          </div>
+        </li>
+        <li class="gb__item">
+          <img class="gb__ava" src="assets/gb/7.png" width="48" height="48" alt="" loading="lazy" decoding="async" />
+          <div class="gb__body">
+            <p class="gb__head"><b>Дядя_Толя</b> <span class="mono">13.11.2007 23:59</span></p>
+            <p class="gb__msg">Аська 2007-2007 не отвечает. Зато бармен ответил на всё. Пыщь-пыщь!</p>
+            <p class="gb__via mono">отправлено с Nokia 3310</p>
+          </div>
+        </li>
+      </ol>
+      <form class="gb-form" id="gbForm" data-reveal novalidate>
+        <p class="gb-form__title mono">Добавить запись</p>
+        <div class="gb-form__row">
+          <label class="gb-form__field" for="gb-nick">Ник
+            <input id="gb-nick" name="nick" maxlength="24" autocomplete="nickname" placeholder="xXx_Батя_xXx" />
+          </label>
+          <label class="gb-form__field" for="gb-phone">Отправлено с
+            <select id="gb-phone" name="phone">
+              <option>Nokia 3310</option><option>Nokia N73</option><option>Sony Ericsson K750i</option><option>Motorola RAZR V3</option><option>Siemens C65</option><option>компьютера в «Компьютерном клубе»</option>
+            </select>
+          </label>
+        </div>
+        <label class="gb-form__field" for="gb-msg">Сообщение
+          <textarea id="gb-msg" name="msg" rows="3" maxlength="280" placeholder="Аффтар жжот!"></textarea>
+        </label>
+        <div class="gb-form__actions">
+          <span class="gb-form__smiles" role="group" aria-label="Смайлы">
+            <button type="button" data-smile=":)">:)</button><button type="button" data-smile="^_^">^_^</button><button type="button" data-smile="О_о">О_о</button><button type="button" data-smile=":-D">:-D</button>
+          </span>
+          <button class="btn btn--amber btn--sm" type="submit">Добавить запись</button>
+        </div>
+        <p class="gb-form__error" id="gbError" role="alert"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============ КОНТАКТЫ ============ -->
+  <section class="section section--contacts" id="contacts" aria-labelledby="contacts-title">
+    <div class="container grid">
+      <header class="section__head">
+        <p class="eyebrow" data-reveal>C:\СКУФ\06_КОНТАКТЫ.HTM</p>
+        <h2 class="h2" id="contacts-title" data-reveal>Заходи, батя</h2>
+      </header>
+      <div class="contacts">
+        <div class="contact" data-reveal>
+          <h3 class="contact__title"><svg aria-hidden="true"><use href="#i-pin"/></svg>Адрес</h3>
+          <dl class="dl">
+            <div><dt>Город</dt><dd>Москва</dd></div>
+            <div><dt>Улица</dt><dd>ул. 1905 года, д. 7</dd></div>
+            <div><dt>Метро</dt><dd>«Улица 1905 года», 3 минуты пешком</dd></div>
+            <div><dt>Вход</dt><dd>со двора, ищи вывеску с усами</dd></div>
+          </dl>
+        </div>
+        <div class="contact" id="hoursCard" data-reveal>
+          <p class="teletext__bar mono" aria-hidden="true"><span>P100</span><span>СКУФ-ТЕКСТ</span><span>100</span><span id="ttClock">20:07:00</span></p>
+          <h3 class="contact__title"><button class="contact__toggle" type="button" id="teletextBtn"><svg aria-hidden="true"><use href="#i-clock"/></svg>Часы работы</button></h3>
+          <dl class="dl">
+            <div><dt>Пн–Вс</dt><dd>круглосуточно<sup>*</sup></dd></div>
+            <div><dt>Бар</dt><dd>пока Серега у крана</dd></div>
+          </dl>
+          <p class="contact__note">* Со слов Сереги. Сергей — понятие растяжимое.</p>
+        </div>
+        <div class="contact" data-reveal>
+          <h3 class="contact__title"><svg aria-hidden="true"><use href="#i-phone"/></svg>Связь</h3>
+          <dl class="dl">
+            <div><dt>Телефон</dt><dd class="mono nowrap">+7&nbsp;(900)&nbsp;000-20-07</dd></div>
+            <div><dt>Почта</dt><dd class="mono">info@<wbr>skuf-i-synovya.ru</dd></div>
+            <div><dt>ICQ</dt><dd class="mono">2007-2007 <span class="muted">(шутка)</span></dd></div>
+          </dl>
+        </div>
+      </div>
+      <div class="cta-band" data-reveal>
+        <p class="cta-band__text">Свободное кресло есть. Кружка тоже.</p>
+        <p class="keepcalm" data-egg aria-label="Keep calm and стригись у бати">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-mug"/></svg>
+          <span>Keep calm</span><span>and</span><span>стригись у бати</span>
+        </p>
+        <ui-dialog-trigger for="booking"><button class="btn btn--amber" type="button" data-magnetic>Записаться к бате <svg aria-hidden="true"><use href="#i-arrow"/></svg></button></ui-dialog-trigger>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container grid">
+    <div class="footer__brand">
+      <a class="logo" href="#top" aria-label="Скуф и сыновья — наверх">
+        <svg class="logo__mark" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-mug"/></svg>
+        <span class="logo__word">Скуф <em>и сыновья</em></span>
+      </a>
+      <p class="muted">Барбершоп и пивной бар. Учебный проект: реквизиты условные, заявки никуда не отправляются.</p>
+      <p><a class="footer__link footer__link--deck" href="deck.html">Презентация проекта и документы ООО →</a></p>
+      <p><a class="footer__link" href="privacy.html">Политика обработки персональных данных</a></p>
+    </div>
+    <dl class="dl dl--req">
+      <div><dt>Организация</dt><dd>ООО «Скуф и сыновья»</dd></div>
+      <div><dt>ИНН / КПП</dt><dd class="mono">7700000000 / 770001001</dd></div>
+      <div><dt>ОГРН</dt><dd class="mono">1267700000000</dd></div>
+      <div><dt>Адрес</dt><dd>123100, г. Москва, ул. 1905 года, д. 7, пом. 1</dd></div>
+      <div><dt>Ген. директор</dt><dd>Греков Вадим</dd></div>
+    </dl>
+    <ul class="badges" aria-label="Значки сайта">
+      <li>Лучше всего в IE 6</li>
+      <li>800×600</li>
+      <li>Сделано в Блокноте</li>
+      <li>© 2007–2026</li>
+    </ul>
+    <div class="nostalgia">
+      <ui-toggle id="nostalgiaToggle" default-pressed>
+        <button class="chip" type="button"><span class="nostalgia__led" aria-hidden="true"></span>Режим ностальгии</button>
+      </ui-toggle>
+      <p class="mono muted" id="eggCount" aria-live="polite">Найдено пасхалок: 0/8</p>
+    </div>
+    <p class="footer__updated mono">Последнее обновление: 14.11.2007 · Оптимизировано для модема 56k</p>
+    <p class="warn">Чрезмерное употребление алкоголя вредит вашему здоровью · 18+</p>
+  </div>
+</footer>
+
+<!-- ============ МОДАЛКА ЗАПИСИ: окно в духе Windows XP ============ -->
+<ui-dialog id="booking">
+  <ui-dialog-backdrop class="backdrop" hidden></ui-dialog-backdrop>
+  <ui-dialog-content class="xp" hidden data-lenis-prevent initial-focus="#f-name">
+    <div class="xp__titlebar">
+      <svg class="xp__app" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-mug"/></svg>
+      <ui-dialog-title class="xp__title">Запись к бате.exe</ui-dialog-title>
+      <div class="xp__controls">
+        <span class="xp__ctl xp__ctl--min" aria-hidden="true"></span>
+        <span class="xp__ctl xp__ctl--max" aria-hidden="true"></span>
+        <ui-dialog-close><button class="xp__ctl xp__ctl--close" type="button" aria-label="Закрыть"></button></ui-dialog-close>
+      </div>
+    </div>
+    <div class="xp__menubar" aria-hidden="true"><span><u>Ф</u>айл</span><span><u>П</u>равка</span><span><u>В</u>ид</span><span><u>С</u>правка</span></div>
+
+    <form class="xp__body" id="bookForm" novalidate>
+      <ui-dialog-description class="xp__intro">Оставь имя и телефон, перезвоним с городского.</ui-dialog-description>
+      <fieldset class="xp__group">
+        <legend>Кто ты</legend>
+        <div class="xp__field">
+          <label for="f-name">Как к тебе обращаться:</label>
+          <input id="f-name" name="name" required autocomplete="given-name" placeholder="Батя" />
+        </div>
+        <div class="xp__field">
+          <label for="f-phone">Телефон:</label>
+          <input id="f-phone" name="phone" type="tel" required autocomplete="tel" inputmode="tel" placeholder="+7 900 000-00-00" />
+        </div>
+      </fieldset>
+      <fieldset class="xp__group">
+        <legend>Что и когда</legend>
+        <div class="xp__field">
+          <label for="f-service">Услуга:</label>
+          <select id="f-service" name="service">
+            <option>Стрижка «Полубокс 2007»</option>
+            <option>Борода «Лесник на пенсии»</option>
+            <option>Бритьё опасной бритвой</option>
+            <option>Комбо «Батя»</option>
+            <option>Комбо «Батя и сын»</option>
+            <option value="card">Карта «Пузо Карт»</option>
+          </select>
+        </div>
+        <div class="xp__row">
+          <div class="xp__field">
+            <label for="f-day">День:</label>
+            <select id="f-day" name="day"></select>
+          </div>
+          <div class="xp__field">
+            <label for="f-time">Время:</label>
+            <select id="f-time" name="time"></select>
+          </div>
+        </div>
+      </fieldset>
+      <label class="xp__consent" for="f-consent">
+        <input id="f-consent" name="consent" type="checkbox" required />
+        <span>Согласен на обработку персональных данных по <a href="privacy.html" target="_blank" rel="noopener">политике конфиденциальности</a></span>
+      </label>
+      <p class="xp__error" id="formError" role="alert"></p>
+      <div class="xp__actions">
+        <button class="xp__btn xp__btn--default" type="submit">Записаться</button>
+        <ui-dialog-close><button class="xp__btn" type="button">Отмена</button></ui-dialog-close>
+      </div>
+    </form>
+
+    <div class="xp__body xp__done" id="formDone" hidden>
+      <div class="xp__msg">
+        <span class="xp__info" aria-hidden="true">i</span>
+        <div>
+          <p class="xp__msg-title">Принято, <span id="doneName">батя</span>!</p>
+          <p>Это учебный сайт, так что звонка не будет. Но мысленно мы уже точим ножницы.</p>
+        </div>
+      </div>
+      <div class="xp__actions">
+        <ui-dialog-close><button class="xp__btn xp__btn--default" type="button">ОК</button></ui-dialog-close>
+      </div>
+    </div>
+
+    <div class="xp__status"><span>Учебный проект: заявка никуда не отправляется</span><span class="xp__zone">Интернет</span></div>
+  </ui-dialog-content>
+</ui-dialog>
+
+<!-- ============ МОБИЛЬНОЕ МЕНЮ ============ -->
+<ui-dialog id="menu">
+  <ui-dialog-backdrop class="backdrop" hidden></ui-dialog-backdrop>
+  <ui-dialog-content class="drawer" hidden data-lenis-prevent>
+    <div class="drawer__bar">
+      <ui-dialog-title class="eyebrow">Меню</ui-dialog-title>
+      <ui-dialog-close><button class="icon-btn" type="button" aria-label="Закрыть меню"><svg aria-hidden="true"><use href="#i-close"/></svg></button></ui-dialog-close>
+    </div>
+    <nav aria-label="Разделы сайта (мобильное меню)">
+      <ul class="drawer__list">
+        <li><a href="#prices" data-close>Прайс</a></li>
+        <li><a href="#gold" data-close>Пузо Карт</a></li>
+        <li><a href="#team" data-close>Бати</a></li>
+        <li><a href="#faq" data-close>Вопросы</a></li>
+        <li><a href="#contacts" data-close>Где мы</a></li>
+        <li><a href="deck.html">Защита проекта</a></li>
+      </ul>
+    </nav>
+    <button class="btn btn--amber" type="button" id="drawerBook">Записаться к бате</button>
+  </ui-dialog-content>
+</ui-dialog>
+
+<div class="toasts" id="toasts" role="status" aria-live="polite"></div>
+<div class="cursor" id="cursor" aria-hidden="true"></div>
+
+</body>
+</html>

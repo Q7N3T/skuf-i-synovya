@@ -1,0 +1,102 @@
+/* =========================================================
+   easter-eggs.css — стили пасхалок. Грузится лениво вместе с js/easter-eggs.js.
+   Все персонажи и графика — своя пиксельная стилизация.
+   ========================================================= */
+
+/* ---------- Режим Geocities (Konami / 5 тапов по номеру карты) */
+.geocities body {
+  font-family: "Comic Sans MS", "Comic Neue", "Chalkboard SE", var(--f-text) !important;
+  background:
+    radial-gradient(1px 1px at 20px 30px, #fff, transparent),
+    radial-gradient(1px 1px at 120px 80px, #ffe066, transparent),
+    radial-gradient(1.5px 1.5px at 200px 150px, #fff, transparent),
+    radial-gradient(1px 1px at 60px 190px, #9fd3ff, transparent),
+    #000014;
+  background-size: 240px 220px;
+}
+.geocities .h2, .geocities .hero__title, .geocities .item__title, .geocities .member__name {
+  font-family: "Comic Sans MS", "Comic Neue", "Chalkboard SE", var(--f-display) !important;
+  color: #ffff00 !important; text-shadow: 2px 2px 0 #ff00ff;
+}
+.geocities .hero__line--2 { color: #00ffff !important; }
+.geocities .item, .geocities .contact, .geocities .puzo, .geocities .member__face, .geocities .quote { border: 3px ridge #c0c0c0 !important; border-radius: 0 !important; background: #000080 !important; }
+.geocities a { color: #00ffff !important; }
+@media (prefers-reduced-motion: no-preference) {
+  .geocities .h2 { animation: geo-blink 1s steps(1) infinite; }
+}
+@keyframes geo-blink { 50% { visibility: hidden; } }
+
+.geo-banner {
+  position: fixed; z-index: 600; left: 50%; top: calc(var(--s-2) + env(safe-area-inset-top, 0px)); translate: -50% 0;
+  display: grid; grid-template-columns: auto 1fr; align-items: center; gap: var(--s-2);
+  width: min(calc(100vw - 2 * var(--s-2)), 34rem); padding: var(--s-2);
+  background: #c0c0c0; color: #000; border: 3px outset #fff;
+  font: 700 0.9375rem/1.3 "Comic Sans MS", "Comic Neue", var(--f-text);
+}
+.geo-banner canvas { width: 64px; height: 64px; image-rendering: pixelated; }
+.geo-banner__stripe { grid-column: 1 / -1; height: 10px; background: repeating-linear-gradient(135deg, #000 0 10px, #ffd400 10px 20px); }
+.geo-banner button {
+  grid-column: 1 / -1; justify-self: end; min-height: var(--tap); padding: 0 var(--s-2);
+  background: #c0c0c0; border: 2px outset #fff; font: inherit; cursor: pointer;
+}
+.geo-banner button:active { border-style: inset; }
+.geo-star { position: fixed; z-index: 599; pointer-events: none; color: #ffe066; font-size: 14px; line-height: 1; }
+
+/* ---------- Превед: батя выглядывает из угла */
+.peek {
+  position: fixed; z-index: 550; right: 0; bottom: calc(var(--s-6) + env(safe-area-inset-bottom, 0px));
+  display: flex; align-items: flex-end; gap: var(--s-1); pointer-events: none;
+  transform: translateX(110%); transition: transform 0.7s var(--ease-spring);
+}
+.peek.is-in { transform: translateX(18%); }
+.peek canvas { width: 160px; height: 128px; image-rendering: pixelated; }
+.peek__bubble {
+  margin-bottom: 96px; padding: 6px 12px; background: var(--c-foam); color: var(--c-on-amber);
+  border: 2px solid var(--c-on-amber); border-radius: 12px 12px 0 12px;
+  font: 900 1.25rem/1 var(--f-display); letter-spacing: -0.02em;
+}
+
+/* ---------- Змейка: экран в духе Nokia */
+.snake {
+  position: fixed; inset: 0; z-index: 700; display: grid; place-items: center; padding: var(--s-2);
+  background: rgb(8 6 4 / 0.82);
+}
+.snake__phone {
+  display: grid; gap: var(--s-2); justify-items: center; padding: var(--s-3) var(--s-3) var(--s-4);
+  background: linear-gradient(180deg, #2a3140, #151a24); border-radius: 36px 36px 48px 48px;
+  box-shadow: inset 0 2px 0 rgb(255 255 255 / 0.12), var(--shadow-card); color: #c9d2e0;
+}
+.snake__brand { font: 700 0.875rem/1 var(--f-mono); letter-spacing: 0.3em; }
+.snake__screen { padding: 8px; background: #8fa07a; border-radius: 6px; box-shadow: inset 0 0 0 2px #5d6a4c; }
+.snake__screen canvas { display: block; width: min(72vw, 288px); height: auto; image-rendering: pixelated; }
+.snake__hud { display: flex; justify-content: space-between; width: 100%; font: 500 0.8125rem var(--f-mono); color: #23301a; padding: 0 2px 4px; }
+.snake__pad { display: grid; grid-template-columns: repeat(3, var(--tap)); grid-template-rows: repeat(3, var(--tap)); gap: 4px; }
+.snake__pad button {
+  border: 0; border-radius: 10px; background: #3a4357; color: #e5ebf5; font: 700 1rem var(--f-mono); cursor: pointer;
+  box-shadow: inset 0 -3px 0 rgb(0 0 0 / 0.35);
+}
+.snake__pad button:active { transform: translateY(2px); box-shadow: none; }
+.snake__pad [data-dir="up"] { grid-column: 2; grid-row: 1; }
+.snake__pad [data-dir="left"] { grid-column: 1; grid-row: 2; }
+.snake__pad [data-dir="right"] { grid-column: 3; grid-row: 2; }
+.snake__pad [data-dir="down"] { grid-column: 2; grid-row: 3; }
+.snake__pad [data-act="restart"] { grid-column: 2; grid-row: 2; font-size: 0.6875rem; }
+.snake__close { min-height: var(--tap); padding: 0 var(--s-3); border-radius: var(--r-pill); border: 1px solid #5a6680; background: none; color: inherit; cursor: pointer; }
+.snake__hint { font: 500 0.75rem var(--f-mono); color: #8d97ab; text-align: center; max-width: 30ch; }
+
+/* ---------- Ма-я-хи: пляшущие кружки */
+.dance {
+  position: fixed; inset: auto 0 0 0; z-index: 560; height: 140px; pointer-events: none;
+  display: flex; justify-content: space-around; align-items: flex-end; padding-bottom: calc(var(--s-3) + env(safe-area-inset-bottom, 0px));
+}
+.dance canvas { width: 44px; height: 48px; image-rendering: pixelated; }
+.dance__caption {
+  position: fixed; z-index: 561; left: 50%; bottom: 160px; translate: -50% 0; pointer-events: none;
+  padding: 6px 14px; background: var(--c-amber); color: var(--c-on-amber); border-radius: var(--r-pill);
+  font: 900 var(--fs-md)/1 var(--f-display); white-space: nowrap;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .dance canvas { animation: dance 0.5s var(--ease-in-out) infinite alternate; }
+  .dance canvas:nth-child(even) { animation-delay: 0.25s; }
+}
+@keyframes dance { from { transform: translateY(0) rotate(-12deg); } to { transform: translateY(-36px) rotate(12deg); } }

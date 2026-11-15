@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ru" class="no-js">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>404 — страница ушла за гренками · Скуф и сыновья</title>
+<meta name="robots" content="noindex" />
+<meta name="theme-color" content="#16120E" />
+<!-- GitHub Pages отдаёт эту страницу по любому адресу, поэтому пути — от корня проекта -->
+<base href="/skuf-i-synovya/" />
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="css/main.css?v=202611151120" />
+<style>
+  .e404 { min-height: 100dvh; display: grid; align-content: center; gap: var(--s-4); padding-block: var(--s-10); }
+  .e404__code { font-family: var(--f-display); font-weight: 900; font-size: clamp(7rem, 30vw, 22rem); line-height: 0.8; letter-spacing: -0.07em; color: transparent; -webkit-text-stroke: 2px var(--c-amber); }
+  .e404__title { font-family: var(--f-display); font-weight: 900; font-size: var(--fs-2xl); line-height: var(--lh-head); letter-spacing: var(--tr-display); max-width: 18ch; text-wrap: balance; }
+  .e404__text { color: var(--c-muted); font-size: var(--fs-md); max-width: 46ch; }
+  .e404__aybabtu { color: var(--c-green); }
+</style>
+</head>
+<body>
+<main class="container e404">
+  <a class="logo" href="./" aria-label="Скуф и сыновья — на главную">
+    <svg class="logo__mark" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h10v10a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3V8Z"/><path d="M15 10h2a2.5 2.5 0 0 1 0 5h-2"/><path d="M5 8c0-2 1.4-3.5 3-3.5.6-1.4 3.4-1.6 4.3 0C14 4.6 15 6 15 8"/><path d="M9 12v5M12 12v5"/></svg>
+    <span class="logo__word">Скуф <em>и сыновья</em></span>
+  </a>
+  <p class="e404__code" aria-hidden="true">404</p>
+  <h1 class="e404__title">Аффтар, выпей йаду… шучу, выпей пива.</h1>
+  <p class="e404__text">Страница ушла за гренками и пока не вернулась. Возможно, её постригли слишком коротко.</p>
+  <p class="e404__aybabtu mono">All your бороды are belong to us.</p>
+  <p><a class="btn btn--amber" href="./">На главную</a></p>
+</main>
+<script>
+  // Пасхалка «Страница 404» засчитывается в счётчик на главной
+  try {
+    var found = JSON.parse(localStorage.getItem("skuf-eggs") || "[]")
+    if (found.indexOf("404") < 0) { found.push("404"); localStorage.setItem("skuf-eggs", JSON.stringify(found)) }
+  } catch (e) {}
+</script>
+</body>
+</html>

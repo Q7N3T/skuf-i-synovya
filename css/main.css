@@ -1261,3 +1261,73 @@ html.is-booting *, .is-booting .boot { cursor: inherit !important; }
   overflow-wrap: normal; word-break: normal; hyphens: manual; text-wrap: balance;
   border-left-color: var(--c-amber); background: rgb(242 169 59 / 0.07);
 }
+
+/* =====================================================================
+   Бар на первом месте: афиша недели и приставки
+   ===================================================================== */
+.section--afisha { background: var(--c-bg-2); }
+.afisha { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr; gap: var(--s-2); }
+.afisha__day {
+  display: grid; grid-template-rows: auto auto 1fr auto; gap: 6px; padding: var(--s-3);
+  background: var(--c-bg); border: 1px solid var(--c-line); border-radius: var(--r-md);
+  transition: transform 200ms var(--hover-ease), border-color var(--hover-d) var(--hover-ease);
+}
+@media (hover: hover) { .afisha__day:hover { transform: translateY(-4px); border-color: var(--c-line-strong); } }
+.afisha__dow { color: var(--c-amber); font-size: var(--fs-sm); text-transform: uppercase; letter-spacing: var(--tr-caps); }
+.afisha__title { font-family: var(--f-display); font-weight: 700; font-size: var(--fs-md); line-height: 1.2; letter-spacing: -0.02em; text-wrap: balance; }
+.afisha__desc { color: var(--c-muted); font-size: var(--fs-sm); }
+.afisha__price { padding-top: var(--s-1); border-top: 1px dashed var(--c-line-strong); color: var(--c-foam); font-size: var(--fs-xs); }
+.afisha__day--hot { border-color: rgb(242 169 59 / 0.55); background: linear-gradient(180deg, #2a2118 0%, var(--c-bg-3) 100%); }
+.afisha__day--hot .afisha__price { color: var(--c-amber); }
+.afisha__note { grid-column: 1 / -1; margin-top: var(--s-3); color: var(--c-muted); }
+@media (min-width: 600px) { .afisha { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1024px) {
+  .afisha { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .afisha__day--hot { grid-row: span 1; }
+}
+@media (min-width: 1280px) { .afisha { grid-template-columns: repeat(7, minmax(0, 1fr)); } .afisha__day { padding: var(--s-2); } }
+
+.section--games {
+  position: relative; isolation: isolate; overflow: clip;
+  background: radial-gradient(90% 70% at 85% 50%, rgb(242 169 59 / 0.09) 0%, transparent 60%), var(--c-bg);
+}
+.games__text { display: grid; gap: var(--s-3); align-content: start; }
+.games__head { margin-bottom: 0; }
+.games__list { display: flex; flex-wrap: wrap; gap: 8px; }
+.games__list li { padding: 6px 12px; border: 1px solid var(--c-line-strong); border-radius: var(--r-pill); color: var(--c-foam); font-size: var(--fs-xs); }
+.games__list li:first-child { border-color: var(--c-amber); color: var(--c-amber); }
+.games__rule { color: var(--c-muted); max-width: 46ch; }
+.games__collage {
+  position: relative; margin: var(--s-4) 0 0; min-height: 340px;
+  display: grid; place-items: center;
+}
+.games__px { position: absolute; image-rendering: pixelated; height: auto; filter: drop-shadow(0 14px 18px rgb(0 0 0 / 0.6)); }
+.games__px--gta { width: 300px; left: 50%; top: 0; transform: translateX(-50%) rotate(-3deg); z-index: 2; }
+.games__px--ps3 { width: 312px; left: 0; bottom: 8px; transform: rotate(2deg); }
+.games__px--xbox { width: 160px; right: 0; bottom: 0; transform: rotate(-2deg); z-index: 1; }
+.games__collage figcaption { position: absolute; left: 0; right: 0; bottom: -28px; text-align: center; color: var(--c-muted); font-size: var(--fs-xs); }
+@media (min-width: 1024px) {
+  .section--games .games__text { grid-column: 1 / span 6; }
+  .section--games .games__collage { grid-column: 7 / -1; margin: 0; min-height: 460px; }
+  .games__px--gta { width: 400px; }
+  .games__px--ps3 { width: 416px; }
+  .games__px--xbox { width: 240px; }
+}
+@media (max-width: 479px) {
+  .games__collage { min-height: 290px; }
+  .games__px--gta { width: 200px; }
+  .games__px--ps3 { width: 208px; }
+  .games__px--xbox { width: 120px; }
+}
+@media (prefers-reduced-motion: reduce) { .afisha__day, .afisha__day:hover { transition: none; transform: none; } }
+.afisha__title { hyphens: manual; overflow-wrap: normal; }
+@media (min-width: 1280px) { .afisha__title { font-size: clamp(1rem, 0.55rem + 0.55vw, 1.125rem); } }
+.section--games .games__text { grid-template-columns: minmax(0, 1fr); }
+.section--games .games__text > * { grid-column: 1 / -1; }
+/* телефон: афиша — лента, листается пальцем */
+@media (max-width: 599px) {
+  .afisha { grid-auto-flow: column; grid-template-columns: none; grid-auto-columns: 78%; overflow-x: auto; scroll-snap-type: x mandatory;
+    margin-inline: calc(-1 * var(--margin)); padding: 4px var(--margin) var(--s-2); scrollbar-width: none; }
+  .afisha::-webkit-scrollbar { display: none; }
+  .afisha__day { scroll-snap-align: start; }
+}

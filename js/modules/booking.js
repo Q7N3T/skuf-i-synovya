@@ -1,5 +1,5 @@
 // Модалка записи: дни и время, проверка полей, честное сообщение «учебный проект».
-import { $ } from "./utils.js?v=202611201519"
+import { $ } from "./utils.js?v=202611201532"
 
 const DAYS = ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"]
 
@@ -15,8 +15,9 @@ function fillSlots() {
     day.add(new Option(label, d.toISOString().slice(0, 10)))
   }
   time.innerHTML = ""
-  for (let h = 12; h <= 21; h++) time.add(new Option(`${h}:00`, `${h}:00`))
-  time.value = "18:00"
+  // бар работает до полуночи (пт–сб до 01:00), барбершоп — до 22:00
+  for (let h = 12; h <= 23; h++) time.add(new Option(`${h}:00`, `${h}:00`))
+  time.value = "19:00"
 }
 
 export function openBooking({ service } = {}) {

@@ -1,5 +1,5 @@
 // Бесшовная бегущая строка: ускоряется от скорости скролла, пауза при hover/focus и кнопкой.
-import { $, reducedMotion, store } from "./utils.js?v=202611201357"
+import { $, reducedMotion, store } from "./utils.js?v=202611201409"
 
 export function initMarquee(lenis) {
   const root = $("#marquee")

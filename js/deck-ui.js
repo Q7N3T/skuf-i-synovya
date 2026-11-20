@@ -329,7 +329,11 @@ export function initPlayer(root, tracks) {
   const discEl = $(".pl-disc"), arm = $(".pl-arm"), fill = $(".pl-fill"), rail = $(".pl-rail"), seek = $(".pl-seek"), rpm = $(".pl-rpm")
   const bars = [...root.querySelectorAll(".pl-bars i")], clockEl = $(".pl-clock"), playBtn = $('[data-a="play"]')
   let ti = 0, active = false
-  const e = { angle: 0, omega: CRUISE, time: 0, duration: tracks[0].duration, playing: true, held: false, barDrag: false, pointerId: null,
+  // настоящий звук, если у треков есть src (на сайте); в презентации — тихая пластинка, как раньше
+  const audio = tracks.some((t) => t.src) ? new Audio() : null
+  if (audio) audio.preload = "none"
+  const live = () => !!(audio && tracks[ti].src)
+  const e = { angle: 0, omega: audio ? 0 : CRUISE, time: 0, duration: tracks[0].duration, playing: !audio, held: false, barDrag: false, pointerId: null,
     env: 0, scrubOmega: 0, pointerAngle: 0, center: { x: 0, y: 0 }, lastMoveAt: 0, samples: [], cruise: null, cruiseAngle: 0 }
 
   // часы: цифры перекатываются, как в оригинале (220 мс, ease-out)
@@ -395,6 +399,7 @@ export function initPlayer(root, tracks) {
     e.time = 0; e.duration = t.duration; lastS = -1
     $(".pl-title").textContent = t.title; $(".pl-artist").textContent = t.artist
     $(".pl-dur").textContent = fmt(t.duration)
+    if (audio) { audio.src = t.src || ""; if (e.playing && t.src) audio.play().catch(() => setPlaying(false)) }
     const listen = $(".pl-listen"); if (listen) { listen.href = t.href || "#"; listen.setAttribute("aria-label", `Слушать «${t.title}» — ${t.artist} (откроется в новой вкладке)`) }
     seek.setAttribute("aria-valuemax", t.duration)
     discEl.innerHTML = disc(t.art ?? ti, fid + "-c" + ti)
@@ -403,12 +408,13 @@ export function initPlayer(root, tracks) {
     wakeP()
   }
   let rafP = 0, lastP = 0
-  const awake = () => e.playing || e.held || e.barDrag || e.omega !== 0 || e.env > 0
+  const awake = () => e.playing || e.held || e.barDrag || e.omega !== 0 || e.env > 0 || (audio && !audio.paused)
   function tick(now) {
     const dt = lastP ? Math.min((now - lastP) / 1000, MAX_DT) : 0; lastP = now
     if (e.held) e.scrubOmega *= Math.exp(-dt / HOLD_SETTLE_S)
     else if (!e.barDrag) integrate(dt)
-    if (e.time >= e.duration) { if (e.playing && !e.held && !e.barDrag) { load(ti + 1); } else e.time = e.duration }
+    if (live() && !e.held && !e.barDrag) e.time = audio.currentTime || 0
+    if (!live() && e.time >= e.duration) { if (e.playing && !e.held && !e.barDrag) { load(ti + 1); } else e.time = e.duration }
     if (e.time < 0) e.time = 0
     meter(dt); paint()
     if (awake() && active) rafP = requestAnimationFrame(tick); else { rafP = 0; lastP = 0 }
@@ -418,6 +424,7 @@ export function initPlayer(root, tracks) {
     if (p && e.time >= e.duration) e.time = 0
     e.playing = p
     if (!p) stopCruise()
+    if (live()) { if (p) audio.play().catch(() => setPlaying(false)); else audio.pause() }
     playBtn.innerHTML = p ? ICON.pause : ICON.play; playBtn.setAttribute("aria-label", p ? "Пауза" : "Играть")
     arm.style.transform = p ? "rotate(11deg)" : "rotate(-8deg)"
     wakeP()
@@ -460,6 +467,7 @@ export function initPlayer(root, tracks) {
     let v = 0
     if (first && now - e.lastMoveAt < STALE_MOVE_MS && now > first.t) v = ((e.angle - first.a) / (now - first.t)) * 1000
     e.omega = reduce ? 0 : clamp(v, -MAX_OMEGA, MAX_OMEGA); e.scrubOmega = 0
+    if (live()) audio.currentTime = e.time
     wakeP()
   }
   ;["pointerup", "pointercancel", "lostpointercapture"].forEach((t) => discEl.addEventListener(t, discUp))
@@ -482,20 +490,28 @@ export function initPlayer(root, tracks) {
   seek.addEventListener("pointermove", (ev) => { if (e.barDrag && e.pointerId === ev.pointerId) seekFrom(ev.clientX) })
   const barUp = (ev) => {
     if (!e.barDrag || e.pointerId !== ev.pointerId) return
-    e.pointerId = null; e.barDrag = false; rail.style.transition = RUBBER_RETURN; rail.style.transform = ""; wakeP()
+    e.pointerId = null; e.barDrag = false; rail.style.transition = RUBBER_RETURN; rail.style.transform = ""
+    if (live()) audio.currentTime = e.time
+    wakeP()
   }
   ;["pointerup", "pointercancel", "lostpointercapture"].forEach((t) => seek.addEventListener(t, barUp))
   seek.addEventListener("keydown", (ev) => {
     const t = { ArrowRight: e.time + SEEK_STEP, ArrowUp: e.time + SEEK_STEP, ArrowLeft: e.time - SEEK_STEP, ArrowDown: e.time - SEEK_STEP, Home: 0, End: e.duration - 1 }[ev.key]
     if (t === undefined) return
-    ev.preventDefault(); ev.stopPropagation(); e.time = clamp(t, 0, e.duration); wakeP()
+    ev.preventDefault(); ev.stopPropagation(); e.time = clamp(t, 0, e.duration); if (live()) audio.currentTime = e.time; wakeP()
   })
+  if (audio) {
+    audio.addEventListener("loadedmetadata", () => { if (isFinite(audio.duration)) { e.duration = audio.duration; $(".pl-dur").textContent = fmt(audio.duration); seek.setAttribute("aria-valuemax", Math.floor(audio.duration)) } })
+    audio.addEventListener("ended", () => load(ti + 1))
+  }
   load(0)
-  arm.style.transform = "rotate(11deg)"
+  if (audio) { playBtn.innerHTML = ICON.play; playBtn.setAttribute("aria-label", "Играть") }
+  arm.style.transform = audio ? "rotate(-8deg)" : "rotate(11deg)"
   return {
     // крутится только на открытом слайде
     // выбрать трек из плейлиста и сразу играть
     select(i) { load(i); setPlaying(true) },
+    pause() { if (e.playing) setPlaying(false) },
     show() { active = true; e.cruise?.play(); wakeP() },
     hide() { active = false; e.cruise?.pause(); cancelAnimationFrame(rafP); rafP = 0 },
   }

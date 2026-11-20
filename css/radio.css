@@ -1,0 +1,96 @@
+/* =========================================================
+   radio.css — «Скуф FM»: плеер «Сейчас играет» на стеклянной карточке (тот же, что в презентации).
+   ========================================================= */
+.pl { --pl-accent: var(--c-amber); position: relative; isolation: isolate; width: 440px; padding: 26px; border-radius: 28px; border: 1px solid rgb(255 255 255 / 0.1); background: rgb(36 29 22 / 0.55); color: var(--c-foam); }
+.pl-defs { position: absolute; width: 0; height: 0; }
+.pl-glass { position: absolute; inset: 0; z-index: -1; border-radius: inherit; overflow: hidden; -webkit-backdrop-filter: blur(2px); }
+.pl-shine {
+  position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  box-shadow: 0 0 8px rgb(0 0 0 / 0.03), 0 2px 6px rgb(0 0 0 / 0.08), inset 3px 3px 0.5px -3.5px rgb(255 255 255 / 0.09), inset -3px -3px 0.5px -3.5px rgb(255 255 255 / 0.85),
+    inset 1px 1px 1px -0.5px rgb(255 255 255 / 0.6), inset -1px -1px 1px -0.5px rgb(255 255 255 / 0.6), inset 0 0 6px 6px rgb(255 255 255 / 0.12), inset 0 0 2px 2px rgb(255 255 255 / 0.06), 0 0 12px rgb(0 0 0 / 0.15);
+}
+.pl-body { position: relative; z-index: 1; }
+.pl-top { display: flex; align-items: center; gap: 22px; }
+.pl-deck { position: relative; width: 140px; height: 140px; flex: none; }
+.pl-disc { width: 100%; height: 100%; border-radius: 50%; cursor: grab; touch-action: none; user-select: none; box-shadow: 0 6px 16px -6px rgb(0 0 0 / 0.45); }
+.pl-disc:active { cursor: grabbing; }
+.pl-disc svg { width: 100%; height: 100%; display: block; }
+.pl-vinyl { fill: #0b0907; } .pl-paper { fill: var(--c-foam); } .pl-hole { fill: #16120e; }
+.pl-ink { fill: #1a1208; } .pl-acc { fill: var(--pl-accent); }
+.pl-arm { position: absolute; top: -4px; right: -16px; height: 80%; width: auto; transform-origin: 77.5% 10%; transition: transform 500ms cubic-bezier(0.77, 0, 0.175, 1); pointer-events: none; }
+.pl-arm-base { fill: #4a3f33; stroke: #6b5b48; } .pl-arm-pin { fill: #b9ab97; }
+.pl-arm-rod { fill: none; stroke: #b9ab97; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; } .pl-arm-head { fill: var(--c-foam); }
+.pl-meta { min-width: 0; flex: 1; }
+.pl-now { display: flex; align-items: center; gap: 8px; font: 500 12px var(--f-mono); text-transform: uppercase; letter-spacing: 0.12em; color: var(--c-muted); }
+.pl-bars { display: flex; align-items: flex-end; gap: 2px; height: 14px; }
+.pl-bars i { width: 3px; height: 100%; border-radius: 1px; background: var(--pl-accent); transform-origin: bottom; transform: scaleY(0.14); }
+.pl-title { margin-top: 10px; font: 700 21px/1.2 var(--f-display); letter-spacing: -0.02em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pl-artist { font-size: 16px; color: var(--c-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pl-rpm { display: inline-block; margin-top: 8px; font-size: 12px; color: var(--c-line-strong); }
+.pl-seek { margin-top: 22px; padding: 8px 0; cursor: pointer; touch-action: none; outline: none; }
+.pl-rail { height: 6px; border-radius: 999px; overflow: hidden; background: rgb(255 255 255 / 0.12); }
+.pl-seek:focus-visible .pl-rail { box-shadow: 0 0 0 2px #16120e, 0 0 0 4px var(--c-foam); }
+.pl-fill { display: block; height: 100%; width: 100%; transform-origin: left; transform: scaleX(0); background: var(--pl-accent); }
+.pl-times { display: flex; justify-content: space-between; font-size: 13px; color: var(--c-muted); }
+.pl-clock { display: inline-flex; }
+.pl-digit { position: relative; display: inline-block; height: 1.3em; overflow: hidden; }
+.pl-digit i { display: block; font-style: normal; }
+.pl-digit i:first-child:not(:last-child) { position: absolute; inset: 0; }
+@keyframes pl-in-up { from { transform: translateY(90%); opacity: 0 } to { transform: none; opacity: 1 } }
+@keyframes pl-out-up { from { transform: none; opacity: 1 } to { transform: translateY(-90%); opacity: 0 } }
+@keyframes pl-in-down { from { transform: translateY(-90%); opacity: 0 } to { transform: none; opacity: 1 } }
+@keyframes pl-out-down { from { transform: none; opacity: 1 } to { transform: translateY(90%); opacity: 0 } }
+.pl-ctrl { display: flex; justify-content: center; gap: 14px; margin-top: 12px; }
+.pl-btn { display: inline-grid; place-items: center; width: 46px; height: 46px; border: 0; border-radius: 50%; background: transparent; color: var(--c-muted); cursor: pointer; transition: background-color 150ms, color 150ms; }
+.pl-btn:hover { background: rgb(255 255 255 / 0.08); color: var(--c-foam); }
+.pl-btn svg { width: 22px; height: 22px; }
+.pl-btn--main { width: 56px; height: 56px; background: var(--c-foam); color: #16120e; }
+.pl-btn--main:hover { background: #fff; color: #16120e; }
+.pl-btn:focus-visible { outline: 2px solid var(--c-foam); outline-offset: 3px; }
+.pl-listen { display: table; margin-top: 6px; color: var(--c-amber); font-size: 12px; text-decoration: underline; text-underline-offset: 0.25em; }
+.pl-listen:hover { color: var(--c-foam); }
+
+/* ---------- секция */
+.section--radio { background: var(--c-bg); position: relative; overflow: clip; }
+.radio__lead { color: var(--c-muted); font-size: var(--fs-md); max-width: 40ch; margin-bottom: var(--s-4); }
+.radio__list { display: grid; gap: 0; border-top: 1px solid var(--c-line); counter-reset: tr; }
+.radio__list li {
+  position: relative; display: grid; grid-template-columns: 2.2rem minmax(0, 1fr) auto; align-items: center; gap: var(--s-2);
+  border-bottom: 1px solid var(--c-line); counter-increment: tr;
+}
+.radio__pick {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: baseline; gap: var(--s-2); min-height: var(--tap);
+  padding: 10px 0; border: 0; background: none; color: inherit; text-align: left; cursor: pointer;
+}
+.radio__pick::after { content: ""; position: absolute; inset: 0 -12px; border-radius: var(--r-sm); background: rgb(242 169 59 / 0); transition: background-color var(--hover-d); z-index: -1; }
+.radio__list { isolation: isolate; }
+.radio__pick:hover::after { background: rgb(242 169 59 / 0.06); }
+.radio__pick[aria-pressed="true"] b { color: var(--c-amber); }
+.radio__pick[aria-pressed="true"]::after { background: rgb(242 169 59 / 0.1); }
+.radio__list li:has(.radio__pick[aria-pressed="true"])::before { content: "▶"; color: var(--c-amber); }
+@media (max-width: 479px) { .radio__pick { grid-template-columns: 1fr; gap: 0; } }
+.radio__list li::before { content: counter(tr, decimal-leading-zero); font-family: var(--f-mono); font-size: 12px; color: var(--c-muted); }
+.radio__list b { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: var(--f-display); font-weight: 700; font-size: var(--fs-base); letter-spacing: -0.01em; }
+.radio__list span { color: var(--c-muted); font-size: var(--fs-sm); }
+.radio__list a { color: var(--c-muted); font-size: 12px; font-family: var(--f-mono); text-decoration: none; white-space: nowrap; }
+.radio__list a:hover { color: var(--c-amber); }
+.radio__note { margin-top: var(--s-2); color: var(--c-muted); font-size: 12px; }
+.radio__stage { position: relative; display: grid; place-items: center; padding: var(--s-6) 0; isolation: isolate; }
+/* за стеклом — янтарное «пятно света» и бороздки винила: стеклу есть что преломлять */
+.radio__stage::before {
+  content: ""; position: absolute; z-index: -1; width: min(520px, 100%); aspect-ratio: 1; border-radius: 50%;
+  background:
+    repeating-radial-gradient(circle, rgb(245 239 227 / 0.05) 0 1px, transparent 1px 7px),
+    radial-gradient(circle at 40% 40%, rgb(242 169 59 / 0.55), rgb(201 127 20 / 0.25) 45%, transparent 70%);
+}
+.radio__stage .pl { width: min(440px, 100%); }
+@media (min-width: 1024px) {
+  .section--radio .radio__text { grid-column: 1 / span 6; }
+  .section--radio .radio__stage { grid-column: 8 / -1; align-self: center; }
+}
+@media (max-width: 479px) {
+  .radio__stage .pl { padding: 18px; }
+  .radio__stage .pl-deck { width: 104px; height: 104px; }
+  .radio__stage .pl-top { gap: 14px; }
+  .radio__stage .pl-title { font-size: 18px; }
+}

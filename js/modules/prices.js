@@ -1,5 +1,5 @@
 // Прайс: фильтр по категориям (гаснут → сетка перестраивается → новые выплывают) и штампы-бейджи.
-import { $, $$, plural, reducedMotion } from "./utils.js?v=202611201345"
+import { $, $$, plural, reducedMotion } from "./utils.js?v=202611201353"
 
 export function initPrices() {
   const control = $("#priceFilter")

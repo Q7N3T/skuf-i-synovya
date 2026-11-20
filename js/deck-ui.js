@@ -314,7 +314,7 @@ export function initPlayer(root, tracks) {
           <svg class="pl-arm" viewBox="0 0 40 110" aria-hidden="true"><circle class="pl-arm-base" cx="31" cy="11" r="8"/><circle class="pl-arm-pin" cx="31" cy="11" r="3"/><path class="pl-arm-rod" d="M31 11 L31 70 L18 92"/><rect class="pl-arm-head" height="12" rx="1.5" transform="rotate(32 16 96)" width="7" x="12.5" y="90"/></svg></div>
         <div class="pl-meta">
           <div class="pl-now"><span class="pl-bars" aria-hidden="true">${"<i></i>".repeat(BAR_COUNT)}</span><span>Сейчас играет</span></div>
-          <p class="pl-title"></p><p class="pl-artist"></p><span class="pl-rpm mono">33⅓ rpm</span>
+          <p class="pl-title"></p><p class="pl-artist"></p><span class="pl-rpm mono">33⅓ rpm</span>${tracks.some((t) => t.href) ? '<a class="pl-listen mono" target="_blank" rel="noopener noreferrer">Слушать трек ↗</a>' : ""}
         </div>
       </div>
       <div class="pl-seek" role="slider" tabindex="0" aria-label="Перемотка" aria-valuemin="0"><div class="pl-rail"><i class="pl-fill"></i></div></div>
@@ -395,9 +395,11 @@ export function initPlayer(root, tracks) {
     e.time = 0; e.duration = t.duration; lastS = -1
     $(".pl-title").textContent = t.title; $(".pl-artist").textContent = t.artist
     $(".pl-dur").textContent = fmt(t.duration)
+    const listen = $(".pl-listen"); if (listen) { listen.href = t.href || "#"; listen.setAttribute("aria-label", `Слушать «${t.title}» — ${t.artist} (откроется в новой вкладке)`) }
     seek.setAttribute("aria-valuemax", t.duration)
     discEl.innerHTML = disc(t.art ?? ti, fid + "-c" + ti)
     root.style.setProperty("--pl-accent", t.accent || "var(--c-amber)")
+    root.dispatchEvent(new CustomEvent("pl:track", { detail: { index: ti } }))
     wakeP()
   }
   let rafP = 0, lastP = 0
@@ -492,6 +494,8 @@ export function initPlayer(root, tracks) {
   arm.style.transform = "rotate(11deg)"
   return {
     // крутится только на открытом слайде
+    // выбрать трек из плейлиста и сразу играть
+    select(i) { load(i); setPlaying(true) },
     show() { active = true; e.cruise?.play(); wakeP() },
     hide() { active = false; e.cruise?.pause(); cancelAnimationFrame(rafP); rafP = 0 },
   }

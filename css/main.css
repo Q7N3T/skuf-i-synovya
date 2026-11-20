@@ -1110,8 +1110,8 @@ button.presence:hover { color: var(--c-foam); }
    ===================================================================== */
 
 /* 1.1 Ритм фона: чередуем --c-bg / --c-bg-2, один тёплый блок (контакты) */
-#prices, #faq { background: var(--c-bg-2); }
-#team, #guestbook { background: var(--c-bg); }
+#prices, #faq, #guestbook { background: var(--c-bg-2); }
+#team { background: var(--c-bg); }
 .section--contacts {
   position: relative; isolation: isolate;
   background: radial-gradient(120% 90% at 50% 0%, rgb(242 169 59 / 0.10) 0%, transparent 60%), var(--c-bg);
@@ -1253,4 +1253,11 @@ html.is-booting *, .is-booting .boot { cursor: inherit !important; }
 @media (prefers-reduced-motion: reduce) {
   .ad__new, .icq::after { animation: none; }
   .item, .item:hover { transition: none; transform: none; }
+}
+
+/* Статусы бать: без разрыва слов посередине, строки выровнены, янтарная черта (синий — только ники гостевой) */
+.member__status {
+  font-size: clamp(1rem, 0.85rem + 0.35vw, 1.125rem); line-height: 1.3;
+  overflow-wrap: normal; word-break: normal; hyphens: manual; text-wrap: balance;
+  border-left-color: var(--c-amber); background: rgb(242 169 59 / 0.07);
 }

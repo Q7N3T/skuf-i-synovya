@@ -1297,28 +1297,21 @@ html.is-booting *, .is-booting .boot { cursor: inherit !important; }
 .games__list li { padding: 6px 12px; border: 1px solid var(--c-line-strong); border-radius: var(--r-pill); color: var(--c-foam); font-size: var(--fs-xs); }
 .games__list li:first-child { border-color: var(--c-amber); color: var(--c-amber); }
 .games__rule { color: var(--c-muted); max-width: 46ch; }
-.games__collage {
-  position: relative; margin: var(--s-4) 0 0; min-height: 340px;
-  display: grid; place-items: center;
+/* постер с приставками: картинка как есть, только обрезана чёрная рамка */
+.games__poster { position: relative; margin: var(--s-4) 0 var(--s-2); }
+.games__poster img {
+  display: block; width: 100%; height: auto;
+  border-radius: var(--r-md); border: 1px solid rgb(242 169 59 / 0.35);
+  box-shadow: 0 30px 60px -24px rgb(0 0 0 / 0.85), 0 0 0 6px var(--c-bg-2);
+  transform: rotate(1.2deg); transition: transform 300ms var(--ease-out);
 }
-.games__px { position: absolute; image-rendering: pixelated; height: auto; filter: drop-shadow(0 14px 18px rgb(0 0 0 / 0.6)); }
-.games__px--gta { width: 300px; left: 50%; top: 0; transform: translateX(-50%) rotate(-3deg); z-index: 2; }
-.games__px--ps3 { width: 312px; left: 0; bottom: 8px; transform: rotate(2deg); }
-.games__px--xbox { width: 160px; right: 0; bottom: 0; transform: rotate(-2deg); z-index: 1; }
-.games__collage figcaption { position: absolute; left: 0; right: 0; bottom: -28px; text-align: center; color: var(--c-muted); font-size: var(--fs-xs); }
+@media (hover: hover) { .games__poster:hover img { transform: rotate(0) scale(1.01); } }
+.games__poster figcaption { margin-top: var(--s-2); text-align: center; color: var(--c-muted); font-size: var(--fs-xs); }
 @media (min-width: 1024px) {
-  .section--games .games__text { grid-column: 1 / span 6; }
-  .section--games .games__collage { grid-column: 7 / -1; margin: 0; min-height: 460px; }
-  .games__px--gta { width: 400px; }
-  .games__px--ps3 { width: 416px; }
-  .games__px--xbox { width: 240px; }
+  .section--games .games__text { grid-column: 1 / span 5; align-self: center; }
+  .section--games .games__poster { grid-column: 6 / -1; margin: 0; }
 }
-@media (max-width: 479px) {
-  .games__collage { min-height: 290px; }
-  .games__px--gta { width: 200px; }
-  .games__px--ps3 { width: 208px; }
-  .games__px--xbox { width: 120px; }
-}
+@media (prefers-reduced-motion: reduce) { .games__poster img { transform: none; transition: none; } }
 @media (prefers-reduced-motion: reduce) { .afisha__day, .afisha__day:hover { transition: none; transform: none; } }
 .afisha__title { hyphens: manual; overflow-wrap: normal; }
 @media (min-width: 1280px) { .afisha__title { font-size: clamp(1rem, 0.55rem + 0.55vw, 1.125rem); } }

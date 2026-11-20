@@ -14,7 +14,6 @@
       "img": "assets/team/grekov.webp?v=6",
       "tap": null,
       "karaoke": null,
-      "rate": 41,
       "gifts": [
         "mug",
         "flower"
@@ -30,7 +29,6 @@
       "img": "assets/team/dolnikov.webp?v=6",
       "tap": null,
       "karaoke": null,
-      "rate": 37,
       "gifts": [
         "mug",
         "mic"
@@ -46,7 +44,6 @@
       "img": "assets/team/goncharenko.webp?v=6",
       "tap": null,
       "karaoke": null,
-      "rate": 29,
       "gifts": [
         "mug",
         "combo"
@@ -62,7 +59,6 @@
       "img": "assets/team/klemeshev.webp?v=6",
       "tap": null,
       "karaoke": null,
-      "rate": 63,
       "gifts": [
         "mug",
         "mug",
@@ -79,7 +75,6 @@
       "img": "assets/team/belobrov.webp?v=6",
       "tap": null,
       "karaoke": null,
-      "rate": 33,
       "gifts": [
         "flower",
         "scissors"

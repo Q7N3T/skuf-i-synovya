@@ -1,5 +1,5 @@
 // Магнитные кнопки. Только точный указатель. Курсор — банка пива — живёт в CSS (css/home.css) и js/cursor.js.
-import { $$, finePointer, reducedMotion } from "./utils.js?v=202611201632"
+import { $$, finePointer, reducedMotion } from "./utils.js?v=202611201637"
 
 
 export function initPointer() {

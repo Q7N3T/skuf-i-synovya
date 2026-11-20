@@ -1,9 +1,9 @@
 // «Наши бати» — «Топ-5 друзей» 2007 года.
 // Карточка открывает анкету (одна за раз): на десктопе — широкой панелью под рядом карточек, на телефоне — под своей карточкой.
-// «5+» — как оценка на «Одноклассниках»: один раз с одного браузера. Звук «о-оу» — при раскрытии анкеты, если включён.
+// Звук «о-оу» — при раскрытии анкеты, если включён.
 // Разметку собирает tools/build-data.py из data/team.json; без JS все анкеты открыты.
-import { sound, store } from "./modules/utils.js?v=202611201632"
-import { getLenis } from "./modules/smooth.js?v=202611201632"
+import { sound } from "./modules/utils.js?v=202611201637"
+import { getLenis } from "./modules/smooth.js?v=202611201637"
 
 const list = document.getElementById("teamList")
 if (list) {
@@ -67,44 +67,6 @@ if (list) {
     if ([...document.querySelectorAll("ui-dialog")].some((d) => d.open)) return
     e.preventDefault(); close(open)
   }, true)
-
-  /* ---------- «5+» */
-  const KEY = (id) => `skuf-5plus-${id}`
-  const rated = (id) => { try { return store.get(KEY(id)) === "1" } catch { return false } }
-  list.querySelectorAll("[data-rate]").forEach((b) => {
-    const id = b.dataset.rate, base = +b.dataset.base, name = b.closest(".bati__item").querySelector(".buddy__name").textContent
-    const count = b.querySelector(".buddy__count")
-    const paint = () => {
-      const on = rated(id)
-      count.textContent = base + (on ? 1 : 0)
-      b.classList.toggle("is-rated", on)
-      b.setAttribute("aria-label", on ? `Батя уже оценён — ${name}. Оценок: ${base + 1}` : `Поставить 5+ — ${name}. Оценок: ${base}`)
-    }
-    paint()
-    b.addEventListener("click", () => {
-      if (rated(id)) return tip(b, "Батя уже оценён")
-      try { store.set(KEY(id), "1") } catch {}
-      paint()
-      if (!rated(id)) { count.textContent = base + 1; b.classList.add("is-rated") } // localStorage недоступен — хотя бы в этой вкладке
-      plusOne(b)
-    })
-  })
-
-  function plusOne(b) {
-    if (reduce) return
-    const s = document.createElement("span")
-    s.className = "buddy__plus mono"; s.textContent = "+1"; s.setAttribute("aria-hidden", "true")
-    b.append(s)
-    s.addEventListener("animationend", () => s.remove(), { once: true })
-  }
-  let tipTimer = 0
-  function tip(b, text) {
-    b.querySelector(".buddy__tip")?.remove()
-    const t = document.createElement("span")
-    t.className = "buddy__tip mono"; t.setAttribute("role", "status"); t.textContent = text
-    b.append(t)
-    clearTimeout(tipTimer); tipTimer = setTimeout(() => t.remove(), 1600)
-  }
 
   /* ---------- чекбокс «Звук при входе друга» — та же логика, что у старого переключателя */
   const check = document.getElementById("soundCheck")

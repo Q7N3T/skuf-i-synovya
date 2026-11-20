@@ -207,9 +207,6 @@ def team():
                 <span class="buddy__more mono" aria-hidden="true">Анкета <b>▾</b></span>
               </span>
             </button>
-            <button class="buddy__rate" type="button" data-rate="{i}" data-base="{p["rate"]}" aria-label="Поставить 5+ — {e(p["name"])}. Оценок: {p["rate"]}">
-              <span class="buddy__five">5+</span><span class="buddy__count mono">{p["rate"]}</span>
-            </button>
           </div>
           <section class="anketa" id="anketa-{i}" aria-labelledby="anketa-{i}-name" tabindex="-1">
             <div class="anketa__in">

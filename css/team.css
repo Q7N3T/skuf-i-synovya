@@ -1,6 +1,6 @@
 /* =====================================================================
    team.css — «Наши бати»: блок «Топ-5 друзей» 2007 года.
-   Карточка = аватар в рамке «фото», имя, должность, статус аськи, оценка «5+».
+   Карточка = аватар в рамке «фото», имя, должность, статус аськи.
    Анкета раскрывается под рядом карточек (десктоп) или под своей карточкой (телефон).
    Пиксели аватаров не трогаем: pixelated, без фильтров и скруглений.
    ===================================================================== */
@@ -56,40 +56,13 @@
   position: absolute; left: -1px; bottom: -1px; padding: 1px 6px; background: var(--c-line-strong); color: var(--c-foam);
   font-size: 12px; line-height: 1.3; letter-spacing: 0.04em;
 }
-.buddy__text { display: grid; gap: 4px; align-content: start; min-width: 0; padding-right: 3.6rem; }
+.buddy__text { display: grid; gap: 4px; align-content: start; min-width: 0; }
 .buddy__name { font-family: var(--f-display); font-weight: 700; font-size: var(--fs-md); line-height: 1.15; letter-spacing: -0.02em; }
 .buddy__role { color: var(--c-muted); font-size: var(--fs-sm); }
 .buddy__online { display: inline-flex; align-items: center; gap: var(--s-1); color: var(--c-green); font-size: var(--fs-xs); margin-top: 2px; }
 .buddy__more { margin-top: var(--s-1); color: var(--c-amber); font-size: var(--fs-xs); letter-spacing: 0.04em; }
 .buddy__more b { display: inline-block; font-weight: 400; transition: transform 200ms var(--hover-ease); }
 .buddy__open[aria-expanded="true"] .buddy__more b { transform: rotate(180deg); }
-
-/* оценка «5+» */
-.buddy__rate {
-  position: absolute; top: var(--s-2); right: var(--s-2); z-index: 2; display: inline-flex; align-items: center; gap: 6px;
-  min-height: 32px; padding: 0 8px 0 4px; border: 1px solid var(--c-amber); border-radius: var(--r-pill);
-  background: var(--c-bg); color: var(--c-foam);
-  transition: background-color var(--hover-d) var(--hover-ease);
-}
-.buddy__five {
-  display: inline-grid; place-items: center; min-width: 26px; height: 24px; padding: 0 4px; border-radius: var(--r-pill);
-  background: var(--c-amber); color: var(--c-on-amber); font: 900 12px/1 var(--f-display);
-}
-.buddy__count { font-size: 12px; font-variant-numeric: tabular-nums; }
-.buddy__rate:hover { background: #2a2118; }
-.buddy__rate.is-rated { background: var(--c-amber); }
-.buddy__rate.is-rated .buddy__five { background: var(--c-on-amber); color: var(--c-amber); }
-.buddy__rate.is-rated .buddy__count { color: var(--c-on-amber); font-weight: 700; }
-.buddy__rate:focus-visible { outline: 2px solid var(--c-foam); outline-offset: 2px; }
-.buddy__plus {
-  position: absolute; right: 6px; top: -4px; color: var(--c-amber); font-size: 14px; font-weight: 700; pointer-events: none;
-  animation: plus-one 650ms cubic-bezier(.2, .7, .2, 1) forwards;
-}
-@keyframes plus-one { from { transform: translateY(0); opacity: 1; } to { transform: translateY(-22px); opacity: 0; } }
-.buddy__tip {
-  position: absolute; right: 0; top: calc(100% + 6px); padding: 4px 8px; white-space: nowrap; border-radius: 4px;
-  background: var(--c-foam); color: var(--c-on-amber); font-size: 12px; pointer-events: none;
-}
 
 /* ---------- Анкета */
 .anketa { margin-top: var(--s-1); }

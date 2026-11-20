@@ -24,9 +24,8 @@
 
 <link rel="preload" href="assets/fonts/unbounded-cyrillic-900-normal.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="preload" href="assets/fonts/onest-cyrillic-400-normal.woff2" as="font" type="font/woff2" crossorigin />
-<link rel="stylesheet" href="css/crt.css?v=202611201414" />
-<link rel="stylesheet" href="css/radio.css?v=202611201414" />
-<link rel="stylesheet" href="css/main.css?v=202611201414" />
+<link rel="stylesheet" href="css/radio.css?v=202611201511" />
+<link rel="stylesheet" href="css/main.css?v=202611201511" />
 <script>
   // Класс js — до первой отрисовки, чтобы стартовые состояния анимаций не мигали.
   (function (root) {
@@ -34,20 +33,17 @@
     if (matchMedia("(prefers-reduced-motion: no-preference)").matches) root.classList.add("motion")
     try { if (!sessionStorage.getItem("skuf-booted")) root.classList.add("is-booting") } catch (e) {}
     try { if (localStorage.getItem("skuf-nostalgia") === "0") root.classList.add("no-nostalgia") } catch (e) {}
-    // телевизор СКУФТРОН: экран чёрный до эффекта включения (crt.js); без режима ностальгии — обычный сайт
-    if (!root.classList.contains("no-nostalgia")) root.classList.add("crt-on", "crt-boot")
     // Страховка: если скрипты не загрузились, контент всё равно показывается.
     setTimeout(function () { if (!root.dataset.ready) root.classList.remove("motion", "is-booting") }, 4000)
-    setTimeout(function () { root.classList.remove("crt-boot") }, 6000)
   })(document.documentElement)
 </script>
 <script type="module" src="vendor/ui-sdk/web.js"></script>
 <script defer src="vendor/gsap/gsap.min.js"></script>
 <script defer src="vendor/gsap/ScrollTrigger.min.js"></script>
 <script defer src="vendor/lenis/lenis.min.js"></script>
-<script type="module" src="js/crt.js?v=202611201414"></script>
-<script type="module" src="js/radio.js?v=202611201414"></script>
-<script type="module" src="js/main.js?v=202611201414"></script>
+<script type="module" src="js/skidka.js?v=202611201511"></script>
+<script type="module" src="js/radio.js?v=202611201511"></script>
+<script type="module" src="js/main.js?v=202611201511"></script>
 </head>
 <body>
 
@@ -482,7 +478,7 @@
             </span>
             <span class="member__back">
               <span class="member__status">«Я обожаю свою работу!»</span>
-              <span class="member__bio">Кеги, поставщики, ЕГАИС. Наливает только 18+. Решает, когда «круглосуточно» заканчивается.</span>
+              <span class="member__bio">Кеги, поставщики, ЕГАИС. Наливает только 18+. Решает, когда «последняя» действительно последняя.</span>
               <span class="member__flip mono"><svg aria-hidden="true"><use href="#i-flip"/></svg>назад</span>
             </span>
           </button>
@@ -689,10 +685,10 @@
           <p class="teletext__bar mono" aria-hidden="true"><span>P100</span><span>СКУФ-ТЕКСТ</span><span>100</span><span id="ttClock">20:07:00</span></p>
           <h3 class="contact__title"><button class="contact__toggle" type="button" id="teletextBtn"><svg aria-hidden="true"><use href="#i-clock"/></svg>Часы работы</button></h3>
           <dl class="dl">
-            <div><dt>Пн–Вс</dt><dd>круглосуточно<sup>*</sup></dd></div>
-            <div><dt>Бар</dt><dd>пока Серега у крана</dd></div>
+            <div><dt>Барбершоп</dt><dd class="nowrap">10:00–22:00</dd></div>
+            <div><dt>Бар</dt><dd>12:00–00:00, пт–сб до 01:00<sup>*</sup></dd></div>
           </dl>
-          <p class="contact__note">* Со слов Сереги. Сергей — понятие растяжимое.</p>
+          <p class="contact__note">* Или пока Серега у крана. Сергей — понятие растяжимое.</p>
         </div>
         <div class="contact" data-reveal>
           <h3 class="contact__title"><svg aria-hidden="true"><use href="#i-phone"/></svg>Связь</h3>
@@ -745,7 +741,7 @@
       </ui-toggle>
       <p class="mono muted" id="eggCount" aria-live="polite">Найдено пасхалок: 0/8</p>
     </div>
-    <p class="footer__updated mono">Последнее обновление: 14.11.2007 · Оптимизировано для модема 56k · Лучше всего смотрится на ЭЛТ-телевизоре СКУФТРОН 21″ и с включённым Winamp</p>
+    <p class="footer__updated mono">Последнее обновление: 14.11.2007 · Оптимизировано для модема 56k · Лучше всего слушается с включённым Скуф FM</p>
     <p class="warn">Чрезмерное употребление алкоголя вредит вашему здоровью · 18+</p>
   </div>
 </footer>
@@ -857,34 +853,6 @@
 <div class="cursor" id="cursor" aria-hidden="true"></div>
 
 
-<!-- ============ ТЕЛЕВИЗОР «СКУФТРОН»: отдельный fixed-слой поверх страницы (css/crt.css, js/crt.js) ============ -->
-<div class="crt" id="crt">
-  <div class="crt__screen" aria-hidden="true">
-    <div class="crt__lines"></div>
-    <p class="crt__osd" aria-hidden="true"></p>
-    <div class="crt__power"><i></i><i></i><span class="crt__beam"></span></div>
-  </div>
-  <button class="crt__off-msg" type="button" aria-label="Включить телевизор">Батя смотрит футбол. Нажми, чтобы вернуть сайт</button>
-  <div class="crt__case" aria-hidden="true"></div>
-  <div class="crt__rim" aria-hidden="true"></div>
-  <div class="crt__panel">
-    <div class="crt__left" aria-hidden="true"><span class="crt__grille"></span><span class="crt__sticker" aria-hidden="true"><img class="crt__troll" src="assets/troll.png" width="60" height="50" alt="" decoding="async" /><b>Problem?</b></span></div>
-    <div class="crt__brand" aria-hidden="true"><span class="crt__logo">СКУФТРОН</span><span class="crt__model">21″ · Trinitron не завезли</span></div>
-    <div class="crt__right">
-      <nav class="crt__ch" aria-label="Каналы телевизора">
-        <button class="crt__btn" type="button" data-ch="#prices" title="01 Прайс">CH1</button>
-        <button class="crt__btn" type="button" data-ch="#gold" title="02 Пузо Карт">CH2</button>
-        <button class="crt__btn" type="button" data-ch="#team" title="03 Бати">CH3</button>
-        <button class="crt__btn" type="button" data-ch="#faq" title="04 Вопросы">CH4</button>
-        <button class="crt__btn" type="button" data-ch="#guestbook" title="05 Гостевая">CH5</button>
-        <button class="crt__btn" type="button" data-ch="#contacts" title="06 Контакты">CH6</button>
-      </nav>
-      <div class="crt__vol"><button class="crt__btn" type="button" data-vol aria-label="Громкость тише">VOL −</button><button class="crt__btn" type="button" data-vol aria-label="Громкость громче">VOL +</button><span class="crt__tip" role="status">Громкость регулирует батя</span></div>
-      <span class="crt__led" aria-hidden="true"></span>
-      <button class="crt__power-btn" type="button" aria-label="Питание телевизора"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v9M6.3 6.8a8 8 0 1 0 11.4 0"/></svg></button>
-    </div>
-  </div>
-</div>
 
 </body>
 </html>

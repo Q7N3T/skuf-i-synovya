@@ -485,3 +485,11 @@
 .s-road--5 { grid-template-columns: repeat(5, 1fr); }
 .s-road--5 span { font-size: 19px; }
 .s-road--5 b { font-size: 30px; }
+
+/* ---------- Афиша: неделя бара и разбивка выручки */
+.s-table--week td:first-child { font-family: var(--f-mono); color: var(--c-amber); white-space: nowrap; }
+.s-table--week td:last-child { color: var(--c-muted); }
+.s-split-list { display: grid; margin: 4px 0 16px; border-top: 1px solid var(--c-line); }
+.s-split-list li { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 10px 0; border-bottom: 1px solid var(--c-line); font-size: 19px; line-height: 1.3; }
+.s-split-list b { flex: none; font-family: var(--f-mono); font-weight: 500; font-size: 17px; color: var(--c-amber); white-space: nowrap; }
+.s-table--week td:nth-child(n+3), .s-table--week th:nth-child(n+3) { text-align: left; white-space: normal; }

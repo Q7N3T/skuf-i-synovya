@@ -88,10 +88,15 @@
 .anketa__fields dd { font-size: var(--fs-sm); color: var(--c-foam); }
 .anketa__todo { color: var(--c-muted); font-style: italic; }
 .anketa__foot { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-2) var(--s-3); margin-top: var(--s-1); }
-.anketa__gifts { display: flex; align-items: center; gap: 10px; margin-right: auto; color: var(--c-muted); font-size: 12px; }
-.anketa__gifts ul { display: flex; gap: 6px; }
-.anketa__gifts li { display: grid; place-items: center; width: 34px; height: 34px; border: 1px dashed var(--c-line-strong); border-radius: 6px; background: var(--c-bg); color: var(--c-amber); }
-.anketa__gifts svg { width: 18px; height: 18px; }
+.anketa__badges { display: grid; gap: 8px; margin-right: auto; }
+.anketa__badges ul { display: flex; flex-wrap: wrap; gap: 8px; }
+.anketa__badges li {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 36px; padding: 4px 12px 4px 6px;
+  border: 1px solid var(--c-line-strong); border-radius: var(--r-pill); background: var(--c-bg);
+  font-size: var(--fs-sm); color: var(--c-foam);
+}
+.anketa__badges svg { width: 26px; height: 26px; padding: 4px; flex: none; border-radius: 50%; background: var(--c-amber); color: var(--c-on-amber); }
+.anketa__foot { align-items: flex-end; }
 .anketa__close { min-height: var(--tap); padding: 0 4px; border: 0; background: none; color: var(--c-muted); font-size: var(--fs-xs); }
 .anketa__close:hover { color: var(--c-foam); }
 @media (max-width: 599px) {

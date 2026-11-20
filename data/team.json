@@ -14,9 +14,15 @@
       "img": "assets/team/grekov.webp?v=6",
       "tap": null,
       "karaoke": null,
-      "gifts": [
-        "mug",
-        "flower"
+      "badges": [
+        {
+          "icon": "mug",
+          "text": "Открыл первую кегу"
+        },
+        {
+          "icon": "flower",
+          "text": "В аське с 2007-го"
+        }
       ]
     },
     {
@@ -29,9 +35,15 @@
       "img": "assets/team/dolnikov.webp?v=6",
       "tap": null,
       "karaoke": null,
-      "gifts": [
-        "mug",
-        "mic"
+      "badges": [
+        {
+          "icon": "mic",
+          "text": "Открывает караоке"
+        },
+        {
+          "icon": "mug",
+          "text": "Знает каждый кран"
+        }
       ]
     },
     {
@@ -44,9 +56,15 @@
       "img": "assets/team/goncharenko.webp?v=6",
       "tap": null,
       "karaoke": null,
-      "gifts": [
-        "mug",
-        "combo"
+      "badges": [
+        {
+          "icon": "combo",
+          "text": "Сводит кассу за 5 минут"
+        },
+        {
+          "icon": "mug",
+          "text": "Считает пену в рублях"
+        }
       ]
     },
     {
@@ -59,10 +77,15 @@
       "img": "assets/team/klemeshev.webp?v=6",
       "tap": null,
       "karaoke": null,
-      "gifts": [
-        "mug",
-        "mug",
-        "flower"
+      "badges": [
+        {
+          "icon": "mug",
+          "text": "10 000 кружек без пролива"
+        },
+        {
+          "icon": "flower",
+          "text": "Помнит всех по нику"
+        }
       ]
     },
     {
@@ -75,9 +98,15 @@
       "img": "assets/team/belobrov.webp?v=6",
       "tap": null,
       "karaoke": null,
-      "gifts": [
-        "flower",
-        "scissors"
+      "badges": [
+        {
+          "icon": "flower",
+          "text": "Автор всех статусов"
+        },
+        {
+          "icon": "scissors",
+          "text": "Режет лишние запятые"
+        }
       ]
     }
   ],

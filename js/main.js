@@ -1,14 +1,14 @@
 // Точка входа. Порядок: модули без анимаций → прелоадер → интро → появление по скроллу.
-import { $, $$, reducedMotion, store } from "./modules/utils.js?v=202611201641"
-import { boot } from "./modules/boot.js?v=202611201641"
-import { initSmooth, scrollToTarget } from "./modules/smooth.js?v=202611201641"
-import { initHeader } from "./modules/header.js?v=202611201641"
-import { setupHero, playHero } from "./modules/hero.js?v=202611201641"
-import { initMarquee } from "./modules/marquee.js?v=202611201641"
-import { initPuzo } from "./modules/puzo.js?v=202611201641"
-import { initBooking } from "./modules/booking.js?v=202611201641"
-import { initPointer } from "./modules/pointer.js?v=202611201641"
-import { initRoll } from "./modules/roll.js?v=202611201641"
+import { $, $$, reducedMotion, store } from "./modules/utils.js?v=202611201642"
+import { boot } from "./modules/boot.js?v=202611201642"
+import { initSmooth, scrollToTarget } from "./modules/smooth.js?v=202611201642"
+import { initHeader } from "./modules/header.js?v=202611201642"
+import { setupHero, playHero } from "./modules/hero.js?v=202611201642"
+import { initMarquee } from "./modules/marquee.js?v=202611201642"
+import { initPuzo } from "./modules/puzo.js?v=202611201642"
+import { initBooking } from "./modules/booking.js?v=202611201642"
+import { initPointer } from "./modules/pointer.js?v=202611201642"
+import { initRoll } from "./modules/roll.js?v=202611201642"
 
 const { gsap, ScrollTrigger } = window
 if (gsap) gsap.registerPlugin(ScrollTrigger)
@@ -60,7 +60,7 @@ boot().then(() => {
   // Пасхалки — отдельный модуль: грузится при первом действии посетителя или через 8 с простоя.
   // Видимая часть (цитатник, гостевая, реклама) — обычный HTML и от модуля не зависит.
   let eggs = null
-  const loadEggs = () => (eggs ||= import("./easter-eggs.js?v=202611201641").catch((err) => console.error("[easter-eggs]", err)))
+  const loadEggs = () => (eggs ||= import("./easter-eggs.js?v=202611201642").catch((err) => console.error("[easter-eggs]", err)))
   const triggers = ["pointerdown", "keydown", "wheel", "touchstart", "scroll"]
   const onFirst = () => { triggers.forEach((t) => removeEventListener(t, onFirst)); loadEggs() }
   triggers.forEach((t) => addEventListener(t, onFirst, { passive: true, once: true }))

@@ -186,14 +186,13 @@ def menu():
 
 
 # ------------------------------------------------------------------ наши бати
-GIFT = {"mug": "Кружка", "flower": "Цветок из аськи", "mic": "Микрофон", "combo": "Молния", "scissors": "Ножницы"}
 
 
 def team():
     cards = []
     for p in T["people"]:
         i = p["id"]
-        gifts = "".join(f'<li title="{GIFT[g]}"><svg aria-hidden="true"><use href="#i-{g}"/></svg><span class="sr-only">{GIFT[g]}</span></li>' for g in p["gifts"])
+        badges = "".join(f'<li><svg aria-hidden="true"><use href="#i-{b["icon"]}"/></svg>{e(nb(b["text"]))}</li>' for b in p["badges"])
         tap = e(nb(p["tap"])) if p["tap"] else f'<span class="anketa__todo">{e(nb(T["todo"]["tap"]))}</span>'
         kar = e(nb(p["karaoke"])) if p["karaoke"] else f'<span class="anketa__todo">{e(nb(T["todo"]["karaoke"]))}</span>'
         cards.append(f"""        <li class="bati__item" data-id="{i}">
@@ -226,7 +225,7 @@ def team():
                   <div><dt>Был в{N}сети</dt><dd>{T["seen"]}</dd></div>
                 </dl>
                 <div class="anketa__foot">
-                  <div class="anketa__gifts"><span class="mono">Подарки</span><ul>{gifts}</ul></div>
+                  <div class="anketa__badges"><p class="anketa__label mono">Значки за{N}заслуги</p><ul>{badges}</ul></div>
                   <button class="btn btn--amber" type="button" data-book="table" data-event="Позвать за{N}стол — {e(p["name"])}" aria-haspopup="dialog">Позвать за{N}стол</button>
                   <button class="anketa__close mono" type="button" data-close-anketa>Свернуть ▴</button>
                 </div>

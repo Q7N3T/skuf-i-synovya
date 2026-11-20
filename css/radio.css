@@ -94,3 +94,11 @@
   .radio__stage .pl-top { gap: 14px; }
   .radio__stage .pl-title { font-size: 18px; }
 }
+
+/* 19 треков: список прокручивается внутри, как плейлист Winamp; края мягко гаснут */
+.radio__list {
+  max-height: min(31rem, 60vh); overflow-y: auto; overscroll-behavior: contain; padding-inline: 12px; margin-inline: -12px;
+  scrollbar-width: thin; scrollbar-color: var(--c-amber-deep) transparent;
+  -webkit-mask: linear-gradient(#000 calc(100% - 32px), transparent); mask: linear-gradient(#000 calc(100% - 32px), transparent);
+  padding-bottom: 24px;
+}

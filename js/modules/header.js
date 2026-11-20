@@ -1,5 +1,5 @@
 // Шапка: фон после скролла, прячется при скролле вниз, активный пункт меню.
-import { $, $$ } from "./utils.js?v=202611201355"
+import { $, $$ } from "./utils.js?v=202611201357"
 
 export function initHeader() {
   const header = $("#header")

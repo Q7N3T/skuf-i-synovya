@@ -55,7 +55,7 @@
 .radio__lead { color: var(--c-muted); font-size: var(--fs-md); max-width: 40ch; margin-bottom: var(--s-4); }
 .radio__list { display: grid; gap: 0; border-top: 1px solid var(--c-line); counter-reset: tr; }
 .radio__list li {
-  position: relative; display: grid; grid-template-columns: 2.2rem minmax(0, 1fr) auto; align-items: center; gap: var(--s-2);
+  position: relative; display: grid; grid-template-columns: 2.2rem minmax(0, 1fr); align-items: center; gap: var(--s-2);
   border-bottom: 1px solid var(--c-line); counter-increment: tr;
 }
 .radio__pick {
@@ -72,8 +72,6 @@
 .radio__list li::before { content: counter(tr, decimal-leading-zero); font-family: var(--f-mono); font-size: 12px; color: var(--c-muted); }
 .radio__list b { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: var(--f-display); font-weight: 700; font-size: var(--fs-base); letter-spacing: -0.01em; }
 .radio__list span { color: var(--c-muted); font-size: var(--fs-sm); }
-.radio__list a { color: var(--c-muted); font-size: 12px; font-family: var(--f-mono); text-decoration: none; white-space: nowrap; }
-.radio__list a:hover { color: var(--c-amber); }
 .radio__note { margin-top: var(--s-2); color: var(--c-muted); font-size: 12px; }
 .radio__stage { position: relative; display: grid; place-items: center; padding: var(--s-6) 0; isolation: isolate; }
 /* за стеклом — янтарное «пятно света» и бороздки винила: стеклу есть что преломлять */

@@ -192,6 +192,7 @@ def team():
     cards = []
     for p in T["people"]:
         i = p["id"]
+        notice = f'<p class="anketa__notice">{e(nb(p["notice"]))}</p>\n                ' if p.get("notice") else ""
         badges = "".join(f'<li><svg aria-hidden="true"><use href="#i-{b["icon"]}"/></svg>{e(nb(b["text"]))}</li>' for b in p["badges"])
         tap = e(nb(p["tap"])) if p["tap"] else f'<span class="anketa__todo">{e(nb(T["todo"]["tap"]))}</span>'
         kar = e(nb(p["karaoke"])) if p["karaoke"] else f'<span class="anketa__todo">{e(nb(T["todo"]["karaoke"]))}</span>'
@@ -215,7 +216,7 @@ def team():
                 <p class="buddy__online mono"><i class="dot" aria-hidden="true"></i>{e(p["online"])}</p>
               </div>
               <div class="anketa__main">
-                <p class="anketa__label mono">Статус</p>
+                {notice}<p class="anketa__label mono">Статус</p>
                 <p class="anketa__status">{e(nb(p["status"]))}</p>
                 <dl class="anketa__fields">
                   <div><dt>Должность</dt><dd>{e(nb(p["role"]))}</dd></div>

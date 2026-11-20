@@ -150,3 +150,9 @@
   .buddy:hover { transform: none; }
 }
 .bati:not(.is-js) .anketa__side .buddy__frame, .bati:not(.is-js) .anketa__side .buddy__online { display: none; } /* без JS аватар уже есть в карточке рядом */
+
+/* плашка-«маркировка» в анкете Сереги: канцелярский стиль, пародия */
+.anketa__notice {
+  padding: 10px 12px; border: 1.5px solid var(--c-foam); background: var(--c-bg);
+  font: 600 12px/1.45 var(--f-mono); letter-spacing: 0.04em; text-transform: uppercase; color: var(--c-foam);
+}

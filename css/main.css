@@ -421,11 +421,11 @@ ui-toggle button[data-pressed] .is-off { display: none; }
 .roll__n { align-self: start; margin-top: 1.6em; color: var(--c-muted); font-size: var(--fs-xs); transition: color var(--hover-d) var(--hover-ease); }
 .roll__word {
   display: flex; font-family: var(--f-display); font-weight: 900; text-transform: uppercase;
-  font-size: clamp(2.6rem, 10.5vw, 9.5rem); line-height: 1.3; letter-spacing: -0.05em;
+  font-size: clamp(2.2rem, 8.4vw, 8.5rem); line-height: 1.3; letter-spacing: -0.05em; /* «СТРИГИСЬ» — самое длинное слово — помещается рядом с подписью */
 }
 .roll__hint { grid-column: 2; color: var(--c-muted); font-size: var(--fs-xs); letter-spacing: var(--tr-caps); text-transform: uppercase; padding-bottom: var(--s-1); }
 /* барабан: буква дважды, сверху светлая, снизу янтарная — прокрутка меняет и цвет */
-.roll__ch { display: inline-block; height: 1.3em; overflow: hidden; white-space: pre; } /* 1.3em: влезают «Й» с дужкой и хвост «Щ» */
+.roll__ch { display: inline-block; height: 1.3em; overflow-x: visible; overflow-y: clip; white-space: pre; } /* режем только по вертикали (барабан), по горизонтали глиф шире ячейки из-за отрицательного трекинга; 1.3em — влезают «Й» с дужкой и хвост «Щ» */
 .roll__in { display: flex; flex-direction: column; transition: transform 0.62s cubic-bezier(0.34, 1.45, 0.5, 1); transition-delay: calc(var(--i) * 32ms); will-change: transform; }
 .roll__in i { font-style: normal; height: 1.3em; line-height: 1.3; }
 .roll__in i + i { color: var(--c-amber); }

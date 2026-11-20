@@ -1,6 +1,6 @@
 // Презентация-защита: масштаб сцены, навигация (клавиши, свайп, кнопки, #номер), анимация слайдов, рикролл.
-import { initTabs, initSteps, initMarker, initPlayer } from "./deck-ui.js?v=202611201409"
-import { initStats } from "./deck-stats.js?v=202611201409"
+import { initTabs, initSteps, initMarker, initPlayer } from "./deck-ui.js?v=202611201412"
+import { initStats } from "./deck-stats.js?v=202611201412"
 
 const $ = (s, r = document) => r.querySelector(s)
 const $$ = (s, r = document) => [...r.querySelectorAll(s)]

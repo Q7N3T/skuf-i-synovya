@@ -1,7 +1,7 @@
 // Телевизор «СКУФТРОН»: корпус, OSD, включение/выключение, каналы — плюс окно ошибки «скидка.exe».
 // Отдельный модуль: откатывается удалением <script src="js/crt.js"> и блока .crt в разметке.
 // Ничего не оборачивает и не трансформирует html/body/main/секции — только свой fixed-слой.
-import { getLenis } from "./modules/smooth.js?v=202611201409"
+import { getLenis } from "./modules/smooth.js?v=202611201412"
 
 const root = document.documentElement
 const $ = (s, r = document) => r.querySelector(s)

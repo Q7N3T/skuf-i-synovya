@@ -1,6 +1,6 @@
 // Презентация-защита: масштаб сцены, навигация (клавиши, свайп, кнопки, #номер), анимация слайдов, рикролл.
-import { initTabs, initSteps, initMarker, initPlayer } from "./deck-ui.js?v=202611201412"
-import { initStats } from "./deck-stats.js?v=202611201412"
+import { initTabs, initSteps, initMarker, initPlayer } from "./deck-ui.js?v=202611201414"
+import { initStats } from "./deck-stats.js?v=202611201414"
 
 const $ = (s, r = document) => r.querySelector(s)
 const $$ = (s, r = document) => [...r.querySelectorAll(s)]
@@ -33,13 +33,13 @@ const regSteps = $("#regSteps"); if (regSteps) own(regSteps, initSteps(regSteps)
 $$("[data-mark-root]").forEach((root) => { const m = initMarker(root); own(root, { show: () => m.draw(), hide: () => m.hide() }) })
 const player = $("#deckPlayer")
 if (player) own(player, initPlayer(player, [
-  { title: "Районы-кварталы", artist: "Звери", duration: 224, art: 0, accent: "#f2a93b" },
-  { title: "Mr. Brightside", artist: "The Killers", duration: 222, art: 1, accent: "#4cd964" },
-  { title: "Крошка моя", artist: "Руки Вверх", duration: 237, art: 2, accent: "#ff7a5c" },
-  { title: "Seven Nation Army", artist: "The White Stripes", duration: 231, art: 1, accent: "#f2a93b" },
-  { title: "Полковнику никто не пишет", artist: "Би-2", duration: 284, art: 0, accent: "#5b8cff" },
-  { title: "Feel Good Inc.", artist: "Gorillaz", duration: 221, art: 2, accent: "#4cd964" },
-]))
+  { src: "assets/audio/zveri-rayony-kvartaly.mp3", title: "Районы-кварталы", artist: "Звери", duration: 224, art: 0, accent: "#f2a93b" },
+  { src: "assets/audio/the-killers-mr-brightside.mp3", title: "Mr. Brightside", artist: "The Killers", duration: 222, art: 1, accent: "#4cd964" },
+  { src: "assets/audio/ruki-vverh-kroshka-moya.mp3", title: "Крошка моя", artist: "Руки Вверх", duration: 237, art: 2, accent: "#ff7a5c" },
+  { src: "assets/audio/white-stripes-seven-nation-army.mp3", title: "Seven Nation Army", artist: "The White Stripes", duration: 231, art: 1, accent: "#f2a93b" },
+  { src: "assets/audio/bi-2-polkovniku.mp3", title: "Полковнику никто не пишет", artist: "Би-2", duration: 284, art: 0, accent: "#5b8cff" },
+  { src: "assets/audio/gorillaz-feel-good-inc.mp3", title: "Feel Good Inc.", artist: "Gorillaz", duration: 221, art: 2, accent: "#4cd964" },
+], { autoplay: true }))
 function partsOn(slide) { parts.forEach((p) => (p.slide === slide ? p.show?.() : p.hide?.())) }
 
 /* ---------- Рикролл (последний слайд): наше видео + надпись + танцующие мы, всё в такт музыке */
@@ -172,6 +172,7 @@ function show(i, dir = 1) {
   if (i !== total - 1) rickOff()
   stats(slides[i] === statsSlide)
   // после анимации входа слайда — чтобы маркер мерил уже вставший на место текст
+  parts.forEach((p) => { if (p.slide !== slides[i]) p.hide?.() })   // уходим со слайда — музыка и анимации стихают сразу
   setTimeout(() => { if (index === i) partsOn(slides[i]) }, reduce ? 0 : 420)
 }
 function go(i) {

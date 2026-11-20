@@ -73,7 +73,7 @@
 .radio__list b { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: var(--f-display); font-weight: 700; font-size: var(--fs-base); letter-spacing: -0.01em; }
 .radio__list span { color: var(--c-muted); font-size: var(--fs-sm); }
 .radio__note { margin-top: var(--s-2); color: var(--c-muted); font-size: 12px; }
-.radio__stage { position: relative; display: grid; place-items: center; padding: var(--s-6) 0; isolation: isolate; }
+.radio__stage { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); place-items: center; padding: var(--s-6) 0; isolation: isolate; }
 /* за стеклом — янтарное «пятно света» и бороздки винила: стеклу есть что преломлять */
 .radio__stage::before {
   content: ""; position: absolute; z-index: -1; width: min(520px, 100%); aspect-ratio: 1; border-radius: 50%;

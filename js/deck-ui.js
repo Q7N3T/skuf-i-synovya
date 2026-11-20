@@ -297,7 +297,7 @@ const ICON = {
   pause: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="4.5" width="4" height="15" rx="1" fill="currentColor"/><rect x="14" y="4.5" width="4" height="15" rx="1" fill="currentColor"/></svg>',
 }
 let filterSeq = 0
-export function initPlayer(root, tracks) {
+export function initPlayer(root, tracks, opts = {}) {
   const fid = "glass" + ++filterSeq
   root.classList.add("pl")
   root.innerHTML = `
@@ -512,7 +512,8 @@ export function initPlayer(root, tracks) {
     // выбрать трек из плейлиста и сразу играть
     select(i) { load(i); setPlaying(true) },
     pause() { if (e.playing) setPlaying(false) },
-    show() { active = true; e.cruise?.play(); wakeP() },
-    hide() { active = false; e.cruise?.pause(); cancelAnimationFrame(rafP); rafP = 0 },
+    // opts.autoplay (презентация): звук включается при показе слайда и глохнет при уходе с него
+    show() { active = true; e.cruise?.play(); wakeP(); if (opts.autoplay && audio && !e.playing) setPlaying(true) },
+    hide() { if (opts.autoplay && audio && e.playing) setPlaying(false); active = false; e.cruise?.pause(); cancelAnimationFrame(rafP); rafP = 0 },
   }
 }

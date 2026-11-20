@@ -1,8 +1,8 @@
 // Пасхалки и отсылки к интернету 2000-х. Модуль грузится лениво, когда браузер свободен.
 // Всё отключается тоглом «Режим ностальгии» в футере. Звук — только по явному действию.
 // Шпаргалка по всем пасхалкам — в README.
-import { $, $$, store, toast, sound, reducedMotion, finePointer } from "./modules/utils.js?v=202611151120"
-import { getLenis } from "./modules/smooth.js?v=202611151120"
+import { $, $$, store, toast, sound, reducedMotion, finePointer } from "./modules/utils.js?v=202611201328"
+import { getLenis } from "./modules/smooth.js?v=202611201328"
 
 /* ---------- Учёт находок */
 const EGGS = {

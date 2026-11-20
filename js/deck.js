@@ -1,6 +1,6 @@
 // Презентация-защита: масштаб сцены, навигация (клавиши, свайп, кнопки, #номер), анимация слайдов, рикролл.
-import { PAL, SPRITES } from "./deck-sprites.js?v=202611151120"
-import { initStats } from "./deck-stats.js?v=202611151120"
+import { initTabs, initSteps, initMarker, initPlayer } from "./deck-ui.js?v=202611201328"
+import { initStats } from "./deck-stats.js?v=202611201328"
 
 const $ = (s, r = document) => r.querySelector(s)
 const $$ = (s, r = document) => [...r.querySelectorAll(s)]
@@ -25,35 +25,24 @@ new ResizeObserver(fit).observe(deck)
 addEventListener("orientationchange", fit)
 $("#rotateClose")?.addEventListener("click", () => { const r = $("#deckRotate"); r.dataset.closed = "1"; r.hidden = true })
 
-/* ---------- Пакет документов (слайд 7) */
-const DOCS = [
-  ["00-opis-i-obyazannosti", "Опись и распределение обязанностей"], ["01-forma-r11001", "Заявление Р11001"],
-  ["02-uvedomlenie-usn", "Уведомление о переходе на УСН"], ["03-spravka-ustavnogo-kapitala", "Справка об оплате уставного капитала"],
-  ["04-uchetnaya-politika", "Учётная политика"], ["05-proverka-kontragentov", "Положение о проверке контрагентов"],
-  ["06-pvtr", "Правила внутреннего трудового распорядка"], ["07-reshenie-uchreditelya", "Решение единственного учредителя"],
-  ["08-prikazy-direktor-glavbuh", "Приказы: директор и главбух"], ["09-kommercheskaya-tayna", "Положение о коммерческой тайне"],
-  ["10-instrukciya-ohrana-truda", "Инструкция по охране труда"], ["11-kartochka-ooo", "Карточка организации"],
-  ["12-garantiynoe-pismo", "Гарантийное письмо собственника"], ["13-dogovor-postavki", "Договор поставки (ТФД)"],
-  ["14-ustav", "Устав"], ["15-list-zapisi-egryul", "Лист записи ЕГРЮЛ (образец)"],
-  ["16-trudovoy-dogovor", "Трудовой договор"], ["17-shtatnoe-raspisanie", "Штатное расписание"],
-  ["18-politika-pdn-i-soglasie", "Политика ПДн и согласие"],
-]
-$("#docList").append(...DOCS.map(([file, title], i) => {
-  const li = document.createElement("li")
-  li.innerHTML = `<a href="documents/${file}.docx" download><svg aria-hidden="true"><use href="#i-doc"/></svg><span><b>${String(i).padStart(2, "0")} · .docx</b></span></a>`
-  li.querySelector("span").append(title)
-  return li
-}))
+/* ---------- Интерактивные элементы слайдов: живут только пока их слайд открыт */
+const parts = []   // { slide, show(), hide() }
+const own = (el, api) => el && parts.push({ slide: el.closest(".slide"), ...api })
+const docTabs = $("#docTabs"); if (docTabs) own(docTabs, initTabs(docTabs))
+const regSteps = $("#regSteps"); if (regSteps) own(regSteps, initSteps(regSteps))
+$$("[data-mark-root]").forEach((root) => { const m = initMarker(root); own(root, { show: () => m.draw(), hide: () => m.hide() }) })
+const player = $("#deckPlayer")
+if (player) own(player, initPlayer(player, [
+  { title: "Районы-кварталы", artist: "Звери", duration: 224, art: 0, accent: "#f2a93b" },
+  { title: "Mr. Brightside", artist: "The Killers", duration: 222, art: 1, accent: "#4cd964" },
+  { title: "Крошка моя", artist: "Руки Вверх", duration: 237, art: 2, accent: "#ff7a5c" },
+  { title: "Seven Nation Army", artist: "The White Stripes", duration: 231, art: 1, accent: "#f2a93b" },
+  { title: "Полковнику никто не пишет", artist: "Би-2", duration: 284, art: 0, accent: "#5b8cff" },
+  { title: "Feel Good Inc.", artist: "Gorillaz", duration: 221, art: 2, accent: "#4cd964" },
+]))
+function partsOn(slide) { parts.forEach((p) => (p.slide === slide ? p.show?.() : p.hide?.())) }
 
-/* ---------- Пиксельные иконки мемов (слайд 14) */
-$$("canvas[data-sprite]").forEach((cv) => {
-  const rows = SPRITES[cv.dataset.sprite]
-  const ctx = cv.getContext("2d")
-  ctx.fillStyle = "#241d16"; ctx.fillRect(0, 0, 16, 16)
-  rows.forEach((row, y) => [...row].forEach((ch, x) => { if (PAL[ch]) { ctx.fillStyle = PAL[ch]; ctx.fillRect(x, y, 1, 1) } }))
-})
-
-/* ---------- Рикролл (слайд 19): наше видео + надпись + танцующие мы, всё в такт музыке */
+/* ---------- Рикролл (последний слайд): наше видео + надпись + танцующие мы, всё в такт музыке */
 const LOCAL = "assets/video/rickroll.mp4"
 const RICK = "https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?autoplay=1&rel=0&playsinline=1&modestbranding=1"
 // Темп и первый удар вычислены по аудиодорожке клипа: 113,65 уд/мин, первый удар на 0,46 с
@@ -182,6 +171,8 @@ function show(i, dir = 1) {
   history.replaceState(null, "", `#${i + 1}`)
   if (i !== total - 1) rickOff()
   stats(slides[i] === statsSlide)
+  // после анимации входа слайда — чтобы маркер мерил уже вставший на место текст
+  setTimeout(() => { if (index === i) partsOn(slides[i]) }, reduce ? 0 : 420)
 }
 function go(i) {
   const n = Math.max(0, Math.min(total - 1, i))
@@ -191,7 +182,7 @@ function go(i) {
 $("#deckPrev").addEventListener("click", () => go(index - 1))
 $("#deckNext").addEventListener("click", () => go(index + 1))
 addEventListener("keydown", (e) => {
-  if (e.target.closest("input, textarea, select")) return
+  if (e.target.closest("input, textarea, select, [role=tab], [role=slider]")) return
   if (["ArrowRight", "PageDown", " "].includes(e.key)) { e.preventDefault(); go(index + 1) }
   else if (["ArrowLeft", "PageUp"].includes(e.key)) { e.preventDefault(); go(index - 1) }
   else if (e.key === "Home") go(0)

@@ -1,5 +1,5 @@
 // «Наши бати»: флип карточки по тапу/клику, «о-оу» по статусу. Аватарки — PNG 48×48 в assets/team.
-import { $, $$, sound } from "./utils.js?v=202611151120"
+import { $, $$, sound } from "./utils.js?v=202611201328"
 
 export function initTeam() {
   $$(".member__card").forEach((card) => {

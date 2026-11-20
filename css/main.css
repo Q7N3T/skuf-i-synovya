@@ -1072,6 +1072,8 @@ button.presence:hover { color: var(--c-foam); }
 /* 1.8 Видимое кольцо фокуса (пена, а не зелёный) */
 :root { --ring: 0 0 0 2px var(--c-bg), 0 0 0 4px var(--c-foam); }
 :focus-visible { outline: 2px solid var(--c-foam); outline-offset: 3px; }
+/* разделы получают фокус при переходе по якорю (для скринридеров) — рамку вокруг всего раздела не рисуем */
+[tabindex="-1"]:focus, [tabindex="-1"]:focus-visible { outline: none; }
 .gb-form__field input:focus-visible, .gb-form__field select:focus-visible, .gb-form__field textarea:focus-visible {
   border-color: var(--c-amber); box-shadow: 0 0 0 3px rgb(242 169 59 / 0.3);
 }

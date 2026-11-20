@@ -1,7 +1,7 @@
 // «Стригись · Пей · Общайся · Кайфуй»: каждая буква — барабан с буквой дважды.
 // Наведение (или фокус) прокатывает буквы слева направо, остальные слова гаснут.
 // Когда никто не наводит и блок на экране — слова подсвечиваются сами по очереди.
-import { $, $$, reducedMotion } from "./utils.js?v=202611201546"
+import { $, $$, reducedMotion } from "./utils.js?v=202611201610"
 
 const STAGGER = 32 // мс между буквами
 
@@ -42,11 +42,6 @@ export function initRoll() {
     link.addEventListener("pointerenter", (e) => { if (e.pointerType === "mouse") { pointerInside = true; on(link) } })
     link.addEventListener("focus", () => on(link))
     link.addEventListener("blur", () => { if (!pointerInside) on(null) })
-    // «Стригись» и «Пей» сразу включают нужный фильтр прайса
-    link.addEventListener("click", () => {
-      const f = link.dataset.filter
-      if (f) $(`#priceFilter ui-segmented-control-item[value="${f}"]`)?.click()
-    })
   })
   nav.addEventListener("pointerleave", () => { pointerInside = false; on(null); idle = 900 })
 

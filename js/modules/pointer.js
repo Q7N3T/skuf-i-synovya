@@ -1,22 +1,10 @@
-// Микроинтеракции указателя: курсор-пузырёк и магнитные кнопки. Только точный указатель.
-import { $, $$, finePointer, reducedMotion } from "./utils.js?v=202611201546"
+// Магнитные кнопки. Только точный указатель. Курсор — банка пива — живёт в CSS (css/home.css) и js/cursor.js.
+import { $$, finePointer, reducedMotion } from "./utils.js?v=202611201610"
 
-const HOVERABLE = "a, button, [data-magnetic], ui-slider-thumb, ui-segmented-control-item, select, input"
 
 export function initPointer() {
   const { gsap } = window
   if (!finePointer || reducedMotion || !gsap) return
-
-  // Курсор-пузырёк
-  const cursor = $("#cursor")
-  const x = gsap.quickTo(cursor, "x", { duration: 0.35, ease: "power3" })
-  const y = gsap.quickTo(cursor, "y", { duration: 0.35, ease: "power3" })
-  addEventListener("pointermove", (e) => {
-    x(e.clientX); y(e.clientY)
-    cursor.classList.add("is-visible")
-    cursor.classList.toggle("is-hover", !!e.target.closest?.(HOVERABLE))
-  }, { passive: true })
-  document.documentElement.addEventListener("pointerleave", () => cursor.classList.remove("is-visible"))
 
   // Магнитные кнопки
   $$("[data-magnetic]").forEach((el) => {

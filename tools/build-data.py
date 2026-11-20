@@ -12,6 +12,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 N = " "
 A = json.loads((ROOT / "data/afisha.json").read_text(encoding="utf-8"))
 M = json.loads((ROOT / "data/menu.json").read_text(encoding="utf-8"))
+T = json.loads((ROOT / "data/team.json").read_text(encoding="utf-8"))
 e = lambda s: html.escape(str(s), quote=True)
 
 
@@ -183,6 +184,63 @@ def menu():
       </div>'''
 
 
+
+# ------------------------------------------------------------------ наши бати
+GIFT = {"mug": "Кружка", "flower": "Цветок из аськи", "mic": "Микрофон", "combo": "Молния", "scissors": "Ножницы"}
+
+
+def team():
+    cards = []
+    for p in T["people"]:
+        i = p["id"]
+        gifts = "".join(f'<li title="{GIFT[g]}"><svg aria-hidden="true"><use href="#i-{g}"/></svg><span class="sr-only">{GIFT[g]}</span></li>' for g in p["gifts"])
+        tap = e(nb(p["tap"])) if p["tap"] else f'<span class="anketa__todo">{e(nb(T["todo"]["tap"]))}</span>'
+        kar = e(nb(p["karaoke"])) if p["karaoke"] else f'<span class="anketa__todo">{e(nb(T["todo"]["karaoke"]))}</span>'
+        cards.append(f"""        <li class="bati__item" data-id="{i}">
+          <div class="buddy" data-reveal>
+            <button class="buddy__open" type="button" id="buddy-{i}" aria-expanded="false" aria-controls="anketa-{i}">
+              <span class="buddy__frame"><img class="buddy__ava" src="{p["img"]}" width="264" height="303" alt="Пиксельный портрет: {e(p["name"])}" loading="lazy" decoding="async" /><span class="buddy__photo mono" aria-hidden="true">фото</span></span>
+              <span class="buddy__text">
+                <span class="buddy__name">{e(nb(p["name"]))}</span>
+                <span class="buddy__role">{e(nb(p["role"]))}</span>
+                <span class="buddy__online mono"><i class="dot" aria-hidden="true"></i>{e(p["online"])}</span>
+                <span class="buddy__more mono" aria-hidden="true">Анкета <b>▾</b></span>
+              </span>
+            </button>
+            <button class="buddy__rate" type="button" data-rate="{i}" data-base="{p["rate"]}" aria-label="Поставить 5+ — {e(p["name"])}. Оценок: {p["rate"]}">
+              <span class="buddy__five">5+</span><span class="buddy__count mono">{p["rate"]}</span>
+            </button>
+          </div>
+          <section class="anketa" id="anketa-{i}" aria-labelledby="anketa-{i}-name" tabindex="-1">
+            <div class="anketa__in">
+              <div class="anketa__side">
+                <span class="buddy__frame buddy__frame--big"><img class="buddy__ava" src="{p["img"]}" width="264" height="303" alt="" loading="lazy" decoding="async" /><span class="buddy__photo mono" aria-hidden="true">фото</span></span>
+                <h3 class="anketa__name" id="anketa-{i}-name">{e(nb(p["name"]))}</h3>
+                <p class="buddy__online mono"><i class="dot" aria-hidden="true"></i>{e(p["online"])}</p>
+              </div>
+              <div class="anketa__main">
+                <p class="anketa__label mono">Статус</p>
+                <p class="anketa__status">{e(nb(p["status"]))}</p>
+                <dl class="anketa__fields">
+                  <div><dt>Должность</dt><dd>{e(nb(p["role"]))}</dd></div>
+                  <div><dt>Чем занят</dt><dd>{e(nb(p["bio"]))}</dd></div>
+                  <div><dt>Любимое на{N}кране</dt><dd>{tap}</dd></div>
+                  <div><dt>Хит в{N}караоке</dt><dd>{kar}</dd></div>
+                  <div><dt>Был в{N}сети</dt><dd>{T["seen"]}</dd></div>
+                </dl>
+                <div class="anketa__foot">
+                  <div class="anketa__gifts"><span class="mono">Подарки</span><ul>{gifts}</ul></div>
+                  <button class="btn btn--amber" type="button" data-book="table" data-event="Позвать за{N}стол — {e(p["name"])}" aria-haspopup="dialog">Позвать за{N}стол</button>
+                  <button class="anketa__close mono" type="button" data-close-anketa>Свернуть ▴</button>
+                </div>
+              </div>
+            </div>
+          </section>
+        </li>""")
+    return f"""      <ul class="bati" id="teamList">
+{chr(10).join(cards)}
+      </ul>"""
+
 def put(src, name, body):
     a, b = f"<!-- data:{name} -->", f"<!-- /data:{name} -->"
     i, j = src.index(a) + len(a), src.index(b)
@@ -194,5 +252,6 @@ if __name__ == "__main__":
     s = p.read_text(encoding="utf-8")
     s = put(s, "afisha", afisha())
     s = put(s, "menu", menu())
+    s = put(s, "team", team())
     p.write_text(s, encoding="utf-8")
     print("ok: afisha", len(A["days"]), "дней; меню", sum(len(M[k]["items"]) for k in ("beer", "snacks", "events", "sets", "barber")), "позиций")

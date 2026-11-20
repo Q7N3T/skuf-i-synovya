@@ -1,0 +1,174 @@
+/* =====================================================================
+   team.css — «Наши бати»: блок «Топ-5 друзей» 2007 года.
+   Карточка = аватар в рамке «фото», имя, должность, статус аськи, оценка «5+».
+   Анкета раскрывается под рядом карточек (десктоп) или под своей карточкой (телефон).
+   Пиксели аватаров не трогаем: pixelated, без фильтров и скруглений.
+   ===================================================================== */
+
+.section--team { background: var(--c-bg); }
+
+/* ---------- Шапка раздела */
+.bati__head { display: grid; gap: var(--s-3); margin-bottom: var(--s-6); }
+.bati__head .h2 { margin-top: var(--s-2); }
+.bati__intro { display: grid; gap: var(--s-2); justify-items: start; align-content: end; }
+.bati__caption { color: var(--c-muted); font-size: var(--fs-xs); }
+@media (min-width: 1024px) {
+  .bati__head { grid-template-columns: minmax(0, 1fr) minmax(0, 26rem); align-items: start; column-gap: var(--s-6); }
+  .bati__intro { padding-top: var(--s-4); }
+}
+
+/* чекбокс в духе 2007 */
+.xpcheck { position: relative; display: inline-flex; align-items: center; gap: 10px; min-height: var(--tap); font-size: var(--fs-sm); color: var(--c-foam); }
+.xpcheck input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.xpcheck__box {
+  position: relative; width: 16px; height: 16px; flex: none; border: 1px solid #1c5180; border-radius: 2px;
+  background: linear-gradient(135deg, #dcdcd7, #fff);
+}
+.xpcheck input:checked + .xpcheck__box::after {
+  content: ""; position: absolute; left: 4px; top: 1px; width: 5px; height: 9px;
+  border: solid #21a121; border-width: 0 2.5px 2.5px 0; transform: rotate(40deg);
+}
+.xpcheck input:focus-visible + .xpcheck__box { outline: 2px solid var(--c-foam); outline-offset: 3px; }
+
+/* ---------- Список */
+.bati { display: grid; gap: var(--s-2); }
+.bati__item { min-width: 0; }
+
+.buddy {
+  position: relative;
+  background: var(--c-bg-2); border: 1px solid var(--c-line); border-radius: var(--r-md);
+  transition: transform 200ms var(--hover-ease), border-color var(--hover-d) var(--hover-ease), opacity 200ms var(--hover-ease), box-shadow 200ms var(--hover-ease);
+}
+@media (hover: hover) { .buddy:hover { transform: translateY(-4px); border-color: var(--c-line-strong); box-shadow: 0 18px 30px -18px rgb(0 0 0 / 0.8); } }
+.buddy__open {
+  display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); column-gap: var(--s-2); align-items: start;
+  width: 100%; height: 100%; padding: var(--s-2); border: 0; border-radius: inherit; background: none; color: inherit; text-align: left;
+}
+.buddy__open:focus-visible { outline: 2px solid var(--c-foam); outline-offset: 3px; }
+
+/* рамка «аватарки 2007»: двойная тонкая линия и плашка «фото» */
+.buddy__frame {
+  position: relative; display: block; padding: 3px; background: #0d0b08;
+  border: 1px solid var(--c-line-strong); box-shadow: 0 0 0 3px var(--c-bg-2), 0 0 0 4px var(--c-line);
+}
+.buddy__ava { display: block; width: 100%; height: auto; aspect-ratio: 264 / 303; image-rendering: pixelated; }
+.buddy__photo {
+  position: absolute; left: -1px; bottom: -1px; padding: 1px 6px; background: var(--c-line-strong); color: var(--c-foam);
+  font-size: 12px; line-height: 1.3; letter-spacing: 0.04em;
+}
+.buddy__text { display: grid; gap: 4px; align-content: start; min-width: 0; padding-right: 3.6rem; }
+.buddy__name { font-family: var(--f-display); font-weight: 700; font-size: var(--fs-md); line-height: 1.15; letter-spacing: -0.02em; }
+.buddy__role { color: var(--c-muted); font-size: var(--fs-sm); }
+.buddy__online { display: inline-flex; align-items: center; gap: var(--s-1); color: var(--c-green); font-size: var(--fs-xs); margin-top: 2px; }
+.buddy__more { margin-top: var(--s-1); color: var(--c-amber); font-size: var(--fs-xs); letter-spacing: 0.04em; }
+.buddy__more b { display: inline-block; font-weight: 400; transition: transform 200ms var(--hover-ease); }
+.buddy__open[aria-expanded="true"] .buddy__more b { transform: rotate(180deg); }
+
+/* оценка «5+» */
+.buddy__rate {
+  position: absolute; top: var(--s-2); right: var(--s-2); z-index: 2; display: inline-flex; align-items: center; gap: 6px;
+  min-height: 32px; padding: 0 8px 0 4px; border: 1px solid var(--c-amber); border-radius: var(--r-pill);
+  background: var(--c-bg); color: var(--c-foam);
+  transition: background-color var(--hover-d) var(--hover-ease);
+}
+.buddy__five {
+  display: inline-grid; place-items: center; min-width: 26px; height: 24px; padding: 0 4px; border-radius: var(--r-pill);
+  background: var(--c-amber); color: var(--c-on-amber); font: 900 12px/1 var(--f-display);
+}
+.buddy__count { font-size: 12px; font-variant-numeric: tabular-nums; }
+.buddy__rate:hover { background: #2a2118; }
+.buddy__rate.is-rated { background: var(--c-amber); }
+.buddy__rate.is-rated .buddy__five { background: var(--c-on-amber); color: var(--c-amber); }
+.buddy__rate.is-rated .buddy__count { color: var(--c-on-amber); font-weight: 700; }
+.buddy__rate:focus-visible { outline: 2px solid var(--c-foam); outline-offset: 2px; }
+.buddy__plus {
+  position: absolute; right: 6px; top: -4px; color: var(--c-amber); font-size: 14px; font-weight: 700; pointer-events: none;
+  animation: plus-one 650ms cubic-bezier(.2, .7, .2, 1) forwards;
+}
+@keyframes plus-one { from { transform: translateY(0); opacity: 1; } to { transform: translateY(-22px); opacity: 0; } }
+.buddy__tip {
+  position: absolute; right: 0; top: calc(100% + 6px); padding: 4px 8px; white-space: nowrap; border-radius: 4px;
+  background: var(--c-foam); color: var(--c-on-amber); font-size: 12px; pointer-events: none;
+}
+
+/* ---------- Анкета */
+.anketa { margin-top: var(--s-1); }
+.anketa:focus { outline: none; }
+.anketa:focus-visible .anketa__in { outline: 2px solid var(--c-foam); outline-offset: 3px; }
+.anketa__in {
+  display: grid; gap: var(--s-3); padding: var(--s-3);
+  background: #231c15; border: 1px solid rgb(242 169 59 / 0.55); border-radius: var(--r-md);
+}
+.anketa__side { display: grid; gap: var(--s-1); justify-items: start; align-content: start; }
+.anketa__name { font-family: var(--f-display); font-weight: 900; font-size: var(--fs-lg); letter-spacing: -0.02em; line-height: 1.1; }
+.anketa__main { display: grid; gap: var(--s-2); min-width: 0; }
+.anketa__label { color: var(--c-amber); font-size: var(--fs-xs); text-transform: uppercase; letter-spacing: var(--tr-caps); }
+/* статус — «облачко» как в 2007 */
+.anketa__status {
+  position: relative; justify-self: start; max-width: 40ch; padding: 14px 18px; margin-top: -4px;
+  background: var(--c-bg-3); border: 1px solid var(--c-line-strong); border-radius: 14px 14px 14px 4px;
+  font-family: var(--f-display); font-weight: 700; font-size: var(--fs-md); line-height: 1.3; letter-spacing: -0.01em; text-wrap: balance;
+}
+.anketa__fields { display: grid; border-top: 1px dashed rgb(185 171 151 / 0.3); }
+.anketa__fields > div { display: grid; grid-template-columns: 10rem minmax(0, 1fr); gap: var(--s-2); padding: 9px 0; border-bottom: 1px dashed rgb(185 171 151 / 0.3); }
+.anketa__fields dt { font-family: var(--f-mono); font-size: 12px; color: var(--c-muted); text-transform: uppercase; letter-spacing: 0.06em; padding-top: 3px; }
+.anketa__fields dd { font-size: var(--fs-sm); color: var(--c-foam); }
+.anketa__todo { color: var(--c-muted); font-style: italic; }
+.anketa__foot { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-2) var(--s-3); margin-top: var(--s-1); }
+.anketa__gifts { display: flex; align-items: center; gap: 10px; margin-right: auto; color: var(--c-muted); font-size: 12px; }
+.anketa__gifts ul { display: flex; gap: 6px; }
+.anketa__gifts li { display: grid; place-items: center; width: 34px; height: 34px; border: 1px dashed var(--c-line-strong); border-radius: 6px; background: var(--c-bg); color: var(--c-amber); }
+.anketa__gifts svg { width: 18px; height: 18px; }
+.anketa__close { min-height: var(--tap); padding: 0 4px; border: 0; background: none; color: var(--c-muted); font-size: var(--fs-xs); }
+.anketa__close:hover { color: var(--c-foam); }
+@media (max-width: 599px) {
+  .anketa__fields > div { grid-template-columns: 1fr; gap: 2px; }
+  .anketa__foot .btn { width: 100%; }
+}
+
+/* выбранная карточка — янтарная рамка, остальные приглушены */
+/* !important — появление по скроллу оставляет opacity в style */
+.bati.has-open .bati__item:not(.is-open) .buddy { opacity: 0.6 !important; }
+.bati.has-open .bati__item:not(.is-open) .buddy:hover, .bati.has-open .bati__item:not(.is-open) .buddy:focus-within { opacity: 1 !important; }
+.bati__item.is-open .buddy { border-color: var(--c-amber); box-shadow: 0 0 0 1px var(--c-amber); }
+
+/* ---------- Телефон и планшет: список «аватар слева, текст справа», анкета — под своей карточкой.
+   На телефоне аватар в анкете не дублируем — он и так над ней. */
+@media (max-width: 1023px) {
+  .bati.is-js .anketa__side .buddy__frame, .bati.is-js .anketa__side .buddy__online { display: none; }
+}
+@media (min-width: 600px) and (max-width: 1023px) {
+  .anketa__in { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* ---------- Десктоп: карточки в ряд, анкета — широкой панелью под рядом */
+@media (min-width: 1024px) {
+  .bati.is-js { grid-template-columns: repeat(6, minmax(0, 1fr)); column-gap: var(--s-2); row-gap: var(--s-2); }
+  .bati.is-js .bati__item { display: contents; }
+  .bati.is-js .buddy { grid-column: span 2; height: 100%; } /* в ряду карточки одной высоты */
+  .bati.is-js .bati__item:nth-child(-n+3) .buddy { grid-row: 1; }
+  .bati.is-js .bati__item:nth-child(4) .buddy { grid-column: 2 / span 2; grid-row: 2; }   /* 3 + 2 по центру */
+  .bati.is-js .bati__item:nth-child(5) .buddy { grid-column: 4 / span 2; grid-row: 2; }
+  .bati.is-js .anketa { grid-column: 1 / -1; grid-row: 3; margin-top: var(--s-1); }
+  .buddy__open { grid-template-columns: 1fr; row-gap: var(--s-2); }
+  .buddy__text { padding-right: 0; }
+  .anketa__in { grid-template-columns: 15rem minmax(0, 1fr); gap: var(--s-6); padding: var(--s-5); }
+  .anketa__side .buddy__frame { width: 100%; }
+}
+@media (min-width: 1280px) {
+  .bati.is-js { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .bati.is-js .buddy, .bati.is-js .bati__item:nth-child(n) .buddy { grid-column: auto; grid-row: 1; }
+  .bati.is-js .anketa { grid-row: 2; }
+  .buddy__name { font-size: var(--fs-base); }
+}
+/* без JS: всё видно сразу, карточка и анкета рядом */
+@media (min-width: 1024px) {
+  .bati:not(.is-js) .bati__item { display: grid; grid-template-columns: 15rem minmax(0, 1fr); gap: var(--s-2); align-items: start; }
+  .bati:not(.is-js) .anketa { margin-top: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .buddy, .buddy__more b { transition: none; }
+  .buddy:hover { transform: none; }
+}
+.bati:not(.is-js) .anketa__side .buddy__frame, .bati:not(.is-js) .anketa__side .buddy__online { display: none; } /* без JS аватар уже есть в карточке рядом */

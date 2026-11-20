@@ -24,10 +24,11 @@
 
 <link rel="preload" href="assets/fonts/unbounded-cyrillic-900-normal.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="preload" href="assets/fonts/onest-cyrillic-400-normal.woff2" as="font" type="font/woff2" crossorigin />
-<link rel="stylesheet" href="css/radio.css?v=202611201616" />
-<link rel="stylesheet" href="css/main.css?v=202611201616" />
-<link rel="stylesheet" href="css/home.css?v=202611201616" />
-<link rel="stylesheet" href="css/menu.css?v=202611201616" />
+<link rel="stylesheet" href="css/radio.css?v=202611201632" />
+<link rel="stylesheet" href="css/main.css?v=202611201632" />
+<link rel="stylesheet" href="css/home.css?v=202611201632" />
+<link rel="stylesheet" href="css/menu.css?v=202611201632" />
+<link rel="stylesheet" href="css/team.css?v=202611201632" />
 <script>
   // Класс js — до первой отрисовки, чтобы стартовые состояния анимаций не мигали.
   (function (root) {
@@ -43,12 +44,13 @@
 <script defer src="vendor/gsap/gsap.min.js"></script>
 <script defer src="vendor/gsap/ScrollTrigger.min.js"></script>
 <script defer src="vendor/lenis/lenis.min.js"></script>
-<script type="module" src="js/skidka.js?v=202611201616"></script>
-<script type="module" src="js/radio.js?v=202611201616"></script>
-<script type="module" src="js/today.js?v=202611201616"></script>
-<script type="module" src="js/menu.js?v=202611201616"></script>
-<script type="module" src="js/cursor.js?v=202611201616"></script>
-<script type="module" src="js/main.js?v=202611201616"></script>
+<script type="module" src="js/skidka.js?v=202611201632"></script>
+<script type="module" src="js/radio.js?v=202611201632"></script>
+<script type="module" src="js/today.js?v=202611201632"></script>
+<script type="module" src="js/menu.js?v=202611201632"></script>
+<script type="module" src="js/cursor.js?v=202611201632"></script>
+<script type="module" src="js/team.js?v=202611201632"></script>
+<script type="module" src="js/main.js?v=202611201632"></script>
 </head>
 <body>
 
@@ -555,101 +557,232 @@
   </section>
 
   <!-- ============ КОМАНДА ============ -->
-  <section class="section" id="team" aria-labelledby="team-title">
-    <div class="container grid">
-      <header class="section__head">
-        <p class="eyebrow" data-reveal>C:\СКУФ\05_БАТИ.HTM</p>
-        <h2 class="h2" id="team-title" data-reveal>Наши бати</h2>
+  <section class="section section--team" id="team" aria-labelledby="team-title">
+    <div class="container">
+      <header class="bati__head">
+        <div>
+          <p class="eyebrow" data-reveal>C:\СКУФ\05_БАТИ.HTM</p>
+          <h2 class="h2" id="team-title" data-reveal>Наши бати</h2>
+        </div>
+        <div class="bati__intro">
+          <p class="lead" data-reveal>Топ-5 бать. В его Топ-5 все пятеро.</p>
+          <p class="bati__caption mono" data-reveal>Фото 2007 года. Тогда они ещё были сыновьями.</p>
+          <label class="xpcheck" for="soundCheck" data-reveal>
+            <input type="checkbox" id="soundCheck" />
+            <span class="xpcheck__box" aria-hidden="true"></span>
+            <span>Звук при входе друга</span>
+          </label>
+        </div>
       </header>
-      <div class="section__lead">
-        <p class="lead" data-reveal>Топ-5 бать. Нажми на карточку, чтобы прочитать статус образца 2007 года.</p>
-        <p class="myspace mono" data-reveal data-egg>Батя — твой первый друг. В его Топ-5 все пятеро.</p>
-        <ui-toggle id="soundToggle" class="sound-toggle" data-reveal>
-          <button class="chip" type="button">
-            <svg class="is-on" aria-hidden="true"><use href="#i-sound"/></svg>
-            <svg class="is-off" aria-hidden="true"><use href="#i-mute"/></svg>
-            <span>Звук «о-оу»</span>
-          </button>
-        </ui-toggle>
-      </div>
-
-      <ul class="team" id="teamList">
-        <li class="member" data-reveal>
-          <button class="member__card" type="button" aria-pressed="false" aria-label="Вадим Греков, генеральный директор. Показать статус">
-            <span class="member__face">
-              <img class="member__ava" src="assets/team/grekov.webp?v=6" width="264" height="303" alt="" loading="lazy" decoding="async" />
-              <span class="member__name">Вадим Греков</span>
-              <span class="member__role">Генеральный директор, учредитель</span>
-              <span class="member__online mono"><i class="dot" aria-hidden="true"></i>онлайн</span>
-            </span>
-            <span class="member__back">
-              <span class="member__status">«Сначала стрижка, потом разговоры. Потом ещё по одной»</span>
-              <span class="member__bio">Подписывает бумаги, выбирает музыку, держит бар в тонусе.</span>
-              <span class="member__flip mono"><svg aria-hidden="true"><use href="#i-flip"/></svg>назад</span>
-            </span>
-          </button>
+      <!-- data:team -->
+      <ul class="bati" id="teamList">
+        <li class="bati__item" data-id="grekov">
+          <div class="buddy" data-reveal>
+            <button class="buddy__open" type="button" id="buddy-grekov" aria-expanded="false" aria-controls="anketa-grekov">
+              <span class="buddy__frame"><img class="buddy__ava" src="assets/team/grekov.webp?v=6" width="264" height="303" alt="Пиксельный портрет: Вадим Греков" loading="lazy" decoding="async" /><span class="buddy__photo mono" aria-hidden="true">фото</span></span>
+              <span class="buddy__text">
+                <span class="buddy__name">Вадим Греков</span>
+                <span class="buddy__role">Генеральный директор, учредитель</span>
+                <span class="buddy__online mono"><i class="dot" aria-hidden="true"></i>онлайн</span>
+                <span class="buddy__more mono" aria-hidden="true">Анкета <b>▾</b></span>
+              </span>
+            </button>
+            <button class="buddy__rate" type="button" data-rate="grekov" data-base="41" aria-label="Поставить 5+ — Вадим Греков. Оценок: 41">
+              <span class="buddy__five">5+</span><span class="buddy__count mono">41</span>
+            </button>
+          </div>
+          <section class="anketa" id="anketa-grekov" aria-labelledby="anketa-grekov-name" tabindex="-1">
+            <div class="anketa__in">
+              <div class="anketa__side">
+                <span class="buddy__frame buddy__frame--big"><img class="buddy__ava" src="assets/team/grekov.webp?v=6" width="264" height="303" alt="" loading="lazy" decoding="async" /><span class="buddy__photo mono" aria-hidden="true">фото</span></span>
+                <h3 class="anketa__name" id="anketa-grekov-name">Вадим Греков</h3>
+                <p class="buddy__online mono"><i class="dot" aria-hidden="true"></i>онлайн</p>
+              </div>
+              <div class="anketa__main">
+                <p class="anketa__label mono">Статус</p>
+                <p class="anketa__status">«Сначала стрижка, потом разговоры. Потом ещё по одной»</p>
+                <dl class="anketa__fields">
+                  <div><dt>Должность</dt><dd>Генеральный директор, учредитель</dd></div>
+                  <div><dt>Чем занят</dt><dd>Подписывает бумаги, выбирает музыку, держит бар в тонусе.</dd></div>
+                  <div><dt>Любимое на кране</dt><dd><span class="anketa__todo">уточняется у бармена</span></dd></div>
+                  <div><dt>Хит в караоке</dt><dd><span class="anketa__todo">стесняется признаться</span></dd></div>
+                  <div><dt>Был в сети</dt><dd>20:07</dd></div>
+                </dl>
+                <div class="anketa__foot">
+                  <div class="anketa__gifts"><span class="mono">Подарки</span><ul><li title="Кружка"><svg aria-hidden="true"><use href="#i-mug"/></svg><span class="sr-only">Кружка</span></li><li title="Цветок из аськи"><svg aria-hidden="true"><use href="#i-flower"/></svg><span class="sr-only">Цветок из аськи</span></li></ul></div>
+                  <button class="btn btn--amber" type="button" data-book="table" data-event="Позвать за стол — Вадим Греков" aria-haspopup="dialog">Позвать за стол</button>
+                  <button class="anketa__close mono" type="button" data-close-anketa>Свернуть ▴</button>
+                </div>
+              </div>
+            </div>
+          </section>
         </li>
-        <li class="member" data-reveal>
-          <button class="member__card" type="button" aria-pressed="false" aria-label="Илья Дольников, управляющий. Показать статус">
-            <span class="member__face">
-              <img class="member__ava" src="assets/team/dolnikov.webp?v=6" width="264" height="303" alt="" loading="lazy" decoding="async" />
-              <span class="member__name">Илья Дольников</span>
-              <span class="member__role">Управляющий</span>
-              <span class="member__online mono"><i class="dot" aria-hidden="true"></i>на обходе</span>
-            </span>
-            <span class="member__back">
-              <span class="member__status">«Раньше было лучше. Поэтому у нас как раньше»</span>
-              <span class="member__bio">Держит зал, график мастеров и атмосферу: чтобы всё было как в 2007-м.</span>
-              <span class="member__flip mono"><svg aria-hidden="true"><use href="#i-flip"/></svg>назад</span>
-            </span>
-          </button>
+        <li class="bati__item" data-id="dolnikov">
+          <div class="buddy" data-reveal>
+            <button class="buddy__open" type="button" id="buddy-dolnikov" aria-expanded="false" aria-controls="anketa-dolnikov">
+              <span class="buddy__frame"><img class="buddy__ava" src="assets/team/dolnikov.webp?v=6" width="264" height="303" alt="Пиксельный портрет: Илья Дольников" loading="lazy" decoding="async" /><span class="buddy__photo mono" aria-hidden="true">фото</span></span>
+              <span class="buddy__text">
+                <span class="buddy__name">Илья Дольников</span>
+                <span class="buddy__role">Управляющий</span>
+                <span class="buddy__online mono"><i class="dot" aria-hidden="true"></i>на обходе</span>
+                <span class="buddy__more mono" aria-hidden="true">Анкета <b>▾</b></span>
+              </span>
+            </button>
+            <button class="buddy__rate" type="button" data-rate="dolnikov" data-base="37" aria-label="Поставить 5+ — Илья Дольников. Оценок: 37">
+              <span class="buddy__five">5+</span><span class="buddy__count mono">37</span>
+            </button>
+          </div>
+          <section class="anketa" id="anketa-dolnikov" aria-labelledby="anketa-dolnikov-name" tabindex="-1">
+            <div class="anketa__in">
+              <div class="anketa__side">
+                <span class="buddy__frame buddy__frame--big"><img class="buddy__ava" src="assets/team/dolnikov.webp?v=6" width="264" height="303" alt="" loading="lazy" decoding="async" /><span class="buddy__photo mono" aria-hidden="true">фото</span></span>
+                <h3 class="anketa__name" id="anketa-dolnikov-name">Илья Дольников</h3>
+                <p class="buddy__online mono"><i class="dot" aria-hidden="true"></i>на обходе</p>
+              </div>
+              <div class="anketa__main">
+                <p class="anketa__label mono">Статус</p>
+                <p class="anketa__status">«Раньше было лучше. Поэтому у нас как раньше»</p>
+                <dl class="anketa__fields">
+                  <div><dt>Должность</dt><dd>Управляющий</dd></div>
+                  <div><dt>Чем занят</dt><dd>Держит зал, график мастеров и атмосферу: чтобы всё было как в 2007-м.</dd></div>
+                  <div><dt>Любимое на кране</dt><dd><span class="anketa__todo">уточняется у бармена</span></dd></div>
+                  <div><dt>Хит в караоке</dt><dd><span class="anketa__todo">стесняется признаться</span></dd></div>
+                  <div><dt>Был в сети</dt><dd>20:07</dd></div>
+                </dl>
+                <div class="anketa__foot">
+                  <div class="anketa__gifts"><span class="mono">Подарки</span><ul><li title="Кружка"><svg aria-hidden="true"><use href="#i-mug"/></svg><span class="sr-only">Кружка</span></li><li title="Микрофон"><svg aria-hidden="true"><use href="#i-mic"/></svg><span class="sr-only">Микрофон</span></li></ul></div>
+                  <button class="btn btn--amber" type="button" data-book="table" data-event="Позвать за стол — Илья Дольников" aria-haspopup="dialog">Позвать за стол</button>
+                  <button class="anketa__close mono" type="button" data-close-anketa>Свернуть ▴</button>
+                </div>
+              </div>
+            </div>
+          </section>
         </li>
-        <li class="member" data-reveal>
-          <button class="member__card" type="button" aria-pressed="false" aria-label="Мишаня Гончаренко, главный бухгалтер. Показать статус">
-            <span class="member__face">
-              <img class="member__ava" src="assets/team/goncharenko.webp?v=6" width="264" height="303" alt="" loading="lazy" decoding="async" />
-              <span class="member__name">Мишаня Гончаренко</span>
-              <span class="member__role">Главный бухгалтер</span>
-              <span class="member__online mono"><i class="dot" aria-hidden="true"></i>считает</span>
-            </span>
-            <span class="member__back">
-              <span class="member__status">«Цифры сошлись. Можно наливать»</span>
-              <span class="member__bio">УСН, касса, зарплаты. Знает, сколько пены в рублях.</span>
-              <span class="member__flip mono"><svg aria-hidden="true"><use href="#i-flip"/></svg>назад</span>
-            </span>
-          </button>
+        <li class="bati__item" data-id="goncharenko">
+          <div class="buddy" data-reveal>
+            <button class="buddy__open" type="button" id="buddy-goncharenko" aria-expanded="false" aria-controls="anketa-goncharenko">
+              <span class="buddy__frame"><img class="buddy__ava" src="assets/team/goncharenko.webp?v=6" width="264" height="303" alt="Пиксельный портрет: Мишаня Гончаренко" loading="lazy" decoding="async" /><span class="buddy__photo mono" aria-hidden="true">фото</span></span>
+              <span class="buddy__text">
+                <span class="buddy__name">Мишаня Гончаренко</span>
+                <span class="buddy__role">Главный бухгалтер</span>
+                <span class="buddy__online mono"><i class="dot" aria-hidden="true"></i>считает</span>
+                <span class="buddy__more mono" aria-hidden="true">Анкета <b>▾</b></span>
+              </span>
+            </button>
+            <button class="buddy__rate" type="button" data-rate="goncharenko" data-base="29" aria-label="Поставить 5+ — Мишаня Гончаренко. Оценок: 29">
+              <span class="buddy__five">5+</span><span class="buddy__count mono">29</span>
+            </button>
+          </div>
+          <section class="anketa" id="anketa-goncharenko" aria-labelledby="anketa-goncharenko-name" tabindex="-1">
+            <div class="anketa__in">
+              <div class="anketa__side">
+                <span class="buddy__frame buddy__frame--big"><img class="buddy__ava" src="assets/team/goncharenko.webp?v=6" width="264" height="303" alt="" loading="lazy" decoding="async" /><span class="buddy__photo mono" aria-hidden="true">фото</span></span>
+                <h3 class="anketa__name" id="anketa-goncharenko-name">Мишаня Гончаренко</h3>
+                <p class="buddy__online mono"><i class="dot" aria-hidden="true"></i>считает</p>
+              </div>
+              <div class="anketa__main">
+                <p class="anketa__label mono">Статус</p>
+                <p class="anketa__status">«Цифры сошлись. Можно наливать»</p>
+                <dl class="anketa__fields">
+                  <div><dt>Должность</dt><dd>Главный бухгалтер</dd></div>
+                  <div><dt>Чем занят</dt><dd>УСН, касса, зарплаты. Знает, сколько пены в рублях.</dd></div>
+                  <div><dt>Любимое на кране</dt><dd><span class="anketa__todo">уточняется у бармена</span></dd></div>
+                  <div><dt>Хит в караоке</dt><dd><span class="anketa__todo">стесняется признаться</span></dd></div>
+                  <div><dt>Был в сети</dt><dd>20:07</dd></div>
+                </dl>
+                <div class="anketa__foot">
+                  <div class="anketa__gifts"><span class="mono">Подарки</span><ul><li title="Кружка"><svg aria-hidden="true"><use href="#i-mug"/></svg><span class="sr-only">Кружка</span></li><li title="Молния"><svg aria-hidden="true"><use href="#i-combo"/></svg><span class="sr-only">Молния</span></li></ul></div>
+                  <button class="btn btn--amber" type="button" data-book="table" data-event="Позвать за стол — Мишаня Гончаренко" aria-haspopup="dialog">Позвать за стол</button>
+                  <button class="anketa__close mono" type="button" data-close-anketa>Свернуть ▴</button>
+                </div>
+              </div>
+            </div>
+          </section>
         </li>
-        <li class="member" data-reveal>
-          <button class="member__card" type="button" aria-pressed="false" aria-label="Серега Виллиан, старший бармен. Показать статус">
-            <span class="member__face">
-              <img class="member__ava" src="assets/team/klemeshev.webp?v=6" width="264" height="303" alt="" loading="lazy" decoding="async" />
-              <span class="member__name">Серега Виллиан</span>
-              <span class="member__role">Старший бармен</span>
-              <span class="member__online mono"><i class="dot" aria-hidden="true"></i>у крана</span>
-            </span>
-            <span class="member__back">
-              <span class="member__status">«Я обожаю свою работу!»</span>
-              <span class="member__bio">Кеги, поставщики, ЕГАИС. Наливает только 18+. Решает, когда «последняя» действительно последняя.</span>
-              <span class="member__flip mono"><svg aria-hidden="true"><use href="#i-flip"/></svg>назад</span>
-            </span>
-          </button>
+        <li class="bati__item" data-id="klemeshev">
+          <div class="buddy" data-reveal>
+            <button class="buddy__open" type="button" id="buddy-klemeshev" aria-expanded="false" aria-controls="anketa-klemeshev">
+              <span class="buddy__frame"><img class="buddy__ava" src="assets/team/klemeshev.webp?v=6" width="264" height="303" alt="Пиксельный портрет: Серега Виллиан" loading="lazy" decoding="async" /><span class="buddy__photo mono" aria-hidden="true">фото</span></span>
+              <span class="buddy__text">
+                <span class="buddy__name">Серега Виллиан</span>
+                <span class="buddy__role">Старший бармен</span>
+                <span class="buddy__online mono"><i class="dot" aria-hidden="true"></i>у крана</span>
+                <span class="buddy__more mono" aria-hidden="true">Анкета <b>▾</b></span>
+              </span>
+            </button>
+            <button class="buddy__rate" type="button" data-rate="klemeshev" data-base="63" aria-label="Поставить 5+ — Серега Виллиан. Оценок: 63">
+              <span class="buddy__five">5+</span><span class="buddy__count mono">63</span>
+            </button>
+          </div>
+          <section class="anketa" id="anketa-klemeshev" aria-labelledby="anketa-klemeshev-name" tabindex="-1">
+            <div class="anketa__in">
+              <div class="anketa__side">
+                <span class="buddy__frame buddy__frame--big"><img class="buddy__ava" src="assets/team/klemeshev.webp?v=6" width="264" height="303" alt="" loading="lazy" decoding="async" /><span class="buddy__photo mono" aria-hidden="true">фото</span></span>
+                <h3 class="anketa__name" id="anketa-klemeshev-name">Серега Виллиан</h3>
+                <p class="buddy__online mono"><i class="dot" aria-hidden="true"></i>у крана</p>
+              </div>
+              <div class="anketa__main">
+                <p class="anketa__label mono">Статус</p>
+                <p class="anketa__status">«Я обожаю свою работу!»</p>
+                <dl class="anketa__fields">
+                  <div><dt>Должность</dt><dd>Старший бармен</dd></div>
+                  <div><dt>Чем занят</dt><dd>Кеги, поставщики, ЕГАИС. Наливает только 18+. Решает, когда «последняя» действительно последняя.</dd></div>
+                  <div><dt>Любимое на кране</dt><dd><span class="anketa__todo">уточняется у бармена</span></dd></div>
+                  <div><dt>Хит в караоке</dt><dd><span class="anketa__todo">стесняется признаться</span></dd></div>
+                  <div><dt>Был в сети</dt><dd>20:07</dd></div>
+                </dl>
+                <div class="anketa__foot">
+                  <div class="anketa__gifts"><span class="mono">Подарки</span><ul><li title="Кружка"><svg aria-hidden="true"><use href="#i-mug"/></svg><span class="sr-only">Кружка</span></li><li title="Кружка"><svg aria-hidden="true"><use href="#i-mug"/></svg><span class="sr-only">Кружка</span></li><li title="Цветок из аськи"><svg aria-hidden="true"><use href="#i-flower"/></svg><span class="sr-only">Цветок из аськи</span></li></ul></div>
+                  <button class="btn btn--amber" type="button" data-book="table" data-event="Позвать за стол — Серега Виллиан" aria-haspopup="dialog">Позвать за стол</button>
+                  <button class="anketa__close mono" type="button" data-close-anketa>Свернуть ▴</button>
+                </div>
+              </div>
+            </div>
+          </section>
         </li>
-        <li class="member" data-reveal>
-          <button class="member__card" type="button" aria-pressed="false" aria-label="Евгений Белобров, главный редактор. Показать статус">
-            <span class="member__face">
-              <img class="member__ava" src="assets/team/belobrov.webp?v=6" width="264" height="303" alt="" loading="lazy" decoding="async" />
-              <span class="member__name">Евгений Белобров</span>
-              <span class="member__role">Главный редактор, филолог</span>
-              <span class="member__online mono"><i class="dot" aria-hidden="true"></i>пишет статус</span>
-            </span>
-            <span class="member__back">
-              <span class="member__status">«Пишется „батя“, читается „уважение“»</span>
-              <span class="member__bio">Пишет тексты, меню и статусы. Следит, чтобы «батя» склонялся правильно.</span>
-              <span class="member__flip mono"><svg aria-hidden="true"><use href="#i-flip"/></svg>назад</span>
-            </span>
-          </button>
+        <li class="bati__item" data-id="belobrov">
+          <div class="buddy" data-reveal>
+            <button class="buddy__open" type="button" id="buddy-belobrov" aria-expanded="false" aria-controls="anketa-belobrov">
+              <span class="buddy__frame"><img class="buddy__ava" src="assets/team/belobrov.webp?v=6" width="264" height="303" alt="Пиксельный портрет: Евгений Белобров" loading="lazy" decoding="async" /><span class="buddy__photo mono" aria-hidden="true">фото</span></span>
+              <span class="buddy__text">
+                <span class="buddy__name">Евгений Белобров</span>
+                <span class="buddy__role">Главный редактор, филолог</span>
+                <span class="buddy__online mono"><i class="dot" aria-hidden="true"></i>пишет статус</span>
+                <span class="buddy__more mono" aria-hidden="true">Анкета <b>▾</b></span>
+              </span>
+            </button>
+            <button class="buddy__rate" type="button" data-rate="belobrov" data-base="33" aria-label="Поставить 5+ — Евгений Белобров. Оценок: 33">
+              <span class="buddy__five">5+</span><span class="buddy__count mono">33</span>
+            </button>
+          </div>
+          <section class="anketa" id="anketa-belobrov" aria-labelledby="anketa-belobrov-name" tabindex="-1">
+            <div class="anketa__in">
+              <div class="anketa__side">
+                <span class="buddy__frame buddy__frame--big"><img class="buddy__ava" src="assets/team/belobrov.webp?v=6" width="264" height="303" alt="" loading="lazy" decoding="async" /><span class="buddy__photo mono" aria-hidden="true">фото</span></span>
+                <h3 class="anketa__name" id="anketa-belobrov-name">Евгений Белобров</h3>
+                <p class="buddy__online mono"><i class="dot" aria-hidden="true"></i>пишет статус</p>
+              </div>
+              <div class="anketa__main">
+                <p class="anketa__label mono">Статус</p>
+                <p class="anketa__status">«Пишется „батя“, читается „уважение“»</p>
+                <dl class="anketa__fields">
+                  <div><dt>Должность</dt><dd>Главный редактор, филолог</dd></div>
+                  <div><dt>Чем занят</dt><dd>Пишет тексты, меню и статусы. Следит, чтобы «батя» склонялся правильно.</dd></div>
+                  <div><dt>Любимое на кране</dt><dd><span class="anketa__todo">уточняется у бармена</span></dd></div>
+                  <div><dt>Хит в караоке</dt><dd><span class="anketa__todo">стесняется признаться</span></dd></div>
+                  <div><dt>Был в сети</dt><dd>20:07</dd></div>
+                </dl>
+                <div class="anketa__foot">
+                  <div class="anketa__gifts"><span class="mono">Подарки</span><ul><li title="Цветок из аськи"><svg aria-hidden="true"><use href="#i-flower"/></svg><span class="sr-only">Цветок из аськи</span></li><li title="Ножницы"><svg aria-hidden="true"><use href="#i-scissors"/></svg><span class="sr-only">Ножницы</span></li></ul></div>
+                  <button class="btn btn--amber" type="button" data-book="table" data-event="Позвать за стол — Евгений Белобров" aria-haspopup="dialog">Позвать за стол</button>
+                  <button class="anketa__close mono" type="button" data-close-anketa>Свернуть ▴</button>
+                </div>
+              </div>
+            </div>
+          </section>
         </li>
       </ul>
+      <!-- /data:team -->
     </div>
   </section>
 

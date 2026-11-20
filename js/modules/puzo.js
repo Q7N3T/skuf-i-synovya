@@ -1,6 +1,6 @@
 // «Пузо Карт»: пузометр (0–20 кружек, дальше — рывок до 300) → уровень карты и скидка; 3D-наклон и блик карты.
-import { $, $$, reducedMotion, finePointer, sound, toast } from "./utils.js?v=202611201616"
-import { openBooking } from "./booking.js?v=202611201616"
+import { $, $$, reducedMotion, finePointer, sound, toast } from "./utils.js?v=202611201632"
+import { openBooking } from "./booking.js?v=202611201632"
 
 const LEVELS = [
   { min: 0, id: "bronze", name: "Бронза", disc: 5 },

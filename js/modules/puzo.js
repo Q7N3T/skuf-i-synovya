@@ -1,13 +1,13 @@
 // «Пузо Карт»: пузометр (0–20 кружек, дальше — рывок до 300) → уровень карты и скидка; 3D-наклон и блик карты.
-import { $, $$, reducedMotion, finePointer, sound, toast } from "./utils.js?v=202611201328"
-import { openBooking } from "./booking.js?v=202611201328"
+import { $, $$, reducedMotion, finePointer, sound, toast } from "./utils.js?v=202611201345"
+import { openBooking } from "./booking.js?v=202611201345"
 
 const LEVELS = [
   { min: 0, id: "bronze", name: "Бронза", disc: 5 },
   { min: 5, id: "gold", name: "Голда", disc: 10 },
   { min: 10, id: "platinum", name: "Платинум", disc: 15 },
   { min: 15, id: "legend", name: "Легенда", disc: 20 },
-  { min: 300, id: "max", name: "Еб###тый!", disc: 50 },
+  { min: 300, id: "max", name: "Батя-Абсолют", disc: 50 },
 ]
 // Шкала ползунка: позиции 0–20 — кружки как есть, позиция 30 — сразу 300.
 // Между 20 и 30 ползунок не останавливается: защёлкивается на ближайший край (стрелками — шаг 20 ↔ 300).
@@ -20,7 +20,7 @@ const CLIPS = {
   bronze: { src: "assets/video/bronze.mp4", poster: "assets/video/bronze.jpg", title: "Чика!", toast: "Уровень «Бронза»: на карте играет Артур Пирожков." },
   gold: { src: "assets/video/gold.mp4", poster: "assets/video/gold.jpg", title: "Скибиди!", toast: "Уровень «Голда»: на карте играет Little Big." },
   platinum: { src: "assets/video/platinum.mp4", poster: "assets/video/platinum.jpg", title: "Я звезда!", toast: "Уровень «Платинум»: на карте играет Артур Пирожков." },
-  max: { src: "assets/video/legend300.mp4", poster: "assets/video/legend300.jpg", title: "Еб###тый!", toast: "300 кружек в месяц, скидка 50%. На карте — «Как Челентано»." },
+  max: { src: "assets/video/legend300.mp4", poster: "assets/video/legend300.jpg", title: "Батя-Абсолют", toast: "300 кружек в месяц, скидка 50%. На карте — «Как Челентано»." },
 }
 
 export function initPuzo() {

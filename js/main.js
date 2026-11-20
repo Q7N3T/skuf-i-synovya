@@ -1,16 +1,16 @@
 // Точка входа. Порядок: модули без анимаций → прелоадер → интро → появление по скроллу.
-import { $, $$, reducedMotion, store } from "./modules/utils.js?v=202611201328"
-import { boot } from "./modules/boot.js?v=202611201328"
-import { initSmooth, scrollToTarget } from "./modules/smooth.js?v=202611201328"
-import { initHeader } from "./modules/header.js?v=202611201328"
-import { setupHero, playHero } from "./modules/hero.js?v=202611201328"
-import { initMarquee } from "./modules/marquee.js?v=202611201328"
-import { initPrices } from "./modules/prices.js?v=202611201328"
-import { initPuzo } from "./modules/puzo.js?v=202611201328"
-import { initTeam } from "./modules/team.js?v=202611201328"
-import { initBooking } from "./modules/booking.js?v=202611201328"
-import { initPointer } from "./modules/pointer.js?v=202611201328"
-import { initRoll } from "./modules/roll.js?v=202611201328"
+import { $, $$, reducedMotion, store } from "./modules/utils.js?v=202611201345"
+import { boot } from "./modules/boot.js?v=202611201345"
+import { initSmooth, scrollToTarget } from "./modules/smooth.js?v=202611201345"
+import { initHeader } from "./modules/header.js?v=202611201345"
+import { setupHero, playHero } from "./modules/hero.js?v=202611201345"
+import { initMarquee } from "./modules/marquee.js?v=202611201345"
+import { initPrices } from "./modules/prices.js?v=202611201345"
+import { initPuzo } from "./modules/puzo.js?v=202611201345"
+import { initTeam } from "./modules/team.js?v=202611201345"
+import { initBooking } from "./modules/booking.js?v=202611201345"
+import { initPointer } from "./modules/pointer.js?v=202611201345"
+import { initRoll } from "./modules/roll.js?v=202611201345"
 
 const { gsap, ScrollTrigger } = window
 if (gsap) gsap.registerPlugin(ScrollTrigger)
@@ -64,7 +64,7 @@ boot().then(() => {
   // Пасхалки — отдельный модуль: грузится при первом действии посетителя или через 8 с простоя.
   // Видимая часть (цитатник, гостевая, реклама) — обычный HTML и от модуля не зависит.
   let eggs = null
-  const loadEggs = () => (eggs ||= import("./easter-eggs.js?v=202611201328").catch((err) => console.error("[easter-eggs]", err)))
+  const loadEggs = () => (eggs ||= import("./easter-eggs.js?v=202611201345").catch((err) => console.error("[easter-eggs]", err)))
   const triggers = ["pointerdown", "keydown", "wheel", "touchstart", "scroll"]
   const onFirst = () => { triggers.forEach((t) => removeEventListener(t, onFirst)); loadEggs() }
   triggers.forEach((t) => addEventListener(t, onFirst, { passive: true, once: true }))

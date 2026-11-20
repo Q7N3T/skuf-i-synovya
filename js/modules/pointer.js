@@ -1,5 +1,5 @@
 // Микроинтеракции указателя: курсор-пузырёк и магнитные кнопки. Только точный указатель.
-import { $, $$, finePointer, reducedMotion } from "./utils.js?v=202611201328"
+import { $, $$, finePointer, reducedMotion } from "./utils.js?v=202611201345"
 
 const HOVERABLE = "a, button, [data-magnetic], ui-slider-thumb, ui-segmented-control-item, select, input"
 

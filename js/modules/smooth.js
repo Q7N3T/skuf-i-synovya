@@ -1,5 +1,5 @@
 // Плавный скролл (Lenis) в связке с ScrollTrigger + якоря с отступом под шапку.
-import { $, $$, reducedMotion } from "./utils.js?v=202611201328"
+import { $, $$, reducedMotion } from "./utils.js?v=202611201345"
 
 let lenis = null
 
@@ -20,7 +20,7 @@ export function initSmooth() {
   // Якоря
   document.addEventListener("click", (e) => {
     const link = e.target.closest('a[href^="#"]')
-    if (!link) return
+    if (!link || e.defaultPrevented) return   // ссылку уже обработали (например, «скидка.exe»)
     const id = link.getAttribute("href")
     const target = id === "#top" ? document.body : $(id)
     if (!target) return
@@ -37,7 +37,8 @@ export function initSmooth() {
 }
 
 export function scrollToTarget(target, id, instant = false) {
-  const offset = -(parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--header-h")) * 16 || 64)
+  const cs = getComputedStyle(document.documentElement)
+  const offset = -((parseFloat(cs.getPropertyValue("--header-h")) * 16 || 64) + (parseFloat(cs.getPropertyValue("--crt-t")) || 0))
   lenis?.start()
   if (lenis) lenis.scrollTo(target, { offset: id === "#top" ? 0 : offset, duration: 1.4, immediate: instant })
   else target.scrollIntoView({ behavior: reducedMotion || instant ? "auto" : "smooth" })

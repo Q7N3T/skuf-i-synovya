@@ -1,5 +1,5 @@
 // Прайс: фильтр по категориям (гаснут → сетка перестраивается → новые выплывают) и штампы-бейджи.
-import { $, $$, plural, reducedMotion } from "./utils.js?v=202611201328"
+import { $, $$, plural, reducedMotion } from "./utils.js?v=202611201345"
 
 export function initPrices() {
   const control = $("#priceFilter")
@@ -15,6 +15,7 @@ export function initPrices() {
       item.hidden = !on
       if (on && !item.hasAttribute("data-ad")) shown++ // реклама — не позиция прайса
     })
+    $$("#priceGrid .prices__group").forEach((g) => { g.hidden = !(value === "all" || g.dataset.cat === value) })
     count.textContent = `${shown} ${plural(shown, ["позиция", "позиции", "позиций"])}`
     ScrollTrigger?.refresh()
     return items.filter((i) => !i.hidden)

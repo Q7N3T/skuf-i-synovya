@@ -58,8 +58,7 @@
 .today__ico { width: 14px; height: 14px; border-radius: 3px; background: radial-gradient(circle at 35% 35%, #ffe08a, var(--c-amber) 60%, var(--c-amber-deep)); box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.3); flex: none; }
 .today__title { font: 700 13px/1.2 Tahoma, Verdana, var(--f-text); letter-spacing: 0; margin: 0; }
 .today__ctl { margin-left: auto; display: flex; gap: 2px; }
-.today__ctl i { width: 19px; height: 19px; border: 1px solid #fff; border-radius: 3px; background: linear-gradient(180deg, #4b8af5, #1d5fd8); }
-.today__ctl i:last-child { background: linear-gradient(180deg, #e98a6f, #c9431c); }
+.today__ctl .xp__ctl { position: relative; flex: none; cursor: inherit !important; } /* те же кнопки «свернуть / развернуть / закрыть», что в окне брони; здесь декоративные */
 .today__body { display: grid; gap: 6px; padding: 14px 16px 16px; min-height: 11rem; }
 .today__day { color: #4a4a4a; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; }
 .today__event { font-family: var(--f-display); font-weight: 900; font-size: var(--fs-lg); line-height: 1.1; letter-spacing: -0.02em; color: #111; margin: 0; text-wrap: balance; }

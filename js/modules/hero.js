@@ -1,6 +1,6 @@
 // Hero: побуквенный заголовок, печать в окне ICQ, параллакс слоёв, пена на canvas.
-import { $, $$, reducedMotion, store } from "./utils.js?v=202611201610"
-import { runOdometer, setupOdometer } from "./odometer.js?v=202611201610"
+import { $, $$, reducedMotion, store } from "./utils.js?v=202611201616"
+import { runOdometer, setupOdometer } from "./odometer.js?v=202611201616"
 
 /* ---------- Разбивка заголовка на буквы (для скринридера остаётся aria-label на h1) */
 function split(el) {

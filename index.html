@@ -24,10 +24,10 @@
 
 <link rel="preload" href="assets/fonts/unbounded-cyrillic-900-normal.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="preload" href="assets/fonts/onest-cyrillic-400-normal.woff2" as="font" type="font/woff2" crossorigin />
-<link rel="stylesheet" href="css/radio.css?v=202611201610" />
-<link rel="stylesheet" href="css/main.css?v=202611201610" />
-<link rel="stylesheet" href="css/home.css?v=202611201610" />
-<link rel="stylesheet" href="css/menu.css?v=202611201610" />
+<link rel="stylesheet" href="css/radio.css?v=202611201616" />
+<link rel="stylesheet" href="css/main.css?v=202611201616" />
+<link rel="stylesheet" href="css/home.css?v=202611201616" />
+<link rel="stylesheet" href="css/menu.css?v=202611201616" />
 <script>
   // Класс js — до первой отрисовки, чтобы стартовые состояния анимаций не мигали.
   (function (root) {
@@ -43,12 +43,12 @@
 <script defer src="vendor/gsap/gsap.min.js"></script>
 <script defer src="vendor/gsap/ScrollTrigger.min.js"></script>
 <script defer src="vendor/lenis/lenis.min.js"></script>
-<script type="module" src="js/skidka.js?v=202611201610"></script>
-<script type="module" src="js/radio.js?v=202611201610"></script>
-<script type="module" src="js/today.js?v=202611201610"></script>
-<script type="module" src="js/menu.js?v=202611201610"></script>
-<script type="module" src="js/cursor.js?v=202611201610"></script>
-<script type="module" src="js/main.js?v=202611201610"></script>
+<script type="module" src="js/skidka.js?v=202611201616"></script>
+<script type="module" src="js/radio.js?v=202611201616"></script>
+<script type="module" src="js/today.js?v=202611201616"></script>
+<script type="module" src="js/menu.js?v=202611201616"></script>
+<script type="module" src="js/cursor.js?v=202611201616"></script>
+<script type="module" src="js/main.js?v=202611201616"></script>
 </head>
 <body>
 
@@ -138,7 +138,7 @@
       <!-- «Сегодня в баре»: окно XP, данные — data/afisha.json (js/today.js). Без JS — ссылка на афишу -->
       <div class="hero__side">
         <section class="today" id="today" aria-labelledby="today-h" aria-live="polite">
-          <div class="today__bar"><span class="today__ico" aria-hidden="true"></span><h2 class="today__title" id="today-h">Сегодня в баре.exe</h2><span class="today__ctl" aria-hidden="true"><i></i><i></i><i></i></span></div>
+          <div class="today__bar"><span class="today__ico" aria-hidden="true"></span><h2 class="today__title" id="today-h">Сегодня в баре.exe</h2><span class="today__ctl" aria-hidden="true"><span class="xp__ctl xp__ctl--min"></span><span class="xp__ctl xp__ctl--max"></span><span class="xp__ctl xp__ctl--close"></span></span></div>
           <div class="today__body" id="todayBody">
             <p class="today__fallback"><a href="#afisha">Афиша недели</a> — что сегодня в баре.</p>
           </div>

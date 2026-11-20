@@ -1,7 +1,7 @@
 // Меню: липкая полоска разделов (Пиво · Закуски · Движ · Сеты · Барбершоп).
 // Это ссылки-якоря (работают и без JS); с JS — плавный скролл с учётом шапки и полоски,
 // а активный раздел подсвечивается сам, пока листаешь меню.
-import { getLenis } from "./modules/smooth.js?v=202611201610"
+import { getLenis } from "./modules/smooth.js?v=202611201616"
 
 const nav = document.getElementById("menuTabs")
 if (nav) {

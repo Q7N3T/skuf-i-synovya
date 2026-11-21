@@ -21,14 +21,28 @@
 .icq--mini .icq__foot { padding: var(--s-1) var(--s-2); }
 .icq--mini .odometer { font-size: var(--fs-sm); }
 
+/* Десктоп — раскладка «Пульт»: логотип слева, подзаголовок и кнопки справа,
+   ниже одним ровным рядом три окна одинаковой высоты: «Сегодня», «На кранах», аська */
+.hero__ghost { opacity: 0.35; }
+.hero__foam { opacity: 0.5; }
 @media (min-width: 1024px) {
-  .hero__grid { grid-template-rows: auto auto auto 1fr; }
-  .hero__eyebrow { grid-column: 1 / span 7; grid-row: 1; }
-  .hero__title { grid-column: 1 / span 7; grid-row: 2; }
+  .hero { padding-bottom: var(--s-6); }
+  .hero__grid { grid-template-rows: auto auto auto; row-gap: var(--s-3); column-gap: var(--gutter); align-items: stretch; }
+  .hero__eyebrow { grid-column: 1 / -1; grid-row: 1; }
+  .hero__title { grid-column: 1 / span 7; grid-row: 2; align-self: end; }
   .hero__line--2 { padding-left: calc(100% / 7 * 2); }
-  .hero__copy { grid-column: 1 / span 7; grid-row: 3; }
-  .icq--mini { grid-column: 1 / span 4; grid-row: 4; align-self: end; }
-  .hero__side { grid-column: 8 / -1; grid-row: 1 / span 4; }
+  .hero__copy { grid-column: 8 / -1; grid-row: 2; align-self: end; gap: var(--s-2); padding-bottom: 0.4em; }
+  .hero__sub { max-width: 30ch; }
+  .hero__side { display: contents; }
+  .today { grid-column: 1 / span 4; grid-row: 3; display: flex; flex-direction: column; }
+  .today__body { flex: 1; align-content: start; }
+  .taps { grid-column: 5 / span 4; grid-row: 3; display: flex; flex-direction: column; }
+  .taps__list { flex: 1; align-content: start; }
+  .taps__all { margin-top: auto; padding-top: 8px; }
+  .icq--mini { grid-column: 9 / -1; grid-row: 3; align-self: stretch; max-width: none; display: flex; flex-direction: column; box-shadow: var(--shadow-card); opacity: 1; }
+  .icq--mini .icq__body { flex: 1; }
+  .icq--mini .icq__foot span:first-child { white-space: nowrap; }
+  .tap { gap: 8px; }
 }
 @media (min-width: 768px) and (max-width: 1023px) {
   .hero__copy { grid-column: 1 / -1; }
@@ -223,7 +237,8 @@
 /* шапка: на телефоне вместо кнопки брони — бургер (бронь — в мобильной панели и в меню) */
 .header__actions > .btn[data-book] { display: none; }
 @media (min-width: 768px) { .header__actions > .btn[data-book] { display: inline-flex; } }
-@media (min-width: 1280px) { .hero__sub { max-width: none; white-space: nowrap; font-size: clamp(1rem, 0.7rem + 0.55vw, 1.25rem); } }
+/* 1024–1279: окна уже — стиль пива на табло прячем, чтобы не обрезался многоточием */
+@media (min-width: 1024px) and (max-width: 1279px) { .tap { grid-template-columns: 1.6rem auto 1fr auto; } .tap__style { visibility: hidden; } .icq--mini .icq__foot { font-size: var(--fs-xs); } }
 /* 1024–1279: шесть пунктов меню в одну строку, статус «в сети» прячем */
 @media (min-width: 1024px) and (max-width: 1279px) {
   .presence { display: none !important; }

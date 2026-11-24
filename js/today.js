@@ -1,6 +1,6 @@
 // Первый экран бара: виджет «Сегодня», табло «На кранах», подсветка дня в афише, мобильная панель брони.
 // Данные — только data/afisha.json и data/menu.json. Без JS в разметке остаются ссылка «Афиша недели» и статическая афиша.
-import { moscowNow } from "./modules/booking.js?v=202611211359"
+import { moscowNow } from "./modules/booking.js?v=202611241505"
 
 const $ = (s, r = document) => r.querySelector(s)
 const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches

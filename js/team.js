@@ -2,8 +2,8 @@
 // Карточка открывает анкету (одна за раз): на десктопе — широкой панелью под рядом карточек, на телефоне — под своей карточкой.
 // Звук «о-оу» — при раскрытии анкеты, если включён.
 // Разметку собирает tools/build-data.py из data/team.json; без JS все анкеты открыты.
-import { sound } from "./modules/utils.js?v=202611211359"
-import { getLenis } from "./modules/smooth.js?v=202611211359"
+import { sound } from "./modules/utils.js?v=202611241505"
+import { getLenis } from "./modules/smooth.js?v=202611241505"
 
 const list = document.getElementById("teamList")
 if (list) {

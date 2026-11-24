@@ -1,5 +1,5 @@
 // Плавный скролл (Lenis) в связке с ScrollTrigger + якоря с отступом под шапку.
-import { $, $$, reducedMotion } from "./utils.js?v=202611211359"
+import { $, $$, reducedMotion } from "./utils.js?v=202611241505"
 
 let lenis = null
 
